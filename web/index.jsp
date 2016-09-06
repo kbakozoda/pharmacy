@@ -6,5 +6,7 @@
 </head>
 <body>
 <a href="lab2/index.jsp">Say hello</a>
+<a href="devs.action">View developers</a>
+
 </body>
 </html>

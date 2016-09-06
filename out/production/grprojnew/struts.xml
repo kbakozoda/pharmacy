@@ -5,13 +5,26 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <package name="pharmacy" namespace="/lab2" extends="struts-default">
-        <action name="Hello">
-            <result>../index.jsp</result>
+
+    <package name="pharmacy" extends="struts-default">
+        <!-- <global-results>
+            <result name="login" type="redirect">login.action</result>
+        </global-results> -->
+        <action name="devs" class="pharmacy.Actions.Developers">
+            <result name="SUCCESS">lab2/developers.jsp</result>
+        </action>
+        <action name="login" class="pharmacy.Actions.Login">
+            <result name="SUCCESS">authentication/login.jsp</result>
         </action>
 
         <action name="HelloWorld" class="pharmacy.HelloWorld">
-            <result name="SUCCESS">../success.jsp</result>
+            <result name="SUCCESS">success.jsp</result>
         </action>
+
+        <action name="SuperuserDashboard" class="pharmacy.SuperuserSecureActions.DisplayDashboard">
+            <result name="SUCCESS">/SuperUser/dashboard.jsp</result>
+        </action>
+
     </package>
+
 </struts>
