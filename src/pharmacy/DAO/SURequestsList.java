@@ -19,6 +19,7 @@ public class SURequestsList {
 
     public SURequestsList() {
         db = new DBinfo();
+        sureqlist = new ArrayList<RequestToGod>();
         fetch();
     }
 
@@ -30,7 +31,7 @@ public class SURequestsList {
             String sql = "SELECT * FROM requeststogod";
             ResultSet rs = db.stmt.executeQuery(sql);
 
-            sureqlist = new ArrayList<RequestToGod>();
+            System.out.println("FETCHING REQUESTS TO GOD");
             while (rs.next()) {
                 temp = new RequestToGod();
                 temp.setId(rs.getInt("id"));
@@ -39,7 +40,7 @@ public class SURequestsList {
                 temp.setName(rs.getString("name"));
                 temp.setSurname(rs.getString("surname"));
                 temp.setNetworkId(rs.getInt("networkid"));
-
+                System.out.println("fetch.: " + temp.getNetworkId() + " " + temp.getSurname());
                 sureqlist.add(temp);
             }
 

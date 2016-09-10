@@ -26,6 +26,9 @@
         <action name="welcome" class="pharmacy.SUActions.Welcome">
             <result name="SUCCESS">../SU/index.jsp</result>
         </action>
+        <action name="requests" class="pharmacy.SUActions.Requests">
+            <result name="SUCCESS">../SU/requests.jsp</result>
+        </action>
     </package>
 
 </struts>

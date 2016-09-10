@@ -11,8 +11,8 @@ public class DBinfo {
     public static String USER;
     public static String PASS;
     public static String DB_URL;
-    Connection conn;
-    Statement stmt;
+    public Connection conn;
+    public Statement stmt;
 
     public DBinfo() {
         JDBC_DRIVER="com.mysql.jdbc.Driver";

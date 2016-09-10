@@ -11,6 +11,9 @@
     <title>Welcome!</title>
 </head>
 <body>
-    Welcome mister super user!
+    Welcome mister super user! Please choose your next actions<br>
+<a href="/superuser/requests.action">View requests!</a>
+
+    <a href="#">Logout</a>
 </body>
 </html>

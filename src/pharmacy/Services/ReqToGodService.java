@@ -10,7 +10,12 @@ import java.util.List;
  */
 public class ReqToGodService {
     List<RequestToGod> list;
-    SURequestsList db = new SURequestsList();
+    SURequestsList db;
+
+    public ReqToGodService() {
+        db = new SURequestsList();
+        list = db.getList();
+    }
 
     public List<RequestToGod> getSURequests() {
         return list;
