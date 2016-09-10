@@ -21,7 +21,6 @@ public class Developers extends ActionSupport {
     }
 
     public List<Developer> getDevList() {
-        System.out.println(devList.get(0).getId() + " " + devList.get(1).getName());
         return devList;
     }
 

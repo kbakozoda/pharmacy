@@ -7,6 +7,7 @@
 <body>
 <a href="lab2/index.jsp">Say hello</a>
 <a href="devs.action">View developers</a>
+<a href="login.action">Login</a>
 
 </body>
 </html>
