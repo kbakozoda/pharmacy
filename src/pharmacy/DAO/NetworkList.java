@@ -34,6 +34,7 @@ public class NetworkList {
                 temp.setId(rs.getInt("id"));
                 temp.setName(rs.getString("name"));
                 temp.setAdminId(rs.getInt("adminid"));
+                temp.setActive(rs.getBoolean("active"));
                 list.add(temp);
             }
 

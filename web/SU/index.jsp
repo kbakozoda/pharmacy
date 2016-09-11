@@ -13,7 +13,7 @@
 <body>
     Welcome mister super user! Please choose your next actions<br>
 <a href="/superuser/requests.action">View requests!</a>
-
+<a href="/superuser/networks.action">View networks!</a>
     <a href="#">Logout</a>
 </body>
 </html>

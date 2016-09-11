@@ -29,6 +29,9 @@
         <action name="requests" class="pharmacy.SUActions.Requests">
             <result name="SUCCESS">../SU/requests.jsp</result>
         </action>
+        <action name="networks" class="pharmacy.SUActions.Networks">
+            <result name="SUCCESS">../SU/networks.jsp</result>
+        </action>
     </package>
 
 </struts>
