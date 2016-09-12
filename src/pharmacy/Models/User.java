@@ -10,8 +10,8 @@ public class User {
     private String name;
     private String surname;
     private int id;
-    private int pharmacyId = null; // for pharmacists;
-    private int networkdId = null; // for admins;
+    private int pharmacyId = -1; // for pharmacists;
+    private int networkdId = -1; // for admins;
 
     public void setPharmacyId(int pharmacyId) {// is used when: login->role=pharmacist->found pharmacy
         this.pharmacyId = pharmacyId;

@@ -1,6 +1,6 @@
 package pharmacy.Services;
+import pharmacy.DAO.DevelopersDAO;
 import pharmacy.Models.Developer;
-import pharmacy.DAO.DevelopersList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -11,11 +11,11 @@ import java.util.ListIterator;
  */
 public class DeveloperService {
     List<Developer> developers;
-    DevelopersList db;
+    DevelopersDAO dao;
 
     public DeveloperService() {
-        db = new DevelopersList();
-        developers = db.getList();
+        dao = new DevelopersDAO();
+        developers = dao.getAll();
     }
 
     public List<Developer> getDevelopers() {
