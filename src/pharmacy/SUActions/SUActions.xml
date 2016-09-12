@@ -32,6 +32,9 @@
         <action name="networks" class="pharmacy.SUActions.Networks">
             <result name="SUCCESS">../SU/networks.jsp</result>
         </action>
+        <action name="drugs" class="pharmacy.SUActions.Drugs">
+            <result name="SUCCESS">../SU/drugs.jsp</result>
+        </action>
     </package>
 
 </struts>

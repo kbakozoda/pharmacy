@@ -8,7 +8,6 @@ public class Drug {
     private int typeId;
     private String name;
     private String instruction;
-    private boolean isRecipeReq;
     private int ageRestrict;
 
     public int getId() {
@@ -43,14 +42,6 @@ public class Drug {
         this.instruction = instruction;
     }
 
-    public boolean isRecipeReq() {
-        return isRecipeReq;
-    }
-
-    public void setRecipeReq(boolean recipeReq) {
-        isRecipeReq = recipeReq;
-    }
-
     public int getAgeRestrict() {
         return ageRestrict;
     }
@@ -58,4 +49,5 @@ public class Drug {
     public void setAgeRestrict(int ageRestrict) {
         this.ageRestrict = ageRestrict;
     }
+
 }
