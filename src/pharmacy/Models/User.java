@@ -4,49 +4,76 @@ package pharmacy.Models;
  * Created by User on 04.09.2016.
  */
 public class User {
-    private String Username;
-    private String Role;
-    private String Password;
-    private String Name;
-    private String Surname;
+    private String username;
+    private int role; /**role id*/
+    private String password;
+    private String name;
+    private String surname;
+    private int id;
+    private int pharmacyId = null; // for pharmacists;
+    private int networkdId = null; // for admins;
+
+    public void setPharmacyId(int pharmacyId) {// is used when: login->role=pharmacist->found pharmacy
+        this.pharmacyId = pharmacyId;
+    }
+
+    public void setNetworkdId(int networkdId) {// is used when: login->role=admin->found network
+        this.networkdId = networkdId;
+    }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
 
-    public String getRole() {
-        return Role;
+    public int getRole() {
+        return role;
     }
 
-    public void setRole(String role) {
-        Role = role;
+    public void setRole(int role) {
+        this.role = role;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getSurname() {
-        return Surname;
+        return surname;
     }
 
     public void setSurname(String surname) {
-        Surname = surname;
+        this.surname = surname;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getPharmacyId() {
+        return pharmacyId;
+    }
+
+    public int getNetworkdId() {
+        return networkdId;
     }
 }
