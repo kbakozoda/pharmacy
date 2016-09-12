@@ -20,7 +20,7 @@ public class NetworkList {
         list = new ArrayList<Network>();
         fetch();
     }
-
+    // TODO: maybe add number of pharmacies in this network?
     public void fetch() {
         try {
             Class.forName(db.JDBC_DRIVER);
