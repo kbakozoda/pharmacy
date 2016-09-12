@@ -1,6 +1,6 @@
 package pharmacy.Services;
 
-import pharmacy.DAO.NetworkList;
+import pharmacy.DAO.NetworkDAO;
 import pharmacy.Models.Network;
 
 import java.util.List;
@@ -10,11 +10,11 @@ import java.util.List;
  */
 public class NetworkService {
     List<Network> list;
-    NetworkList db;
+    NetworkDAO dao;
 
     public NetworkService() {
-        db = new NetworkList();
-        list = db.getAll();
+        dao = new NetworkDAO();
+        list = dao.getAll();
     }
 
     public List<Network> getList() {
