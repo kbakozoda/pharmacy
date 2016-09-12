@@ -16,12 +16,11 @@ public class HistoryDAO extends DAOInterface{
         createConnection();
     }
 
-    public List<HistoryElement> getAll() {
+    public List<HistoryElement> executeSQLQ(String query){
         List<HistoryElement> list = new ArrayList<HistoryElement>();
         HistoryElement temp;
         try {
-            String sql = "SELECT * FROM operationhistory";
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 int id = rs.getInt("id");
                 int netwid = rs.getInt("networkid");
@@ -44,5 +43,14 @@ public class HistoryDAO extends DAOInterface{
             e.printStackTrace();
         }
         return list;
+    }
+
+    public List<HistoryElement> getAllFor(int id) {
+        String sql = "SELECT * FROM operationhistory WHERE networkid=" + id;
+        return executeSQLQ(sql);
+    }
+    public List<HistoryElement> getAll() {
+        String sql = "SELECT * FROM operationhistory";
+        return executeSQLQ(sql);
     }
 }
