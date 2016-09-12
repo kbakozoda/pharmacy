@@ -29,5 +29,5 @@ public abstract class DAOInterface {
             e.printStackTrace();
         }
     }
-    public abstract List<Drug> getAll();
+    public abstract List getAll();
 }
