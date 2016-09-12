@@ -5,11 +5,7 @@ import pharmacy.Models.Drug;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Exchanger;
 
-/**
- * Created by User on 12.09.2016.
- */
 public class DrugsDAO extends DAOInterface {
 
     public DrugsDAO() {
@@ -45,20 +41,46 @@ public class DrugsDAO extends DAOInterface {
         return list;
     }
 
-    /*public boolean insertDrug(Drug) {
-
+    public Drug getById(int id) {
+        List<Drug> list = getAll();
+        for (Drug listElement: list) {
+            if(listElement.getId() == id) {
+                return listElement;
+            }
+        }
+        return null;
     }
 
-    public boolean updateDrug(Drug) {
-
+    public int deleteById(int id) {
+        try {
+            String sql = "DELETE FROM drugs WHERE drugs.id=" + id;
+            ResultSet rs = stmt.executeQuery(sql);
+            // TODO: learn how to get result of query execution, and check whether result is successful. EVERYWHERE!!!
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return 1;
     }
 
-    public boolean deleteDrug(Drug) {
-
+    public int update(Drug obj) {
+        try {
+            String sql = "UPDATE drugs SET name="+obj.getName()+",instruction="+obj.getInstruction()+",agerestriction"+obj.getAgeRestrict();
+            sql = sql.concat("WHERE drugs.id="+obj.getId());
+            ResultSet rs = stmt.executeQuery(sql);
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return 1;
     }
 
-    public Drug getDrug(int id) {
-
-    }*/
+    public void insert(Drug obj) {
+        try {
+            String sql = "INSERT INTO drugs(typeid,name,instruction,agerestriction) VALUES (";
+            sql = sql.concat(obj.getTypeId() + "," + obj.getName()+","+obj.getInstruction()+","+obj.getAgeRestrict()+")");
+            ResultSet rs = stmt.executeQuery(sql);
+        }catch (SQLException se) {
+            se.printStackTrace();
+        }
+    }
 
 }

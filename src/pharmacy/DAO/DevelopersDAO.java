@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by User on 12.09.2016.
- */
 public class DevelopersDAO extends DAOInterface{
     public DevelopersDAO() {createConnection();}
-
+     // functions of this class should not be overrode , because this is used
+     // just to demonstrate db connection in lab2
+     // since 13.09 only getAll() method should be overrode
+    @Override
     public List<Developer> getAll() {
         List<Developer> list = new ArrayList<Developer>();
         Developer temp;
@@ -38,4 +38,5 @@ public class DevelopersDAO extends DAOInterface{
         }
     return list;
     }
+
 }
