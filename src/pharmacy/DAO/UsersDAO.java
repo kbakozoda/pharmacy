@@ -45,4 +45,53 @@ public class UsersDAO extends DAOInterface {
         return list;
     }
 
+    public User getById(int id) {
+        List<User> list = getAll();
+        for (User listElement: list) {
+            if(listElement.getId() == id) {
+                return listElement;
+            }
+        }
+        return null;
+    }
+
+    public int deleteById(int id) {
+        try {
+            String sql = "DELETE FROM users WHERE id=" + id;
+            int rs = stmt.executeUpdate(sql);
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return 1;
+    }
+
+    public int update(User obj) {
+        try {
+            String sql = "SELECT * FROM networks";
+            ResultSet rs = stmt.executeQuery(sql);
+            User temp;
+            while (rs.next()) {
+                if (rs.getInt("id") == obj.getId()) {
+                    rs.updateString("name", obj.getName());
+                    rs.updateRow();
+                    break;
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return 1;
+    }
+
+    public void insert(User obj) {
+        try {
+            String sql = "SELECT * FROM networks";
+            ResultSet rs = stmt.executeQuery(sql);
+            rs.moveToInsertRow();
+            rs.updateString("name", obj.getName());
+        }catch (SQLException se) {
+            se.printStackTrace();
+        }
+    }
+
 }

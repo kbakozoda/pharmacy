@@ -2,10 +2,7 @@ package pharmacy.DAO;
 
 import pharmacy.Models.Drug;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
 /**
@@ -28,6 +25,27 @@ public abstract class DAOInterface {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public ResultSet getRSForSelAll(String tablename) {
+        ResultSet rs = null;
+        try{
+            String sql = "SELECT * FROM " + tablename;
+            rs = stmt.executeQuery(sql);
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return rs;
+    }
+
+    public int removeById(int id, String tableName) {
+        try {
+            String sql = "DELETE FROM " + tableName+ "WHERE id=" + id;
+            int rs = stmt.executeUpdate(sql);
+            return 1;
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return 0;
     }
     public abstract List getAll();          // nothing to say
     //public abstract Class getById(int id); // performs getAll() inside, then searches for object inside the list

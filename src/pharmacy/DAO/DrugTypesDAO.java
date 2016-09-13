@@ -46,7 +46,6 @@ public class DrugTypesDAO extends DAOInterface {
         try {
             String sql = "DELETE FROM drugtypes WHERE id=" + id;
             int rs = stmt.executeUpdate(sql);
-            // TODO: learn how to get result of query execution, and check whether result is successful. EVERYWHERE!!!
         } catch (SQLException se) {
             se.printStackTrace();
         }
