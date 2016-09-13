@@ -28,9 +28,13 @@
                     <td><s:property value="name"/></td>
                     <td><s:property value="adminId"/></td>
                     <td><s:property value="active"/></td>
+                    <td><a href="#">Delete</a></td>
+                    <td><a href="#">Edit</a></td>
+                    <td><a href="#">Info</a></td>
                 </tr>
             </s:iterator>
         </table>
+        <a href="#">Create New</a>
     </div>
 </s:if>
 </body>

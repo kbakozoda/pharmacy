@@ -13,7 +13,7 @@ public class TryAuthorise extends ActionSupport {
     public String execute() {
         //temporary
         if (username.equals("superuser") && password.equals("iamsuperuser")) {
-            user.setRole("superuser");
+            user.setRole(1);
             user.setName("God");
             user.setSurname("Mode");
             user.setUsername(username);

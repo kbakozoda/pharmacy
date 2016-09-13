@@ -1,6 +1,6 @@
 package pharmacy.Services;
 
-import pharmacy.DAO.SURequestsList;
+import pharmacy.DAO.SURequestDAO;
 import pharmacy.Models.RequestToGod;
 
 import java.util.List;
@@ -10,11 +10,11 @@ import java.util.List;
  */
 public class ReqToGodService {
     List<RequestToGod> list;
-    SURequestsList db;
+    SURequestDAO dao;
 
     public ReqToGodService() {
-        db = new SURequestsList();
-        list = db.getList();
+        dao = new SURequestDAO();
+        list = dao.getAll();
     }
 
     public List<RequestToGod> getSURequests() {

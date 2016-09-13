@@ -5,7 +5,7 @@ package pharmacy.Models;
  */
 public class DrugType {
     private int id;
-    private String name;
+    private String name;// a single word. no spaces!
 
     public int getId() {
         return id;
