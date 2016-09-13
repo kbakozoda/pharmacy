@@ -12,7 +12,7 @@ public class NetworkDAO extends DAOInterface {
         createConnection();
     }
 
-    private String tableName = "networks";
+    private static final String tableName = "networks";
 
     Network fetchNetwFromRs(ResultSet rs) {
         Network temp;

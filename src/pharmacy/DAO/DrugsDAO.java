@@ -11,73 +11,86 @@ public class DrugsDAO extends DAOInterface {
     public DrugsDAO() {
         createConnection();
     }
+    private static final String tableName = "drugs";
+    Drug fetchDrugFromRs(ResultSet rs) {
+        Drug temp = new Drug();
+        try {
+            temp.setId(rs.getInt("id"));
+            temp.setName(rs.getString("name"));
+            temp.setAgeRestrict(rs.getInt("agerestriction"));
+            temp.setInstruction(rs.getString("instruction"));
+            temp.setTypeId(rs.getInt("typeid"));
+        }catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return temp;
+    }
 
     public List<Drug> getAll() {
         List<Drug> list = new ArrayList<Drug>();
         Drug temp;
         try {
-            String sql = "SELECT * FROM drugs";
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = getRSForSelAll(tableName);
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String instruction = rs.getString("instruction");
-                int ageRestriction = rs.getInt("agerestriction");
-                int typeId = rs.getInt("typeid");
-                temp = new Drug();
-                temp.setId(id);
-                temp.setName(name);
-                temp.setAgeRestrict(ageRestriction);
-                temp.setInstruction(instruction);
-                temp.setTypeId(typeId);
-
+                temp = fetchDrugFromRs(rs);
                 list.add(temp);
             }
         } catch (SQLException se) {
             se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
         return list;
     }
 
     public Drug getById(int id) {
-        List<Drug> list = getAll();
-        for (Drug listElement: list) {
-            if(listElement.getId() == id) {
-                return listElement;
+        ResultSet rs = getRSForSelAll(tableName);
+        Drug temp;
+        try {
+            while (rs.next()) {
+                if (rs.getInt("id") == id) {
+                    temp = fetchDrugFromRs(rs);
+                    return temp;
+                }
             }
+        } catch (SQLException se) {
+            se.printStackTrace();
         }
         return null;
     }
 
     public int deleteById(int id) {
-        try {
-            String sql = "DELETE FROM drugs WHERE drugs.id=" + id;
-            ResultSet rs = stmt.executeQuery(sql);
-            // TODO: learn how to get result of query execution, and check whether result is successful. EVERYWHERE!!!
-        } catch (SQLException se) {
-            se.printStackTrace();
-        }
-        return 1;
+        return removeById(id, tableName);
     }
 
+    // TODO: remove code duplicates in last two methods in all DAO classes
     public int update(Drug obj) {
         try {
-            String sql = "UPDATE drugs SET name="+obj.getName()+",instruction="+obj.getInstruction()+",agerestriction"+obj.getAgeRestrict();
-            sql = sql.concat("WHERE drugs.id="+obj.getId());
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = getRSForSelAll(tableName);
+            Drug temp;
+            while (rs.next()) {
+                if (rs.getInt("id") == obj.getId()) {
+                    rs.updateString("name", obj.getName());
+                    rs.updateInt("agerestriction", obj.getAgeRestrict());
+                    rs.updateString("instruction", obj.getInstruction());
+                    rs.updateInt("typeid", obj.getTypeId());
+                    rs.updateRow();
+                    return 1;
+                }
+            }
         } catch (SQLException se) {
             se.printStackTrace();
         }
-        return 1;
+        return 0;
     }
 
     public void insert(Drug obj) {
         try {
-            String sql = "INSERT INTO drugs(typeid,name,instruction,agerestriction) VALUES (";
-            sql = sql.concat(obj.getTypeId() + "," + obj.getName()+","+obj.getInstruction()+","+obj.getAgeRestrict()+")");
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = getRSForSelAll(tableName);
+            rs.moveToInsertRow();
+            rs.updateString("name", obj.getName());
+            rs.updateInt("agerestriction", obj.getAgeRestrict());
+            rs.updateString("instruction", obj.getInstruction());
+            rs.updateInt("typeid", obj.getTypeId());
+            rs.insertRow();
         }catch (SQLException se) {
             se.printStackTrace();
         }

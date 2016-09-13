@@ -14,7 +14,7 @@ public class SURequestDAO extends DAOInterface{
         createConnection();
     }
 
-    public String tableName = "requeststogod";
+    private static final String tableName = "requeststogod";
 
     RequestToGod fetchRTGFromRs(ResultSet rs) {
         RequestToGod temp;

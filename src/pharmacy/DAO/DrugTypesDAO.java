@@ -10,18 +10,26 @@ import java.util.List;
 public class DrugTypesDAO extends DAOInterface {
     public DrugTypesDAO() {createConnection();}
 
+    private static final String tableName = "drugtypes";
+
+    DrugType fetchDTypeFromRs(ResultSet rs) {
+        DrugType temp = new DrugType();
+        try {
+            temp.setId(rs.getInt("id"));
+            temp.setName(rs.getString("name"));
+        }catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return temp;
+    }
+
     public List<DrugType> getAll() {
         List<DrugType> list = new ArrayList<DrugType>();
         DrugType temp;
         try {
-            String sql = "SELECT * FROM drugtypes";
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = getRSForSelAll(tableName);
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                temp = new DrugType();
-                temp.setId(id);
-                temp.setName(name);
+                temp = fetchDTypeFromRs(rs);
                 list.add(temp);
             }
         } catch (SQLException se) {
@@ -33,40 +41,48 @@ public class DrugTypesDAO extends DAOInterface {
     }
 
     public DrugType getById(int id) {
-        List<DrugType> list = getAll();
-        for (DrugType listElement: list) {
-            if(listElement.getId() == id) {
-                return listElement;
+        ResultSet rs = getRSForSelAll(tableName);
+        DrugType temp;
+        try {
+            while (rs.next()) {
+                if (rs.getInt("id") == id) {
+                    temp = fetchDTypeFromRs(rs);
+                    return temp;
+                }
             }
+        } catch (SQLException se) {
+            se.printStackTrace();
         }
         return null;
     }
 
     public int deleteById(int id) {
-        try {
-            String sql = "DELETE FROM drugtypes WHERE id=" + id;
-            int rs = stmt.executeUpdate(sql);
-        } catch (SQLException se) {
-            se.printStackTrace();
-        }
-        return 1;
+        return removeById(id, tableName);
     }
 
     public int update(DrugType obj) {
         try {
-            String sql = "UPDATE drugs SET name='"+obj.getName()+"'";
-            sql = sql.concat("WHERE id="+obj.getId());
-            int rs = stmt.executeUpdate(sql);
+            ResultSet rs = getRSForSelAll(tableName);
+            DrugType temp;
+            while (rs.next()) {
+                if (rs.getInt("id") == obj.getId()) {
+                    rs.updateString("name", obj.getName());
+                    rs.updateRow();
+                    return 1;
+                }
+            }
         } catch (SQLException se) {
             se.printStackTrace();
         }
-        return 1;
+        return 0;
     }
 
     public void insert(DrugType obj) {
         try {
-            String sql = "INSERT INTO drugtypes (name) VALUES('" + obj.getName() +"')";
-            int rs = stmt.executeUpdate(sql);
+            ResultSet rs = getRSForSelAll(tableName);
+            rs.moveToInsertRow();
+            rs.updateString("name", obj.getName());
+            rs.insertRow();
         }catch (SQLException se) {
             se.printStackTrace();
         }

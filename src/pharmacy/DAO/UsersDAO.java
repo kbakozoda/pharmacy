@@ -13,28 +13,29 @@ public class UsersDAO extends DAOInterface {
         createConnection();
     }
 
+    private static final String tableName = "users";
+
+    User fetchUserFromRs(ResultSet rs) {
+        User temp = new User();
+        try {
+            temp.setId(rs.getInt("id"));
+            temp.setPassword(rs.getString("password"));
+            temp.setRole(rs.getInt("role")); // 1,2,3
+            temp.setUsername(rs.getString("username"));
+            temp.setName(rs.getString("name"));
+            temp.setSurname(rs.getString("surname"));
+        }catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return temp;
+    }
     public List<User> getAll() {
         List<User> list = new ArrayList<User>();
         User temp;
         try {
-            String query = "SELECT * FROM users";
-            ResultSet rs = stmt.executeQuery(query);
+            ResultSet rs = getRSForSelAll(tableName);
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String username = rs.getString("username");
-                String name = rs.getString("name");
-                String surname = rs.getString("surname");
-                String password = rs.getString("password");
-                int role = rs.getInt("role"); // 1,2,3
-
-                temp = new User();
-
-                temp.setId(id);
-                temp.setPassword(password);
-                temp.setRole(role);
-                temp.setUsername(username);
-                temp.setName(name);
-                temp.setSurname(surname);
+                temp = fetchUserFromRs(rs);
                 list.add(temp);
             }
         } catch (SQLException se) {
@@ -46,52 +47,58 @@ public class UsersDAO extends DAOInterface {
     }
 
     public User getById(int id) {
-        List<User> list = getAll();
-        for (User listElement: list) {
-            if(listElement.getId() == id) {
-                return listElement;
-            }
-        }
-        return null;
-    }
-
-    public int deleteById(int id) {
+        ResultSet rs = getRSForSelAll(tableName);
+        User temp;
         try {
-            String sql = "DELETE FROM users WHERE id=" + id;
-            int rs = stmt.executeUpdate(sql);
-        } catch (SQLException se) {
-            se.printStackTrace();
-        }
-        return 1;
-    }
-
-    public int update(User obj) {
-        try {
-            String sql = "SELECT * FROM networks";
-            ResultSet rs = stmt.executeQuery(sql);
-            User temp;
             while (rs.next()) {
-                if (rs.getInt("id") == obj.getId()) {
-                    rs.updateString("name", obj.getName());
-                    rs.updateRow();
-                    break;
+                if (rs.getInt("id") == id) {
+                    temp = fetchUserFromRs(rs);
+                    return temp;
                 }
             }
         } catch (SQLException se) {
             se.printStackTrace();
         }
-        return 1;
+        return null;
+    }
+
+    public int deleteById(int id) {
+        return removeById(id, tableName);
+    }
+
+    public int update(User obj) {
+        try {
+            ResultSet rs = getRSForSelAll(tableName);
+            User temp;
+            while (rs.next()) {
+                if (rs.getInt("id") == obj.getId()) {
+                    rs.updateString("name", obj.getName());
+                    rs.updateString("surname", obj.getSurname());
+                    rs.updateString("password", obj.getPassword());
+                    rs.updateString("username", obj.getUsername());
+                    rs.updateInt("role", obj.getRole());
+                    rs.updateRow();
+                    return 1;
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return 0;
     }
 
     public void insert(User obj) {
         try {
-            String sql = "SELECT * FROM networks";
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = getRSForSelAll(tableName);
             rs.moveToInsertRow();
             rs.updateString("name", obj.getName());
+            rs.updateString("surname", obj.getSurname());
+            rs.updateString("password", obj.getPassword());
+            rs.updateString("username", obj.getUsername());
+            rs.updateInt("role", obj.getRole());
+            rs.insertRow();
         }catch (SQLException se) {
             se.printStackTrace();
         }
     }
-
 }
