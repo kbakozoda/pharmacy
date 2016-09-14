@@ -31,7 +31,8 @@ public class HelloWorld {
 /** TODO Sequence:
  *      V Complete all DAO of SU entities
  *      V Write services for all SU entities
- *      2. Make authorisation interceptor
+ *      V Change login in index.jsp to GOTO MY DASHBOARD
+ *      V Make authorisation interceptors
  *      2.2 Complete login action, with role detection
  *      3. Complete all actions of SU with CRUD methods, make sure they work correctly
  *      4. Complete all DAO for Admin entities
