@@ -5,11 +5,7 @@ import pharmacy.Models.Drug;
 
 import java.util.List;
 
-/**
- * Created by User on 12.09.2016.
- */
 public class DrugsService {
-    private List<Drug> drugList;
     private DrugsDAO dao;
 
     public DrugsService(){
@@ -21,4 +17,23 @@ public class DrugsService {
         list = dao.getAll();
         return list;
     }
+
+    public Drug getById(int id) {
+        Drug res;
+        res = dao.getById(id);
+        return res;
+    }
+
+    public int deleteById(int id) {
+        return dao.deleteById(id);
+    }
+
+    public int update(Drug drug) {
+        return dao.update(drug);
+    }
+
+    public void insert(Drug drug) {
+        dao.insert(drug);
+    }
+
 }

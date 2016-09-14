@@ -101,4 +101,18 @@ public class UsersDAO extends DAOInterface {
             se.printStackTrace();
         }
     }
+
+    public int getIdByUsername(String username) {
+        try {
+            ResultSet rs = getRSForSelAll(tableName);
+            while(rs.next()) {
+                if (rs.getString("username").equals(username)) {
+                    return rs.getInt("id");
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return -1;
+    }
 }

@@ -29,7 +29,8 @@ public class HelloWorld {
     }
 }
 /** TODO Sequence:
- *      1. Complete all DAO of SU entities
+ *      V Complete all DAO of SU entities
+ *      V Write services for all SU entities
  *      2. Make authorisation interceptor
  *      2.2 Complete login action, with role detection
  *      3. Complete all actions of SU with CRUD methods, make sure they work correctly
