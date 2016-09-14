@@ -6,37 +6,44 @@
 
 <struts>
     <package name="SuperUser" namespace="/superuser" extends="struts-default">
-     <!--   <interceptors>
+        <interceptors>
             <interceptor name="authorisation" class="pharmacy.Interceptors.SUAuthInterceptor"/>
             <interceptor-stack name="SUAuthStack">
                 <interceptor-ref name="authorisation"></interceptor-ref>
                 <interceptor-ref name="defaultStack"></interceptor-ref>
             </interceptor-stack>
         </interceptors>
+
         <default-interceptor-ref name="SUAuthStack"></default-interceptor-ref>
 
         <global-results>
             <result name="login" type="redirect">login.action</result>
-        </global-results> -->
+        </global-results>
 
         <action name="drugtypes" class="pharmacy.SUActions.DrugTypes">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="LOGIN" type="redirect">../login.action</result>
             <result name="SUCCESS">../SU/drugtypes.jsp</result>
         </action>
 
-        <action name="login" class="pharmacy.SUActions.Login">
-            <result name="SUCCESS">../authentication/login.jsp</result>
-        </action>
-
         <action name="welcome" class="pharmacy.SUActions.Welcome">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="LOGIN" type="redirect">../login.action</result>
             <result name="SUCCESS">../SU/index.jsp</result>
         </action>
         <action name="requests" class="pharmacy.SUActions.Requests">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="LOGIN" type="redirect">../login.action</result>
             <result name="SUCCESS">../SU/requests.jsp</result>
         </action>
         <action name="networks" class="pharmacy.SUActions.Networks">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="LOGIN" type="redirect">../login.action</result>
             <result name="SUCCESS">../SU/networks.jsp</result>
         </action>
         <action name="drugs" class="pharmacy.SUActions.Drugs">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="LOGIN" type="redirect">../login.action</result>
             <result name="SUCCESS">../SU/drugs.jsp</result>
         </action>
     </package>

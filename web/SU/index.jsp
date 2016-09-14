@@ -12,9 +12,11 @@
 </head>
 <body>
     Welcome mister super user! Please choose your next actions<br>
-<a href="/superuser/requests.action">View requests!</a>
-<a href="/superuser/networks.action">View networks!</a>
-    <a href="/superuser/drugtypes.action">View drug types</a>
+    <a href="/superuser/requests.action">View requests!</a></br>
+    <a href="/superuser/networks.action">View networks!</a></br>
+    <a href="/superuser/drugtypes.action">View drug types</a></br>
+    <a href="/superuser/drugs.action">View drugs</a></br>
     <a href="#">Logout</a>
+
 </body>
 </html>

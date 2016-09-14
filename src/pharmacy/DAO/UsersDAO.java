@@ -115,4 +115,21 @@ public class UsersDAO extends DAOInterface {
         }
         return -1;
     }
+
+    public User authenticate(String username, String password) {
+        try{
+            ResultSet rs = getRSForSelAll(tableName);
+            User user;
+            System.out.println("checking..");
+            while (rs.next()) {
+                if (rs.getString("username").equalsIgnoreCase(username) && rs.getString("password").equals(password)) {
+                    user = fetchUserFromRs(rs);
+                    return user;
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return null;
+    }
 }

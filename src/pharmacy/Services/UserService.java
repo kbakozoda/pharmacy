@@ -44,4 +44,9 @@ public class UserService {
     public int getIdByUsername(String username) {
         return 0;
     }
+
+    public User auth(String username, String pass){
+        System.out.println("Trying " + username + " " + pass);
+        return dao.authenticate(username, pass);
+    }
 }

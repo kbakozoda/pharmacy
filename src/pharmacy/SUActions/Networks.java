@@ -15,7 +15,7 @@ public class Networks extends ActionSupport {
     NetworkService service;
     public String execute() {
         service = new NetworkService();
-        list = service.getList();
+        list = service.getAll();
         return "SUCCESS";
     }
 
