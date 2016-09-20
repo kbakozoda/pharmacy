@@ -5,9 +5,6 @@ import pharmacy.Models.Drug;
 import java.sql.*;
 import java.util.List;
 
-/**
- * Created by User on 12.09.2016.
- */
 public abstract class DAOInterface {
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String USER = "root";
@@ -19,7 +16,8 @@ public abstract class DAOInterface {
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
         } catch (SQLException se) {
             se.printStackTrace();
         } catch (Exception e) {

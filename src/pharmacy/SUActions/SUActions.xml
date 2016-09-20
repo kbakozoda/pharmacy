@@ -46,6 +46,10 @@
             <result name="LOGIN" type="redirect">../login.action</result>
             <result name="SUCCESS">../SU/drugs.jsp</result>
         </action>
+
+        <action name="logout" class="pharmacy.Actions.Login" method="logout">
+            <result name="SUCCESS" type="redirect">../index.jsp</result>
+        </action>
     </package>
 
 </struts>

@@ -33,13 +33,16 @@ public class HelloWorld {
  *      V Write services for all SU entities
  *      V Change login in index.jsp to GOTO MY DASHBOARD
  *      V Make authorisation interceptors
- *      2.2 Complete login action, with role detection
- *      3. Complete all actions of SU with CRUD methods, make sure they work correctly
- *      4. Complete all DAO for Admin entities
- *      5. Complete all DAO for Pharmacist entities
- *      6. Complete all actions of Admin with CRUD
- *      7. Complete all actions of Pharmacist with CRUD
- *      8. Apply design
- *      9. Write junit tests
- *      10. Apply file generation classes
+ *      V Complete login action, with role detection
+ *      V Logout action.
+ *     --> Complete registration actions.
+ *      2. Complete all DAO and Services for Admins
+ *      3. Complete all DAO and Services for Pharmacists
+ *      4. Complete all actions of SU with CRUD
+ *      5. Complete all actions of Admin with CRUD
+ *      6. Complete all actions of Pharmacist with CRUD
+ *         ---------- 3rd lab up until here -------------
+ *      7. Apply design
+ *      8. Write junit tests
+ *      9. Apply file generation classes
  * */

@@ -16,7 +16,7 @@
     <a href="/superuser/networks.action">View networks!</a></br>
     <a href="/superuser/drugtypes.action">View drug types</a></br>
     <a href="/superuser/drugs.action">View drugs</a></br>
-    <a href="#">Logout</a>
+    <a href="logout.action">Logout</a>
 
 </body>
 </html>

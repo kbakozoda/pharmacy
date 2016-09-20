@@ -1,9 +1,9 @@
 <%@taglib uri="/struts-tags" prefix="s" %>
 <html>
 <head>
-    <title>Hello World</title>
+    <title>Error</title>
 </head>
 <body>
-<h1>asdf</h1>
+<h1>Internal error. Please report us about this bug.</h1>
 </body>
 </html>

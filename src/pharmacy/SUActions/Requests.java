@@ -2,7 +2,7 @@ package pharmacy.SUActions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import pharmacy.Models.RequestToGod;
-import pharmacy.Services.ReqToGodService;
+import pharmacy.Services.SURequestService;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ public class Requests extends ActionSupport{
     private List<RequestToGod> reqList;
 
     public String execute() {
-        ReqToGodService service = new ReqToGodService();
-        reqList = service.getSURequests();
+        SURequestService service = new SURequestService();
+        reqList = service.getAll();
         return "SUCCESS";
     }
 

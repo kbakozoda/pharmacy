@@ -6,14 +6,22 @@ import pharmacy.Models.Network;
 import pharmacy.Models.RequestToGod;
 import pharmacy.Models.User;
 
-/**
- * Created by User on 14.09.2016.
- */
+import java.util.List;
+
 public class SURequestService {
     SURequestDAO dao;
 
     public SURequestService() {
         dao = new SURequestDAO();
+    }
+
+    public void insert(RequestToGod req) {
+        dao.insert(req);
+    }
+
+    public List getAll() {
+        List list = dao.getAll();
+        return list;
     }
 
     public void approveById(int id) {
@@ -29,7 +37,7 @@ public class SURequestService {
 
         UserService userService = new UserService();
         userService.insert(nu);
-        int userId = userService.getIdByUsername(nu.getUsername());
+        int userId = userService.getIdByUsername(nu.getUsername()); // because id is generated
 
         NetworkService networkService = new NetworkService();
         Network netw;
@@ -37,6 +45,8 @@ public class SURequestService {
 
         netw.setAdminId(userId);
         networkService.update(netw);
+
+        declineById(id);
         // check for correctness
     }
 

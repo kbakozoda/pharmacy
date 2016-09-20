@@ -14,12 +14,6 @@ public class DrugTypes extends ActionSupport {
     List list;
     public String execute() {
         dao = new DrugTypesDAO();
-
-        dao.deleteById(1);
-        DrugType dt = new DrugType();
-        dt.setName("Newly");
-        dao.insert(dt);
-
         list = dao.getAll();
 
         if (list == null){

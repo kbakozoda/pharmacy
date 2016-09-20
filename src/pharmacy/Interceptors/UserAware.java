@@ -7,4 +7,5 @@ import pharmacy.Models.User;
  */
 public interface UserAware {
     public void setUser(User user);
+    public User getUser(User user);
 }
