@@ -62,6 +62,25 @@
             <result name="SUCCESS" type="redirect">requests.action</result>
         </action>
 
+        <action name="newdrugtype" class="pharmacy.SUActions.DrugTypes" method="newDrugType">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="SUCCESS">../SU/newdrugtype.jsp</result>
+        </action>
+
+        <action name="error" class="pharmacy.SUActions.InternalError">
+            <result name="SUCCESS">../SU/error.jsp</result>
+        </action>
+
+        <action name="drugtypecreate" class="pharmacy.SUActions.DrugTypes" method="drugTypeCreate">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="SUCCESS" type="redirect">drugtypes.action</result>
+        </action>
+
+        <action name="deletedrugtype" class="pharmacy.SUActions.DrugTypes" method="deleteDrugType">
+            <result name="SUCCESS" type="redirect">drugtypes.action</result>
+            <result name="ERROR" type="redirect">error.action</result>
+        </action>
+
     </package>
 
 </struts>

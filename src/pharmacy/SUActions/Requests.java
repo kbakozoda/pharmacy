@@ -9,9 +9,6 @@ import pharmacy.Services.SURequestService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-/**
- * Created by User on 10.09.2016.
- */
 public class Requests extends ActionSupport{
     private List<RequestToGod> reqList;
 
