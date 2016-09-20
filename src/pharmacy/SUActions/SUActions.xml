@@ -48,8 +48,20 @@
         </action>
 
         <action name="logout" class="pharmacy.Actions.Login" method="logout">
+            <interceptor-ref name="SUAuthStack"/>
             <result name="SUCCESS" type="redirect">../index.jsp</result>
         </action>
+
+        <action name="approve" class="pharmacy.SUActions.Requests" method="approve">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="SUCCESS" type="redirect">requests.action</result>
+        </action>
+
+        <action name="decline" class="pharmacy.SUActions.Requests" method="decline">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="SUCCESS" type="redirect">requests.action</result>
+        </action>
+
     </package>
 
 </struts>

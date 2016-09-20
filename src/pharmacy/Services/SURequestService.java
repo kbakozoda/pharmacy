@@ -37,6 +37,7 @@ public class SURequestService {
 
         UserService userService = new UserService();
         userService.insert(nu);
+
         int userId = userService.getIdByUsername(nu.getUsername()); // because id is generated
 
         NetworkService networkService = new NetworkService();

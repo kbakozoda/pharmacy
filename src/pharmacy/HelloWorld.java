@@ -35,10 +35,10 @@ public class HelloWorld {
  *      V Make authorisation interceptors
  *      V Complete login action, with role detection
  *      V Logout action.
- *     --> Complete registration actions.
+ *      V Complete registration actions.
  *      2. Complete all DAO and Services for Admins
  *      3. Complete all DAO and Services for Pharmacists
- *      4. Complete all actions of SU with CRUD
+ *     --> Complete all actions of SU with CRUD
  *      5. Complete all actions of Admin with CRUD
  *      6. Complete all actions of Pharmacist with CRUD
  *      7. In all pages: add links to previous ones.

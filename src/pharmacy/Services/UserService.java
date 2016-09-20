@@ -36,13 +36,11 @@ public class UserService {
     }
 
     public void insert(User user) {
-        // This method is only used when SU or Admin approves request. Not for signed up ones;
-        // Create new methods for them; and check for uniqueness of usernames
         dao.insert(user);
     }
 
     public int getIdByUsername(String username) {
-        return 0;
+        return dao.getIdByUsername(username);
     }
 
     public User auth(String username, String pass){

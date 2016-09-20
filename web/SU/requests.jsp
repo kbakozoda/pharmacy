@@ -12,6 +12,7 @@
 </head>
 <body>
 <h1>Requests to your Majesty</h1> <br>
+
 <s:if test="reqList.size() > 0">
     <div>
         <table cellpadding="5px" border="1">
@@ -30,8 +31,17 @@
                     <td><s:property value="surname"/></td>
                     <td><s:property value="networkId"/></td>
                     <td><s:property value="username"/></td>
-                    <td><a href="#">Approve</a></td>
-                    <td><a href="#">Decline</a></td>
+                    <td> <s:url id="approveURL" action="approve">
+                        <s:param name="id" value="%{id}"></s:param>
+                    </s:url>
+                    <s:a href="%{approveURL}">Approve</s:a>
+                    </td>
+                    <td>
+                        <s:url id="declineURL" action="decline">
+                            <s:param name="id" value="%{id}"></s:param>
+                        </s:url>
+                        <s:a href="%{declineURL}">Decline</s:a>
+                    </td>
                 </tr>
             </s:iterator>
         </table>

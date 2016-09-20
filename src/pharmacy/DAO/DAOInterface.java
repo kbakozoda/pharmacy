@@ -37,7 +37,8 @@ public abstract class DAOInterface {
 
     public int removeById(int id, String tableName) {
         try {
-            String sql = "DELETE FROM " + tableName+ "WHERE id=" + id;
+            String sql = "DELETE FROM " + tableName+ " WHERE id=" + id;
+            System.out.println("executing: " + sql);
             int rs = stmt.executeUpdate(sql);
             return 1;
         } catch (SQLException se) {
