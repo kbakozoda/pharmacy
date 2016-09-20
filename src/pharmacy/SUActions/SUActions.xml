@@ -77,10 +77,20 @@
         </action>
 
         <action name="deletedrugtype" class="pharmacy.SUActions.DrugTypes" method="deleteDrugType">
+            <interceptor-ref name="SUAuthStack"/>
             <result name="SUCCESS" type="redirect">drugtypes.action</result>
             <result name="ERROR" type="redirect">error.action</result>
         </action>
 
+        <action name="editdrugtype" class="pharmacy.SUActions.DrugTypes" method="editDrugType">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="SUCCESS">../SU/drugtypeedit.jsp</result>
+        </action>
+
+        <action name="updatedrugtype" class="pharmacy.SUActions.DrugTypes" method="updateDrugType">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="SUCCESS" type="redirect">drugtypes.action</result>
+        </action>
     </package>
 
 </struts>

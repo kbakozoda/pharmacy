@@ -3,6 +3,7 @@ package pharmacy.SUActions;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 import pharmacy.Models.DrugType;
 import pharmacy.Services.DrugTypeService;
 
@@ -13,6 +14,7 @@ public class DrugTypes extends ActionSupport {
     List list;
     public String name;
     public int id;
+
     public String execute() {
         DrugTypeService service = new DrugTypeService();
         list = service.getAll();
@@ -48,6 +50,27 @@ public class DrugTypes extends ActionSupport {
         if (res == 1) return "SUCCESS";
         else return "ERROR";
     }
+
+    public String editDrugType() {
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        id = Integer.parseInt(request.getParameter("id"));
+        DrugTypeService service = new DrugTypeService();
+        name = service.getById(id).getName();
+        return "SUCCESS";
+    }
+
+    public String updateDrugType() {
+        DrugTypeService service = new DrugTypeService();
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        id = Integer.parseInt(request.getParameter("id"));
+
+        DrugType temp = new DrugType();
+        temp.setId(id);
+        temp.setName(name);
+        service.update(temp);
+        return "SUCCESS";
+    }
+
 
     public void setList(List list) {
         this.list = list;

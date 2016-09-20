@@ -19,9 +19,12 @@
                     <td><s:property value="name"/></td>
                     <td><s:url id="deleteURL" action="deletedrugtype">
                         <s:param name="id" value="%{id}"></s:param>
-                    </s:url>
+                        </s:url>
                         <s:a href="%{deleteURL}">Delete</s:a></td>
-                    <td><a href="#">Edit</a></td>
+                    <td><s:url id="editURL" action="editdrugtype">
+                        <s:param name="id" value="%{id}"></s:param>
+                    </s:url>
+                        <s:a href="%{editURL}">Edit</s:a></td>
                     <td><a href="#">Info</a></td>
                 </tr>
             </s:iterator>
