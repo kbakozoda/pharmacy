@@ -28,6 +28,7 @@
 
         <action name="regadmin" class="pharmacy.Actions.AdminReg">
             <result name="SUCCESS">authentication/admin.jsp</result>
+            <result name="NOFREE">authentication/nofree.jsp</result>
         </action>
 
         <action name="adminsignup" class="pharmacy.Actions.AdminSignUp">
@@ -35,15 +36,18 @@
             <result name="ERROR">error.jsp</result>
             <result name="input">authentication/admin.jsp</result>
         </action>
-        <!--
-        <action name="regpharm" class="pharmacy.Actions.SignUp" method="pharmacist">
+
+        <action name="regpharm" class="pharmacy.Actions.PhReg">
             <result name="SUCCESS">authentication/pharm.jsp</result>
+            <result name="NOFREE">authentication/nofreeph.jsp</result>
         </action>
 
-        <action name="pharmsignup" class="pharmacy.Actions.SignUp" method="pharmSignup">
+        <action name="pharmsignup" class="pharmacy.Actions.PhSignUp">
             <result name="SUCCESS" type="redirect">/</result>
+            <result name="ERROR">error.jsp</result>
+            <result name="input">authentication/pharm.jsp</result>
         </action>
-        -->
+
 
     </package>
 

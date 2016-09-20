@@ -41,6 +41,7 @@ public class HelloWorld {
  *      4. Complete all actions of SU with CRUD
  *      5. Complete all actions of Admin with CRUD
  *      6. Complete all actions of Pharmacist with CRUD
+ *      7. In all pages: add links to previous ones.
  *         ---------- 3rd lab up until here -------------
  *      7. Apply design
  *      8. Write junit tests

@@ -105,8 +105,10 @@ public class AdminSignUp extends ActionSupport {
         netwList = new NetworkService().getAll();
         netwNameList = new ArrayList<String>();
         for (int i=0; i<netwList.size(); i++) {
-            String temp = netwList.get(i).getName();
-            netwNameList.add(temp);
+            if (netwList.get(i).getAdminId() == -1) {
+                String temp = netwList.get(i).getName();
+                netwNameList.add(temp);
+            }
         }
 
     }

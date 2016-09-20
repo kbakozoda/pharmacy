@@ -1,4 +1,4 @@
-package Request.DAO;
+package pharmacy.DAO;
 
 import pharmacy.DAO.DAOInterface;
 import pharmacy.Models.Request;
@@ -10,6 +10,9 @@ import java.util.List;
 
 /** requests to Admin */
 public class RequestDAO extends DAOInterface {
+
+    private String tableName = "requeststoadmin";
+
     public RequestDAO() {
         createConnection();
     }
@@ -56,5 +59,21 @@ public class RequestDAO extends DAOInterface {
     public List<Request> getAllFor(int id){
         String sql = "SELECT * FROM requeststoadmin WHERE networkid="+id;
         return executeSQLQ(sql);
+    }
+
+    public void insert(Request obj) {
+        try {
+            ResultSet rs = getRSForSelAll(tableName);
+            rs.moveToInsertRow();
+            rs.updateString("name", obj.getName());
+            rs.updateString("surname", obj.getSurname());
+            rs.updateString("username", obj.getUsername());
+            rs.updateString("password", obj.getPassword());
+            rs.updateInt("pharmacyid", obj.getPharmacyId());
+            rs.updateInt("networkid", obj.getNetworkId());
+            rs.insertRow();
+        }catch (SQLException se) {
+            se.printStackTrace();
+        }
     }
 }
