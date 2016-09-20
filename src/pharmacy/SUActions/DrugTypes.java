@@ -12,8 +12,8 @@ import java.util.List;
 
 public class DrugTypes extends ActionSupport {
     List list;
-    public String name;
-    public int id;
+    private String name;
+    private int id;
 
     public String execute() {
         DrugTypeService service = new DrugTypeService();
@@ -61,9 +61,7 @@ public class DrugTypes extends ActionSupport {
 
     public String updateDrugType() {
         DrugTypeService service = new DrugTypeService();
-        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
-        id = Integer.parseInt(request.getParameter("id"));
-
+        System.out.println("id = " + id);
         DrugType temp = new DrugType();
         temp.setId(id);
         temp.setName(name);
