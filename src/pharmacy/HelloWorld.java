@@ -36,14 +36,15 @@ public class HelloWorld {
  *      V Complete login action, with role detection
  *      V Logout action.
  *      V Complete registration actions.
- *      2. Complete all DAO and Services for Admins
- *      3. Complete all DAO and Services for Pharmacists
+ *      TODO: 2. Complete all DAO and Services for Admins
+ *      TODO: 3. Complete all DAO and Services for Pharmacists
  *     --> Complete all actions of SU with CRUD
- *      5. Complete all actions of Admin with CRUD
- *      6. Complete all actions of Pharmacist with CRUD
- *      7. In all pages: add links to previous ones.
+ *      TODO: 5. Complete all actions of Admin with CRUD
+ *      TODO: 6. Complete all actions of Pharmacist with CRUD
+ *      TODO: 7. In all pages: add links to previous ones.
  *         ---------- 3rd lab up until here -------------
- *      7. Apply design
- *      8. Write junit tests
- *      9. Apply file generation classes
+ *      TODO: 7. Apply design
+ *      TODO: 8. Write junit tests
+ *      TODO: 9. Apply file generation classes
+ *      TODO: 10. Handle all exceptions when there hasn't been anything fetched from db
  * */

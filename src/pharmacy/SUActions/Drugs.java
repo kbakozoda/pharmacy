@@ -1,10 +1,20 @@
 package pharmacy.SUActions;
 
+import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 import pharmacy.Models.Drug;
+import pharmacy.Services.DrugTypeService;
 import pharmacy.Services.DrugsService;
+import pharmacy.Services.PatternService;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by User on 12.09.2016.
@@ -12,13 +22,159 @@ import java.util.List;
 public class Drugs extends ActionSupport {
     private DrugsService service;
     List<Drug> list;
+    private int id;
+    private int typeid;
+    private String name;
+    private int agerestriction;
+    private String instruction;
+    private String selType;
+    private List<String> drTypeNameList;
+    private String errorText;
+
+    @SkipValidation
     public String execute() {
         service = new DrugsService();
         list = service.getAll();
+        // TODO: if list is empty display the message that list is empty;
         return "SUCCESS";
+    }
+    @SkipValidation
+    public String deleteDrug() {
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        id = Integer.parseInt(request.getParameter("id"));
+        DrugsService service = new DrugsService();
+        int res = service.deleteById(id);
+        if (res == 1) return "success";
+        else return "error";
+    }
+
+    @SkipValidation
+    public String create() {
+        drTypeNameList = new DrugTypeService().getNames();
+        return Action.SUCCESS;
+    }
+
+    @SkipValidation
+    public String edit() {
+        drTypeNameList = new DrugTypeService().getNames();
+        return Action.SUCCESS;
+    }
+
+    public String addDrug() {
+        DrugTypeService tservice = new DrugTypeService();
+        DrugsService service = new DrugsService();
+        Drug temp = new Drug();
+        System.out.println("seltype = "+ selType);
+        typeid = tservice.getIdByName(selType);
+        if (typeid == -1) {
+            errorText = "Error choosing drug type! This must never happen, but..";
+            return Action.ERROR;
+            // TODO: display this text in error.jsp file.
+        }
+        temp.setName(name);
+        temp.setTypeId(typeid);
+        temp.setInstruction(instruction);
+        temp.setAgeRestrict(agerestriction);
+
+        service.insert(temp);
+        return Action.SUCCESS;
+    }
+
+    public void validate() {
+        System.out.println("validating.." + name + " " + selType);
+
+        if (selType.equals("nll"))
+        {
+            addActionError("Please select a drug type!");
+        }
+
+        if (name.length() == 0)
+        {
+            addFieldError("name", "This name is too long");
+        }
+
+        if (name.length() > 49)
+        {
+            addFieldError("name", "This name is too long");
+        }
+
+        if (instruction.length() == 0)
+        {
+            addFieldError("instruction", "Please write the instruction");
+        }
+
+        drTypeNameList = new DrugTypeService().getNames();
     }
 
     public List<Drug> getList() {
         return list;
+    }
+
+    public void setList(List<Drug> list) {
+        this.list = list;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getTypeid() {
+        return typeid;
+    }
+
+    public void setTypeid(int typeid) {
+        this.typeid = typeid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAgerestriction() {
+        return agerestriction;
+    }
+
+    public void setAgerestriction(int agerestriction) {
+        this.agerestriction = agerestriction;
+    }
+
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
+
+    public List getDrTypeNameList() {
+        return drTypeNameList;
+    }
+
+    public void setDrTypeNameList(List drTypeList) {
+        this.drTypeNameList = drTypeList;
+    }
+
+    public String getSelType() {
+        return selType;
+    }
+
+    public void setSelType(String selType) {
+        this.selType = selType;
+    }
+
+    public String getErrorText() {
+        return errorText;
+    }
+
+    public void setErrorText(String errorText) {
+        this.errorText = errorText;
     }
 }

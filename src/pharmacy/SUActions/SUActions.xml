@@ -91,6 +91,26 @@
         <action name="updatedrugtype" class="pharmacy.SUActions.DrugTypes" method="updateDrugType">
             <interceptor-ref name="SUAuthStack"/>
             <result name="SUCCESS" type="redirect">drugtypes.action</result>
+            <result name="input">../SU/error.jsp</result>
+        </action>
+
+        <action name="deletedrug" class="pharmacy.SUActions.Drugs" method="deleteDrug">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="success" type="redirect">drugs.action</result>
+            <result name="error" type="redirect">error.action</result>
+        </action>
+
+        <action name="createdrug" class="pharmacy.SUActions.Drugs" method="create">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="success">../SU/drugcreate.jsp</result>
+            <result name="error" type="redirect">error.action</result>
+        </action>
+
+        <action name="adddrug" class="pharmacy.SUActions.Drugs" method="addDrug">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="success" type="redirect">drugs.action</result>
+            <result name="error" type="redirect">error.action</result>
+            <result name="input">../SU/drugcreate.jsp</result>
         </action>
     </package>
 

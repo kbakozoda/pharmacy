@@ -2,6 +2,7 @@ package pharmacy.SUActions;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.interceptor.annotations.Before;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import pharmacy.Models.DrugType;
@@ -21,6 +22,7 @@ public class DrugTypes extends ActionSupport {
     private String next;
     @SkipValidation
     public String execute() {
+        System.out.println("Execute drugtypes");
         DrugTypeService service = new DrugTypeService();
         list = service.getAll();
 
@@ -32,9 +34,6 @@ public class DrugTypes extends ActionSupport {
         return "SUCCESS";
     }
 
-    public List getList() {
-        return list;
-    }
     @SkipValidation
     public String newDrugType() {
         next = "drugtypecreate.action";
@@ -64,13 +63,13 @@ public class DrugTypes extends ActionSupport {
         next = "editdrugtype.action?id="+id;
         DrugTypeService service = new DrugTypeService();
         name = service.getById(id).getName();
+        System.out.println("Editing drugtype");
         return "SUCCESS";
     }
+
     @SkipValidation
     public String updateDrugType() {
-
-        if (!editValidate()) return "INPUT";
-
+        System.out.println("HERE!");
         DrugTypeService service = new DrugTypeService();
         System.out.println("id = " + id);
         DrugType temp = new DrugType();
@@ -81,36 +80,28 @@ public class DrugTypes extends ActionSupport {
     }
 
     public void validate() {
+        System.out.println("Validating " + name);
         PatternService ps = new PatternService();
         Pattern namePattern = ps.getNamePattern();
         Matcher m = namePattern.matcher(name);
-
         DrugTypeService serv = new DrugTypeService();
-        if (serv.isThereByName(name))
-        {
-            addFieldError("name", "This name is already taken");
+        List<DrugType> list = serv.getAll();
+        for (int i=0; i<list.size(); i++) {
+            if (list.get(i).getName().equals(name) && list.get(i).getId() != id) {
+                addFieldError("name", "This name is already taken");
+            }
         }
 
         if (!m.matches())
         {
             addFieldError("name", "This name is invalid");
         }
+
+        System.out.println("reached the end. all ok.");
     }
 
-    public boolean editValidate() {
-        PatternService ps = new PatternService();
-        Pattern namePattern = ps.getNamePattern();
-        Matcher m = namePattern.matcher(name);
-
-        DrugTypeService serv = new DrugTypeService();
-
-        if (!m.matches())
-        {
-            addFieldError("name", "This name is invalid");
-            return false;
-        }
-
-        return true;
+    public List getList() {
+        return list;
     }
 
     public void setList(List list) {
@@ -135,5 +126,9 @@ public class DrugTypes extends ActionSupport {
 
     public String getNext() {
         return next;
+    }
+
+    public void setNext(String next) {
+        this.next = next;
     }
 }

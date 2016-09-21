@@ -27,6 +27,14 @@ public class DrugTypeService {
         res = dao.getById(id);
         return res;
     }
+    // TODO: create one undeletable type, so that when you delete a type, drugs of this type become of this undeletable type
+    public List<String> getNames() {
+        return dao.getAllNames();
+    }
+
+    public int getIdByName(String name) {
+        return dao.getIdByName(name);
+    }
 
     public int deleteById(int id) {
         return dao.deleteById(id);

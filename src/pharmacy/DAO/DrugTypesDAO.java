@@ -70,6 +70,34 @@ public class DrugTypesDAO extends DAOInterface {
         return null;
     }
 
+    public List getAllNames() {
+        ResultSet rs = getRSForSelAll(tableName);
+        String temp;
+        List<String> names = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                temp = rs.getString("name");
+                names.add(temp);
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return names;
+    }
+
+    public int getIdByName(String name) {
+        ResultSet rs = getRSForSelAll(tableName);
+        try {
+            while (rs.next()) {
+                if (rs.getString("name").equals(name))
+                    return rs.getInt("id");
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return -1;
+    }
+
     public int deleteById(int id) {
         return removeById(id, tableName);
     }
