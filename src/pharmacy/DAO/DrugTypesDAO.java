@@ -40,6 +40,20 @@ public class DrugTypesDAO extends DAOInterface {
         return list;
     }
 
+    public boolean isNameTaken(String name) {
+        ResultSet rs = getRSForSelAll(tableName);
+        try {
+            while (rs.next()) {
+                if (rs.getString("name").equals(name)) {
+                    return true;
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return false;
+    }
+
     public DrugType getById(int id) {
         ResultSet rs = getRSForSelAll(tableName);
         DrugType temp;

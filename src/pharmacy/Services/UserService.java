@@ -44,7 +44,6 @@ public class UserService {
     }
 
     public User auth(String username, String pass){
-        System.out.println("Trying " + username + " " + pass);
         return dao.authenticate(username, pass);
     }
 }

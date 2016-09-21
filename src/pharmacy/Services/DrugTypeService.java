@@ -17,6 +17,11 @@ public class DrugTypeService {
         return list;
     }
 
+    public boolean isThereByName(String name) {
+        List<DrugType> list;
+        return dao.isNameTaken(name);
+    }
+
     public DrugType getById(int id) {
         DrugType res;
         res = dao.getById(id);

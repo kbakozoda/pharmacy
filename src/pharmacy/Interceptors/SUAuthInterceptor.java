@@ -26,7 +26,6 @@ public class SUAuthInterceptor extends AbstractInterceptor {
 
     public String intercept(ActionInvocation actionInvocation)
             throws Exception {
-        System.out.println("inside SUauth interceptor");
         Map<String, Object> session = actionInvocation.getInvocationContext().getSession();
 
         User user = (User) session.get("user");

@@ -24,6 +24,7 @@
             <interceptor-ref name="SUAuthStack"/>
             <result name="LOGIN" type="redirect">../login.action</result>
             <result name="SUCCESS">../SU/drugtypes.jsp</result>
+            <result name="input" type="redirect">${next}</result>
         </action>
 
         <action name="welcome" class="pharmacy.SUActions.Welcome">
