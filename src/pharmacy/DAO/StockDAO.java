@@ -6,36 +6,44 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-// TODO think of how to remove all this routine code in all DAOs. apply polymorphism
-
-// for Pharmacists
-
 public class StockDAO extends DAOInterface{
     public StockDAO() {createConnection();}
 
-    public List<StockElement> executeSQLQ(String query){
+    private static final String tableName = "stockcontent";
+
+    StockElement fetchNetwFromRs(ResultSet rs) {
+        StockElement temp;
+        temp = new StockElement();
+        try {
+            int id = rs.getInt("id");
+            int drugid = rs.getInt("drugid");
+            int price = rs.getInt("priceofsingle");
+            int pharmid = rs.getInt("pharmacyid");
+            int netw = rs.getInt("networkid");
+            int amount = rs.getInt("amount");
+            temp = new StockElement();
+            temp.setId(id);
+            temp.setNetworkId(netw);
+            temp.setAmount(amount);
+            temp.setDrugId(drugid);
+            temp.setPharmacyId(pharmid);
+            temp.setPriceOfSingle(price);
+
+        }catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return temp;
+    }
+    public List<StockElement> getAll() {
         List<StockElement> list = new ArrayList<StockElement>();
         StockElement temp;
-        try {
-            ResultSet rs = stmt.executeQuery(query);
+        try{
+            ResultSet rs = getRSForSelAll(tableName);
             while (rs.next()) {
-                int id = rs.getInt("id");
-                int drugid = rs.getInt("drugid");
-                int price = rs.getInt("priceofsingle");
-                int pharmid = rs.getInt("pharmacyid");
-                int netw = rs.getInt("networkid");
-                int amount = rs.getInt("amount");
-                temp = new StockElement();
-                temp.setId(id);
-                temp.setNetworkId(netw);
-                temp.setAmount(amount);
-                temp.setDrugId(drugid);
-                temp.setPharmacyId(pharmid);
-                temp.setPriceOfSingle(price);
-
+                temp = fetchNetwFromRs(rs);
                 list.add(temp);
             }
-        } catch (SQLException se) {
+        }catch (SQLException se) {
             se.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -43,13 +51,54 @@ public class StockDAO extends DAOInterface{
         return list;
     }
 
-    public List<StockElement> getAll() {
-        String sql = "SELECT * FROM stockcontent";
-        return executeSQLQ(sql);
+    public StockElement getById(int id) {
+        ResultSet rs = getRSForSelAll(tableName);
+        StockElement temp;
+        try {
+            while (rs.next()) {
+                if (rs.getInt("id") == id) {
+                    temp = fetchNetwFromRs(rs);
+                    return temp;
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return null;
     }
 
-    public List<StockElement> getAllForPharmacy(int id) {
-        String sql = "SELECT * FROM pharmacies WHERE pharmacyid="+id;
-        return executeSQLQ(sql);
+    public List<StockElement> getByPhId(int id) {
+        ResultSet rs = getRSForSelAll(tableName);
+        StockElement temp;
+        List<StockElement> list = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                if (rs.getInt("pharmacyid") == id) {
+                    temp = fetchNetwFromRs(rs);
+                    list.add(temp);
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return list;
+    }
+    public int deleteById(int id) {
+        return removeById(id, tableName);
+    }
+
+    public void insert(StockElement obj) {
+        try {
+            ResultSet rs = getRSForSelAll(tableName);
+            rs.moveToInsertRow();
+            rs.updateInt("drugid", obj.getDrugId());
+            rs.updateInt("amount", obj.getAmount());
+            rs.updateInt("pharmacyid", obj.getPharmacyId());
+            rs.updateInt("priceofsingle", obj.getPriceOfSingle());
+            rs.updateInt("networkid", obj.getNetworkId());
+            rs.insertRow();
+        }catch (SQLException se) {
+            se.printStackTrace();
+        }
     }
 }

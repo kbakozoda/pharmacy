@@ -32,10 +32,10 @@ Your network id = <s:property value="networkId"/>
                     </s:url>
                         <s:a href="%{histURL}">Operation history</s:a></td>
 
-                    <td><s:url id="contentURL" action="">
+                    <td><s:url id="contentURL" action="stock">
                         <s:param name="id" value="%{id}"></s:param>
                     </s:url>
-                        <s:a href="%{histURL}">View Stock Content</s:a></td>
+                        <s:a href="%{contentURL}">View Stock Content</s:a></td>
 
                     <td><s:url id="editURL" action="">
                         <s:param name="id" value="%{id}"></s:param>

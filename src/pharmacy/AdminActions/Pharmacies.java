@@ -7,9 +7,11 @@ import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.ServletActionContext;
 import pharmacy.Models.HistoryElement;
 import pharmacy.Models.Pharmacy;
+import pharmacy.Models.StockElement;
 import pharmacy.Models.User;
 import pharmacy.Services.HistoryService;
 import pharmacy.Services.PharmacyService;
+import pharmacy.Services.StockService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -23,6 +25,7 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
     private Pharmacy pharmacy;
     private List<Pharmacy> list;
     List<HistoryElement> hslist;
+    List<StockElement> stlist;
     private PharmacyService service = new PharmacyService();
     public String execute() {
         username = getUsername();
@@ -38,6 +41,15 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
         return Action.SUCCESS;
     }
 
+    public String doCreate() {
+        pharmacy.setNetworkId(getNetworkId());
+        pharmacy.setPharmacistId(-1);
+
+        PharmacyService serv = new PharmacyService();
+        serv.insert(pharmacy);
+        return Action.SUCCESS;
+    }
+
     public String history() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         int phId = Integer.parseInt(request.getParameter("id"));
@@ -45,15 +57,6 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
         HistoryService hservice = new HistoryService();
         hslist = hservice.getAllByPh(phId);
 
-        return Action.SUCCESS;
-    }
-
-    public String doCreate() {
-        pharmacy.setNetworkId(getNetworkId());
-        pharmacy.setPharmacistId(-1);
-
-        PharmacyService serv = new PharmacyService();
-        serv.insert(pharmacy);
         return Action.SUCCESS;
     }
 
@@ -66,6 +69,17 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
         if (res == 1) return Action.SUCCESS;
 
         else return Action.ERROR;
+    }
+
+    public String stock() {
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        StockService sservice = new StockService();
+
+        stlist = sservice.getByPhId(id);
+
+        return Action.SUCCESS;
     }
 
     public Pharmacy getModel() {
@@ -116,5 +130,13 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
 
     public void setHslist(List<HistoryElement> hslist) {
         this.hslist = hslist;
+    }
+
+    public List<StockElement> getStlist() {
+        return stlist;
+    }
+
+    public void setStlist(List<StockElement> stlist) {
+        this.stlist = stlist;
     }
 }
