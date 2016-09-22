@@ -29,6 +29,14 @@ public class PharmacyService {
         return dao.deleteById(id);
     }
 
+    public Pharmacy getById(int id) {
+        return dao.getById(id);
+    }
+
+    public int update(Pharmacy obj) {
+        return dao.update(obj);
+    }
+
     public void insert(Pharmacy obj) {
         dao.insert(obj);
     }

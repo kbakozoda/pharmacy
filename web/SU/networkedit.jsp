@@ -1,7 +1,7 @@
 <%@taglib uri="/struts-tags" prefix="s" %>
 <html>
 <head>
-    <title>Create new drug type</title>
+    <title>Edit network</title>
 </head>
 <body>
 <s:hidden name="network.id" value="network.id"></s:hidden>

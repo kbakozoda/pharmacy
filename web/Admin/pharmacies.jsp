@@ -37,7 +37,7 @@ Your network id = <s:property value="networkId"/>
                     </s:url>
                         <s:a href="%{contentURL}">View Stock Content</s:a></td>
 
-                    <td><s:url id="editURL" action="">
+                    <td><s:url id="editURL" action="edit">
                         <s:param name="id" value="%{id}"></s:param>
                     </s:url>
                         <s:a href="%{editURL}">Edit</s:a></td>

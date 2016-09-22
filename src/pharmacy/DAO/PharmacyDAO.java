@@ -65,7 +65,7 @@ public class PharmacyDAO extends DAOInterface {
         return list;
     }
 
-    public Pharmacy getAllById(int id) {
+    public Pharmacy getById(int id) {
         ResultSet rs = getRSForSelAll(tableName);
         Pharmacy temp;
         try {

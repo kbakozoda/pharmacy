@@ -40,6 +40,16 @@
             <result name="success" type="redirect">pharmacies.action</result>
             <!--<result name="error" type="redirect">/superuser/error.action</result>-->
         </action>
+        <action name="edit" class="pharmacy.AdminActions.Pharmacies" method="edit">
+            <interceptor-ref name="AdminAuthStack"></interceptor-ref>
+            <result name="success">../Admin/editph.jsp</result>
+            <result name="error" type="redirect">pharmacies.action</result>
+        </action>
+        <action name="doedit" method="update" class="pharmacy.AdminActions.Pharmacies">
+            <interceptor-ref name="AdminAuthStack"/>
+            <result name="success" type="chain">pharmacies</result>
+            <result name="input">../Admin/editph.jsp</result>
+        </action>
 
         <action name="history" class="pharmacy.AdminActions.Pharmacies" method="history">
             <interceptor-ref name="AdminAuthStack"/>

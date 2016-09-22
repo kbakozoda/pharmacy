@@ -82,6 +82,21 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
         return Action.SUCCESS;
     }
 
+    public String edit() {
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        if (id == 0) return Action.ERROR;
+
+        pharmacy = service.getById(id);
+        return Action.SUCCESS;
+    }
+
+    public String update() {
+        service.update(pharmacy);
+        return Action.SUCCESS;
+    }
+
     public Pharmacy getModel() {
         return pharmacy;
     }
