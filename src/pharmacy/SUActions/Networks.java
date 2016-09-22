@@ -52,6 +52,13 @@ public class Networks extends ActionSupport implements ModelDriven<Network> {
         return Action.SUCCESS;
     }
 
+    public String update() {
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        System.out.println("trying to update " + network.getName() + " " + network.getAdminId());
+        service.update(network);
+        return Action.SUCCESS;
+    }
+
     public Network getNetwork() {
         return network;
     }

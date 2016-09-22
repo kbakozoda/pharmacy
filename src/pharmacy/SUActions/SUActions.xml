@@ -54,6 +54,12 @@
         <action name="delnetwork" class="pharmacy.SUActions.Networks" method="delete">
             <result name="success" type="redirect">networks.action</result>
         </action>
+        <action name="editnetwork" class="pharmacy.SUActions.Networks" method="edit">
+            <result name="success">../SU/networkedit.jsp</result>
+        </action>
+        <action name="updateNet" class="pharmacy.SUActions.Networks" method="update">
+            <result name="success" type="redirect">networks.action</result>
+        </action>
 
         <action name="drugs" class="pharmacy.SUActions.Drugs">
             <interceptor-ref name="SUAuthStack"/>
