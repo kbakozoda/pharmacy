@@ -40,6 +40,10 @@
             <result name="success" type="redirect">pharmacies.action</result>
             <!--<result name="error" type="redirect">/superuser/error.action</result>-->
         </action>
+        <action name="history" class="pharmacy.AdminActions.Pharmacies" method="history">
+            <interceptor-ref name="AdminAuthStack"/>
+            <result name="success">../Admin/history.jsp</result>
+        </action>
     </package>
 
 </struts>

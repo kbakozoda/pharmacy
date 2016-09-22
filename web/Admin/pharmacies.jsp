@@ -27,7 +27,7 @@ Your network id = <s:property value="networkId"/>
                     </s:url>
                         <s:a href="%{deleteURL}" onclick="return confirm('Are you sure?')">Delete</s:a></td>
 
-                    <td><s:url id="histURL" action="">
+                    <td><s:url id="histURL" action="history">
                         <s:param name="id" value="%{id}"></s:param>
                     </s:url>
                         <s:a href="%{histURL}">Operation history</s:a></td>

@@ -29,6 +29,7 @@ public class HistoryDAO extends DAOInterface{
                 int expense = rs.getInt("totalexpense");
                 Date date = rs.getDate("purchasedate");
                 temp = new HistoryElement();
+                System.out.println("elem: " + pharmid + " " + expense);
                 temp.setId(id);
                 temp.setNetworkId(netwid);
                 temp.setDate(date);
@@ -46,7 +47,7 @@ public class HistoryDAO extends DAOInterface{
     }
 
     public List<HistoryElement> getAllFor(int id) {
-        String sql = "SELECT * FROM operationhistory WHERE networkid=" + id;
+        String sql = "SELECT * FROM operationhistory WHERE pharmacyid=" + id;
         return executeSQLQ(sql);
     }
     public List<HistoryElement> getAll() {

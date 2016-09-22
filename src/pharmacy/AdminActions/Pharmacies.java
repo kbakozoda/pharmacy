@@ -5,8 +5,10 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.ServletActionContext;
+import pharmacy.Models.HistoryElement;
 import pharmacy.Models.Pharmacy;
 import pharmacy.Models.User;
+import pharmacy.Services.HistoryService;
 import pharmacy.Services.PharmacyService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,7 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
 
     private Pharmacy pharmacy;
     private List<Pharmacy> list;
+    List<HistoryElement> hslist;
     private PharmacyService service = new PharmacyService();
     public String execute() {
         username = getUsername();
@@ -32,6 +35,16 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
 
     public String create() {
         pharmacy = new Pharmacy();
+        return Action.SUCCESS;
+    }
+
+    public String history() {
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        int phId = Integer.parseInt(request.getParameter("id"));
+
+        HistoryService hservice = new HistoryService();
+        hslist = hservice.getAllByPh(phId);
+
         return Action.SUCCESS;
     }
 
@@ -53,7 +66,6 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
         if (res == 1) return Action.SUCCESS;
 
         else return Action.ERROR;
-
     }
 
     public Pharmacy getModel() {
@@ -96,5 +108,13 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
 
     public void setList(List list) {
         this.list = list;
+    }
+
+    public List<HistoryElement> getHslist() {
+        return hslist;
+    }
+
+    public void setHslist(List<HistoryElement> hslist) {
+        this.hslist = hslist;
     }
 }
