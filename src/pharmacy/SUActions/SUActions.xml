@@ -37,11 +37,24 @@
             <result name="LOGIN" type="redirect">../login.action</result>
             <result name="SUCCESS">../SU/requests.jsp</result>
         </action>
+
         <action name="networks" class="pharmacy.SUActions.Networks">
             <interceptor-ref name="SUAuthStack"/>
             <result name="LOGIN" type="redirect">../login.action</result>
             <result name="SUCCESS">../SU/networks.jsp</result>
         </action>
+
+        <action name="createnet" class="pharmacy.SUActions.Networks" method="create">
+            <result name="success">../SU/networknew.jsp</result>
+        </action>
+
+        <action name="docreatenet" class="pharmacy.SUActions.Networks" method="doCreate">
+            <result name="success" type="redirect">networks.action</result>
+        </action>
+        <action name="delnetwork" class="pharmacy.SUActions.Networks" method="delete">
+            <result name="success" type="redirect">networks.action</result>
+        </action>
+
         <action name="drugs" class="pharmacy.SUActions.Drugs">
             <interceptor-ref name="SUAuthStack"/>
             <result name="LOGIN" type="redirect">../login.action</result>
@@ -112,6 +125,16 @@
             <result name="error" type="redirect">error.action</result>
             <result name="input">../SU/drugcreate.jsp</result>
         </action>
+
+        <action name="drugedit" class="pharmacy.SUActions.Drugs" method="edit">
+            <result name="success">../SU/drugedit.jsp</result>
+        </action>
+
+        <action name="drugupdate" class="pharmacy.SUActions.Drugs" method="update">
+            <result name="success" type="redirect">drugs.action</result>
+            <result name="input">../SU/drugedit.jsp</result>
+        </action>
+
     </package>
 
 </struts>

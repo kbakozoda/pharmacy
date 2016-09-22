@@ -27,7 +27,10 @@
                     <s:param name="id" value="%{id}"></s:param>
                 </s:url>
                     <s:a href="%{deleteURL}" onclick="return confirm('Are you sure?')">Delete</s:a></td>
-                    <td><a href="#">Edit</a></td>
+                    <td><s:url id="editURL" action="drugedit">
+                        <s:param name="id" value="%{id}"></s:param>
+                    </s:url>
+                        <s:a href="%{editURL}">Edit</s:a></td>
                 </tr>
             </s:iterator>
         </table>

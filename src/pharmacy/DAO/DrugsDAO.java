@@ -66,8 +66,10 @@ public class DrugsDAO extends DAOInterface {
         try {
             ResultSet rs = getRSForSelAll(tableName);
             Drug temp;
+            System.out.println("trying to update id " + obj.getId());
             while (rs.next()) {
                 if (rs.getInt("id") == obj.getId()) {
+                    System.out.println("found");
                     rs.updateString("name", obj.getName());
                     rs.updateInt("agerestriction", obj.getAgeRestrict());
                     rs.updateString("instruction", obj.getInstruction());

@@ -19,7 +19,6 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>AdminId</th>
-                <th>isActive?</th>
             </tr>
 
             <s:iterator value="list">
@@ -27,14 +26,18 @@
                     <td><s:property value="id"/></td>
                     <td><s:property value="name"/></td>
                     <td><s:property value="adminId"/></td>
-                    <td><s:property value="active"/></td>
-                    <td><a href="#">Delete</a></td>
-                    <td><a href="#">Edit</a></td>
-                    <td><a href="#">Info</a></td>
+                    <td><s:url id="deleteURL" action="delnetwork">
+                        <s:param name="id" value="%{id}"></s:param>
+                    </s:url>
+                        <s:a href="%{deleteURL}" onclick="return confirm('Are you sure?')">Delete</s:a></td>
+                    <td><s:url id="editURL" action="editnetwork">
+                        <s:param name="id" value="%{id}"></s:param>
+                    </s:url>
+                        <s:a href="%{editURL}">Edit</s:a></td>
                 </tr>
             </s:iterator>
         </table>
-        <a href="#">Create New</a>
+        <a href="/superuser/createnet.action">Create New</a>
     </div>
 </s:if>
 </body>

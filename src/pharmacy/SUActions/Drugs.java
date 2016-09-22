@@ -6,6 +6,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import pharmacy.Models.Drug;
+import pharmacy.Models.DrugType;
 import pharmacy.Services.DrugTypeService;
 import pharmacy.Services.DrugsService;
 import pharmacy.Services.PatternService;
@@ -30,6 +31,8 @@ public class Drugs extends ActionSupport {
     private String selType;
     private List<String> drTypeNameList;
     private String errorText;
+    private String newName;
+    private int lastid;
 
     @SkipValidation
     public String execute() {
@@ -57,10 +60,24 @@ public class Drugs extends ActionSupport {
     @SkipValidation
     public String edit() {
         drTypeNameList = new DrugTypeService().getNames();
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        id = Integer.parseInt(request.getParameter("id"));
+        lastid = id;
+        DrugsService service = new DrugsService();
+        DrugTypeService tservice = new DrugTypeService();
+
+        name = service.getById(id).getName();
+        instruction = service.getById(id).getInstruction();
+        agerestriction = service.getById(id).getAgeRestrict();
+
+        DrugType temp = tservice.getById(id);
+        if (temp == null) return Action.ERROR;
+        selType = temp.getName();
+
         return Action.SUCCESS;
     }
 
-    public String addDrug() {
+    public String update() {
         DrugTypeService tservice = new DrugTypeService();
         DrugsService service = new DrugsService();
         Drug temp = new Drug();
@@ -69,8 +86,30 @@ public class Drugs extends ActionSupport {
         if (typeid == -1) {
             errorText = "Error choosing drug type! This must never happen, but..";
             return Action.ERROR;
+        }
+        System.out.println("last " + lastid);
+        temp.setId(lastid);
+        temp.setName(name);
+        temp.setTypeId(typeid);
+        temp.setInstruction(instruction);
+        temp.setAgeRestrict(agerestriction);
+
+        System.out.println("updating to "+ temp.getId() + " " + temp.getName() + " " + temp.getInstruction());
+        service.update(temp);
+        return Action.SUCCESS;
+    }
+
+    public String addDrug() {
+        DrugTypeService tservice = new DrugTypeService();
+        DrugsService service = new DrugsService();
+        Drug temp = new Drug();
+        typeid = tservice.getIdByName(selType);
+        if (typeid == -1) {
+            errorText = "Error choosing drug type! This must never happen, but..";
+            return Action.ERROR;
             // TODO: display this text in error.jsp file.
         }
+
         temp.setName(name);
         temp.setTypeId(typeid);
         temp.setInstruction(instruction);
@@ -81,7 +120,6 @@ public class Drugs extends ActionSupport {
     }
 
     public void validate() {
-        System.out.println("validating.." + name + " " + selType);
 
         if (selType.equals("nll"))
         {
@@ -122,6 +160,14 @@ public class Drugs extends ActionSupport {
         this.id = id;
     }
 
+    public int getLastid() {
+        return lastid;
+    }
+
+    public void setLastid(int lastid) {
+        this.lastid = lastid;
+    }
+
     public int getTypeid() {
         return typeid;
     }
@@ -146,6 +192,18 @@ public class Drugs extends ActionSupport {
         this.agerestriction = agerestriction;
     }
 
+    public void setDrTypeNameList(List<String> drTypeNameList) {
+        this.drTypeNameList = drTypeNameList;
+    }
+
+    public String getNewName() {
+        return newName;
+    }
+
+    public void setNewName(String newName) {
+        this.newName = newName;
+    }
+
     public String getInstruction() {
         return instruction;
     }
@@ -156,10 +214,6 @@ public class Drugs extends ActionSupport {
 
     public List getDrTypeNameList() {
         return drTypeNameList;
-    }
-
-    public void setDrTypeNameList(List drTypeList) {
-        this.drTypeNameList = drTypeList;
     }
 
     public String getSelType() {
