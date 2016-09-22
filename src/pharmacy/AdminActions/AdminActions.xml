@@ -35,26 +35,11 @@
             <result name="success" type="redirect">pharmacies.action</result>
             <!--<result name="error">/superuser/error.action</result>-->
         </action>
+        <action name="phdelete" class="pharmacy.AdminActions.Pharmacies" method="delete">
+            <interceptor-ref name="AdminAuthStack"/>
+            <result name="success" type="redirect">pharmacies.action</result>
+            <!--<result name="error" type="redirect">/superuser/error.action</result>-->
+        </action>
     </package>
 
-
-
-    <!--
-    <package name="Admin" namespace="/admin" extends="struts-default">
-    <interceptors>
-        <interceptor name="authorisation" class="pharmacy.Interceptors.AdminAuthInterceptor"/>
-        <interceptor-stack name="AdminAuthStack">
-            <interceptor-ref name="authorisation"></interceptor-ref>
-            <interceptor-ref name="defaultStack"></interceptor-ref>
-        </interceptor-stack>
-    </interceptors>
-
-    <default-interceptor-ref name="AdminAuthStack"></default-interceptor-ref>
-
-    <action name="welcome" class="pharmacy.SUActions.Welcome">
-        <interceptor-ref name="SUAuthStack"/>
-        <result name="LOGIN" type="redirect">../login.action</result>
-        <result name="SUCCESS">../SU/index.jsp</result>
-    </action>
-    -->
 </struts>

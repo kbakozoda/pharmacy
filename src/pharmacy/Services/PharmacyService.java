@@ -25,6 +25,10 @@ public class PharmacyService {
         return list;
     }
 
+    public int deleteById(int id) {
+        return dao.deleteById(id);
+    }
+
     public void insert(Pharmacy obj) {
         dao.insert(obj);
     }

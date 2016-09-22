@@ -4,10 +4,12 @@ import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import org.apache.struts2.ServletActionContext;
 import pharmacy.Models.Pharmacy;
 import pharmacy.Models.User;
 import pharmacy.Services.PharmacyService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -40,6 +42,18 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
         PharmacyService serv = new PharmacyService();
         serv.insert(pharmacy);
         return Action.SUCCESS;
+    }
+
+    public String delete() {
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        int id = Integer.parseInt(request.getParameter("id"));
+        PharmacyService service = new PharmacyService();
+        int res = service.deleteById(id);
+
+        if (res == 1) return Action.SUCCESS;
+
+        else return Action.ERROR;
+
     }
 
     public Pharmacy getModel() {

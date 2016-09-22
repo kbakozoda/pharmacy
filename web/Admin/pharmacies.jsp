@@ -20,9 +20,9 @@ Your network id = <s:property value="networkId"/>
             <s:iterator value="list">
                 <tr>
                     <td><s:property value="number"/></td>
-                    <td><s:property value="pharcistId"/></td>
+                    <td><s:property value="pharmacistId"/></td>
                     <td><s:property value="address"/></td>
-                    <td><s:url id="deleteURL" action="">
+                    <td><s:url id="deleteURL" action="phdelete">
                         <s:param name="id" value="%{id}"></s:param>
                     </s:url>
                         <s:a href="%{deleteURL}" onclick="return confirm('Are you sure?')">Delete</s:a></td>
@@ -40,7 +40,7 @@ Your network id = <s:property value="networkId"/>
                     <td><s:url id="editURL" action="">
                         <s:param name="id" value="%{id}"></s:param>
                     </s:url>
-                        <s:a href="%{editURL}">Edit address</s:a></td>
+                        <s:a href="%{editURL}">Edit</s:a></td>
                 </tr>
             </s:iterator>
         </table>
