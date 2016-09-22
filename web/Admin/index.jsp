@@ -6,8 +6,8 @@
 </head>
 <body>
     <h1>Welcome <s:property value="username"></s:property></h1>
-    <a href="index.jsp">logout</a>
+    <a href="logout.action">logout</a>
     <a href="pharmacies.action">View pharmacies in my network</a>
-    <a href="#">View requests</a>
+    <a href="requests.action">View requests</a>
 </body>
 </html>

@@ -44,7 +44,8 @@ Your network id = <s:property value="networkId"/>
                 </tr>
             </s:iterator>
         </table>
-        <a href="/admin/createph.action">Create New</a>
+        <a href="/admin/createph.action">Create New</a><br>
+        <a href="/admin/welcome">Menu</a>
     </div>
 </s:if>
 </body>

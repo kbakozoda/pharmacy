@@ -13,7 +13,7 @@
     <s:textfield name="surname" label="Enter your last name"></s:textfield>
     <s:select list="phNmbList" name="selPh"
               headerValue="Select network" headerKey="-1" />
-    <s:submit value="Sign me Up!"></s:submit>
+    <s:submit value="Sign me Up!" onclick="alert('Now you will have to wait until admin approves your request');"></s:submit>
 </s:form>
 </body>
 </html>

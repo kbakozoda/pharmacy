@@ -1,33 +1,34 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <html>
 <head>
-    <title>Requests to God</title>
+    <title>Requests</title>
 </head>
 <body>
-<h1>Requests to your Majesty, Admin of all admins</h1> <br>
+<h1>Requests for registration</h1> <br>
 
-<s:if test="reqList.size() > 0">
+<s:if test="list.size() > 0">
     <div>
         <table cellpadding="5px" border="1">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Surname</th>
-                <th>Network id</th>
+                <th>Pharmacy id</th>
                 <th>Username</th>
             </tr>
 
-            <s:iterator value="reqList">
+            <s:iterator value="list">
                 <tr>
                     <td><s:property value="id"/></td>
                     <td><s:property value="name"/></td>
                     <td><s:property value="surname"/></td>
-                    <td><s:property value="networkId"/></td>
+                    <td><s:property value="pharmacyId"/></td>
                     <td><s:property value="username"/></td>
                     <td> <s:url id="approveURL" action="approve">
                         <s:param name="id" value="%{id}"></s:param>
                     </s:url>
-                    <s:a href="%{approveURL}">Approve</s:a>
+                        <s:a href="%{approveURL}">Approve</s:a>
                     </td>
                     <td>
                         <s:url id="declineURL" action="decline">
@@ -42,3 +43,4 @@
 </s:if>
 </body>
 </html>
+

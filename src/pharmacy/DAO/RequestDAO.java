@@ -17,48 +17,93 @@ public class RequestDAO extends DAOInterface {
         createConnection();
     }
 
-    public List<Request> executeSQLQ(String query){
-        List<Request> list = new ArrayList<Request>();
+    Request fetchRTGFromRs(ResultSet rs) {
+        Request temp;
+        temp = new Request();
+        try {
+            temp.setId(rs.getInt("id"));
+            temp.setPassword(rs.getString("password"));
+            temp.setUsername(rs.getString("username"));
+            temp.setName(rs.getString("name"));
+            temp.setSurname(rs.getString("surname"));
+            temp.setNetworkId(rs.getInt("networkid"));
+            temp.setPharmacyId(rs.getInt("pharmacyid"));
+        }catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return temp;
+    }
+    @Override
+    public List getAll() {
+        List list = new ArrayList<Request>();
         Request temp;
         try {
-            ResultSet rs = stmt.executeQuery(query);
+            ResultSet rs = getRSForSelAll(tableName);
             while (rs.next()) {
-                int id = rs.getInt("id");
-                int netwid = rs.getInt("networkid");
-                String username = rs.getString("username");
-                String password = rs.getString("password");
-                String name = rs.getString("name");
-                String surname = rs.getString("surname");
-                int pharmacyid = rs.getInt("pharmacyid");
-
-                temp = new Request();
-
-                temp.setId(id);
-                temp.setNetworkId(netwid);
-                temp.setPharmacyId(pharmacyid);
-                temp.setSurname(surname);
-                temp.setName(name);
-                temp.setPassword(password);
-                temp.setUsername(username);
-
+                temp = fetchRTGFromRs(rs);
                 list.add(temp);
             }
-        } catch (SQLException se) {
+        }catch (SQLException se) {
             se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
         return list;
     }
 
-    public List<Request> getAll() {
-        String sql = "SELECT * FROM requeststoadmin";
-        return executeSQLQ(sql);
+    public Request getById(int id) {
+        ResultSet rs = getRSForSelAll(tableName);
+        Request temp;
+        try {
+            while (rs.next()) {
+                if (rs.getInt("id") == id) {
+                    temp = fetchRTGFromRs(rs);
+                    return temp;
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+
+        return null;
     }
 
-    public List<Request> getAllFor(int id){
-        String sql = "SELECT * FROM requeststoadmin WHERE networkid="+id;
-        return executeSQLQ(sql);
+    public List getByPhId(int id) {
+        ResultSet rs = getRSForSelAll(tableName);
+        Request temp;
+        List<Request> list = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                if (rs.getInt("pharmacyid") == id) {
+                    temp = fetchRTGFromRs(rs);
+                    list.add(temp);
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public List getByNwId(int id) {
+        ResultSet rs = getRSForSelAll(tableName);
+        Request temp;
+        List<Request> list = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                if (rs.getInt("networkid") == id) {
+                    temp = fetchRTGFromRs(rs);
+                    list.add(temp);
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public int deleteById(int id) {
+        return removeById(id, tableName);
     }
 
     public void insert(Request obj) {
@@ -69,8 +114,8 @@ public class RequestDAO extends DAOInterface {
             rs.updateString("surname", obj.getSurname());
             rs.updateString("username", obj.getUsername());
             rs.updateString("password", obj.getPassword());
-            rs.updateInt("pharmacyid", obj.getPharmacyId());
             rs.updateInt("networkid", obj.getNetworkId());
+            rs.updateInt("pharmacyid", obj.getPharmacyId());
             rs.insertRow();
         }catch (SQLException se) {
             se.printStackTrace();
