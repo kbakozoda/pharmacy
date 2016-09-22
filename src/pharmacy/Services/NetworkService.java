@@ -23,6 +23,14 @@ public class NetworkService {
         return res;
     }
 
+    public Network getByAdminId(int id) {
+        Network res;
+        res = dao.getByAdminId(id);
+        System.out.println("found network that satisfies " + res.getId());
+        return res;
+    }
+
+
     public int deleteById(int id) {
         return dao.deleteById(id);
     }

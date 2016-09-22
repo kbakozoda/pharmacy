@@ -62,7 +62,6 @@ public class Drugs extends ActionSupport {
         drTypeNameList = new DrugTypeService().getNames();
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         id = Integer.parseInt(request.getParameter("id"));
-        lastid = id;
         DrugsService service = new DrugsService();
         DrugTypeService tservice = new DrugTypeService();
 
@@ -87,8 +86,8 @@ public class Drugs extends ActionSupport {
             errorText = "Error choosing drug type! This must never happen, but..";
             return Action.ERROR;
         }
-        System.out.println("last " + lastid);
-        temp.setId(lastid);
+        System.out.println("last " + id);
+        temp.setId(id);
         temp.setName(name);
         temp.setTypeId(typeid);
         temp.setInstruction(instruction);

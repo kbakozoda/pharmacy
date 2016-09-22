@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="Admin" namespace="/admin" extends="struts-default">
+        <interceptors>
+            <interceptor name="authorisation" class="pharmacy.Interceptors.AdminAuthInterceptor"/>
+            <interceptor-stack name="AdminAuthStack">
+                <interceptor-ref name="authorisation"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="AdminAuthStack"></default-interceptor-ref>
+
+        <action name="welcome" class="pharmacy.AdminActions.Welcome">
+            <interceptor-ref name="AdminAuthStack"/>
+            <result name="LOGIN" type="redirect">../login.action</result>
+            <result name="success">../Admin/index.jsp</result>
+        </action>
+
+        <action name="pharmacies" class="pharmacy.AdminActions.Pharmacies">
+            <interceptor-ref name="AdminAuthStack"/>
+            <result name="success">../Admin/pharmacies.jsp</result>
+        </action>
+        <action name="createph" class="pharmacy.AdminActions.Pharmacies" method="create">
+            <interceptor-ref name="AdminAuthStack"/>
+            <result name="success">../Admin/pharmnew.jsp</result>
+        </action>
+        <action name="docreateph" class="pharmacy.AdminActions.Pharmacies" method="doCreate">
+            <interceptor-ref name="AdminAuthStack"/>
+            <result name="success" type="redirect">pharmacies.action</result>
+            <!--<result name="error">/superuser/error.action</result>-->
+        </action>
+    </package>
+
+
+
+    <!--
+    <package name="Admin" namespace="/admin" extends="struts-default">
+    <interceptors>
+        <interceptor name="authorisation" class="pharmacy.Interceptors.AdminAuthInterceptor"/>
+        <interceptor-stack name="AdminAuthStack">
+            <interceptor-ref name="authorisation"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </interceptor-stack>
+    </interceptors>
+
+    <default-interceptor-ref name="AdminAuthStack"></default-interceptor-ref>
+
+    <action name="welcome" class="pharmacy.SUActions.Welcome">
+        <interceptor-ref name="SUAuthStack"/>
+        <result name="LOGIN" type="redirect">../login.action</result>
+        <result name="SUCCESS">../SU/index.jsp</result>
+    </action>
+    -->
+</struts>

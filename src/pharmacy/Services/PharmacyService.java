@@ -1,6 +1,7 @@
 package pharmacy.Services;
 
 import pharmacy.DAO.PharmacyDAO;
+import pharmacy.Models.Pharmacy;
 
 import java.util.List;
 
@@ -17,5 +18,14 @@ public class PharmacyService {
     public List getAll() {
        List list = dao.getAll();
         return list;
+    }
+
+    public List getAllForNetwork(int id) {
+        List list = dao.getAllForNetwork(id);
+        return list;
+    }
+
+    public void insert(Pharmacy obj) {
+        dao.insert(obj);
     }
 }

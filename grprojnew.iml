@@ -22,6 +22,7 @@
             <file>file://$MODULE_DIR$/src/struts.xml</file>
             <file>jar://$MODULE_DIR$/lib/struts2-core.jar!/struts-default.xml</file>
             <file>file://$MODULE_DIR$/src/pharmacy/SUActions/SUActions.xml</file>
+            <file>file://$MODULE_DIR$/src/pharmacy/AdminActions/AdminActions.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>

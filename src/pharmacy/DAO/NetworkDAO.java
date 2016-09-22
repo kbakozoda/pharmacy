@@ -59,6 +59,22 @@ public class NetworkDAO extends DAOInterface {
         return null;
     }
 
+    public Network getByAdminId(int id) {
+        ResultSet rs = getRSForSelAll(tableName);
+        Network temp;
+        try {
+            while (rs.next()) {
+                if (rs.getInt("adminid") == id) {
+                    temp = fetchNetwFromRs(rs);
+                    return temp;
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return null;
+    }
+
     public int deleteById(int id) {
         return removeById(id, tableName);
     }

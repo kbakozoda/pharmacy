@@ -6,6 +6,7 @@
 
 <struts>
     <include file="pharmacy/SUActions/SUActions.xml"></include>
+    <include file="pharmacy/AdminActions/AdminActions.xml"></include>
     <package name="pharmacy" extends="struts-default">
         <action name="devs" class="pharmacy.Actions.Developers">
             <result name="SUCCESS">lab2/developers.jsp</result>
@@ -21,7 +22,7 @@
         </action>
         <action name="tryAuthorise" class="pharmacy.Actions.TryAuthorise">
             <result name="SUCCESS-SU" type="redirect">/superuser/welcome.action</result>
-            <result name="SUCCESS-ADMIN" type="redirect">devs.action</result>
+            <result name="SUCCESS-ADMIN" type="redirect">/admin/welcome.action</result>
             <result name="SUCCESS" type="redirect">HelloWorld.action</result>
             <result name="ERROR">authentication/login.jsp</result>
         </action>

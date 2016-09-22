@@ -38,8 +38,8 @@ public class HelloWorld {
  *      V Complete registration actions.
  *      TODO: 2. Complete all DAO and Services for Admins
  *      TODO: 3. Complete all DAO and Services for Pharmacists
- *     --> Complete all actions of SU with CRUD
- *      TODO: 5. Complete all actions of Admin with CRUD
+ *      TODO: 4. Complete Edit actions for Drugs & DrugTypes
+ *      --> Complete all actions of Admin with CRUD
  *      TODO: 6. Complete all actions of Pharmacist with CRUD
  *      TODO: 7. In all pages: add links to previous ones.
  *         ---------- 3rd lab up until here -------------

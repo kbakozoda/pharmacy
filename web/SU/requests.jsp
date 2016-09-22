@@ -11,7 +11,7 @@
     <title>Requests to God</title>
 </head>
 <body>
-<h1>Requests to your Majesty</h1> <br>
+<h1>Requests to your Majesty, Admin of all admins</h1> <br>
 
 <s:if test="reqList.size() > 0">
     <div>
