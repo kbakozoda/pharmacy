@@ -40,8 +40,8 @@ public class HelloWorld {
  *      V Complete all DAO and Services for Pharmacists
  *      V Change CRUD, Actions into ModelDriven for Drugs & DrugTypes
  *              Est.: [1h. with check] Done in:[a lot..]
- *              + add action error messages in every view.[15 mins.]
- *              + when creating new: check if there are no duplicates
+ *              v add action error messages in every view.[15 mins.]
+ *              v when creating new: check if there are no duplicates
  *      TODO: User info RU
  *              Est.: [40 mins. with check] Done in[]
  *      TODO: Complete all actions of Admin with CRUD
@@ -56,12 +56,13 @@ public class HelloWorld {
  *              Est.: [20 min.] Done in[]
  *      TODO: Interceptors: check if user still exists
  *              Est.: [10 min.] Done in[]
- *      TODO: Validate all forms
+ *      TODO: Validate all forms +logic validation
  *              Est.: [1.5 h.] Done in[]
  *      TODO: Generate special error messages for these situations & alert them or print on page
  *            Before any action with entity(CRUD or other) check if it still exists.
  *            Update : update only if element still exists;
  *              Est.: [] Done in[]
+ *      TODO: Do a security check for every role, every entity
  *         ---------- 3rd lab up until here -------------
  *      TODO: 1. Apply design
  *      TODO: 2. Write junit tests

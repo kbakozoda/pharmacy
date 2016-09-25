@@ -50,7 +50,37 @@
             <result name="input">authentication/pharm.jsp</result>
         </action>
 
+    </package>
 
+    <package name="user" namespace="/user" extends="struts-default">
+        <action name="info" class="pharmacy.Actions.UserInfo">
+            <result name="success">../userinfo/index.jsp</result>
+        </action>
+
+        <action name="credentials" class="pharmacy.Actions.UserInfo" method="credentials">
+            <result name="success">../userinfo/cred.jsp</result>
+        </action>
+
+        <action name="updateCredentials" class="pharmacy.Actions.UserInfo" method="crUpdate">
+            <result name="success" type="redirect">info.action</result>
+            <result name="input">../userinfo/cred.jsp</result>
+        </action>
+
+        <action name="pass" class="pharmacy.Actions.UserInfo" method="pass">
+            <result name="success">../userinfo/pass.jsp</result>
+        </action>
+
+        <action name="updatePass" class="pharmacy.Actions.UserInfo" method="updPass">
+            <result name="success" type="redirect">info.action</result>
+            <result name="input">../userinfo/pass.jsp</result>
+        </action>
+
+        <action name="redirect" class="pharmacy.Actions.UserInfo" method="redirect">
+            <result name="SU" type="redirect">/superuser/welcome.action</result>
+            <result name="PH" type="redirect">/pharm/index.action</result>
+            <result name="ADMIN" type="redirect">/admin/welcome.action</result>
+            <result name="error" type="redirect">/</result>
+        </action>
     </package>
 
 </struts>
