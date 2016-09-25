@@ -38,8 +38,8 @@ public class HelloWorld {
  *      V Complete registration actions.
  *      V Complete all DAO and Services for Admins
  *      V Complete all DAO and Services for Pharmacists
- *      TODO: Change CRUD, Actions into ModelDriven for Drugs & DrugTypes
- *              Est.: [1h. with check] Done in:[]
+ *      V Change CRUD, Actions into ModelDriven for Drugs & DrugTypes
+ *              Est.: [1h. with check] Done in:[a lot..]
  *              + add action error messages in every view.[15 mins.]
  *              + when creating new: check if there are no duplicates
  *      TODO: User info RU

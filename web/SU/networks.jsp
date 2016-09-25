@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 11.09.2016
-  Time: 19:26
-  To change this template use File | Settings | File Templates.
---%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <html>
 <head>
@@ -40,5 +33,9 @@
         <a href="/superuser/createnet.action">Create New</a>
     </div>
 </s:if>
+<s:if test="list.size() = 0">
+    <h1>The list is empty yet.</h1>
+</s:if>
+<s:actionerror/>
 </body>
 </html>

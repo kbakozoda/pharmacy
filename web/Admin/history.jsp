@@ -29,5 +29,9 @@
         <a href="/admin/pharmacies.action">Back</a>
     </div>
 </s:if>
+<s:if test="hslist.size() = 0">
+    <h1>The list is empty yet.</h1>
+</s:if>
+<s:actionerror/>
 </body>
 </html>

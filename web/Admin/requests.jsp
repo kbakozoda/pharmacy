@@ -41,6 +41,10 @@
         </table>
     </div>
 </s:if>
+<s:if test="list.size() = 0">
+    <h1>The list is empty yet.</h1>
+</s:if>
+<s:actionerror/>
 <a href="/admin/welcome.action">Menu</a>
 </body>
 </html>

@@ -5,6 +5,7 @@
 </head>
 <body>
 <h1>Edit pharmacy info</h1>
+<s:actionerror/>
 <s:form action="doedit">
     <s:push value="pharmacy">
         <s:hidden name="pharmacy.id" />

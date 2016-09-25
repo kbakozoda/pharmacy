@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 04.09.2016
-  Time: 18:30
-  To change this template use File | Settings | File Templates.
---%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <html>
 <head>

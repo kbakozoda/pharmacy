@@ -29,6 +29,10 @@
         </table>
     </div>
 </s:if>
+<s:if test="list.size() = 0">
+    <h1>The list is empty yet.</h1>
+</s:if>
+<s:actionerror/>
 </body>
 </html>
 
