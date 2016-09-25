@@ -5,6 +5,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 import pharmacy.Models.HistoryElement;
 import pharmacy.Models.Pharmacy;
 import pharmacy.Models.StockElement;
@@ -35,7 +36,7 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
 
         return Action.SUCCESS;
     }
-
+    @SkipValidation
     public String create() {
         pharmacy = new Pharmacy();
         return Action.SUCCESS;
@@ -44,12 +45,11 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
     public String doCreate() {
         pharmacy.setNetworkId(getNetworkId());
         pharmacy.setPharmacistId(-1);
-
-        PharmacyService serv = new PharmacyService();
-        serv.insert(pharmacy);
+        service.insert(pharmacy);
         return Action.SUCCESS;
     }
 
+    @SkipValidation
     public String history() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         int phId = Integer.parseInt(request.getParameter("id"));
@@ -60,6 +60,7 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
         return Action.SUCCESS;
     }
 
+    @SkipValidation
     public String delete() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         int id = Integer.parseInt(request.getParameter("id"));
@@ -71,6 +72,7 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
         else return Action.ERROR;
     }
 
+    @SkipValidation
     public String stock() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         int id = Integer.parseInt(request.getParameter("id"));
@@ -82,6 +84,7 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
         return Action.SUCCESS;
     }
 
+    @SkipValidation
     public String edit() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         int id = Integer.parseInt(request.getParameter("id"));
@@ -95,6 +98,20 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
     public String update() {
         service.update(pharmacy);
         return Action.SUCCESS;
+    }
+
+    public void validate() {
+        List<Pharmacy> list = service.getAll();
+        for (int i=0; i<list.size(); i++) {
+            if (list.get(i).getId() != pharmacy.getId() &&
+                    list.get(i).getNumber() == pharmacy.getNumber()) {
+                addActionError("A Pharmacy with such id already exists!");
+            }
+        }
+
+        if (pharmacy.getAddress().length() == 0 || pharmacy.getAddress().length() > 30) {
+            addActionError("Address length is inappropriate");
+        }
     }
 
     public Pharmacy getModel() {

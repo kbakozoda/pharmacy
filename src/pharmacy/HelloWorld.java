@@ -42,10 +42,10 @@ public class HelloWorld {
  *              Est.: [1h. with check] Done in:[a lot..]
  *              v add action error messages in every view.[15 mins.]
  *              v when creating new: check if there are no duplicates
- *      TODO: User info RU
- *              Est.: [40 mins. with check] Done in[]
- *      TODO: Complete all actions of Admin with CRUD
- *              Est.: [] Done in[]
+ *      V User info RU
+ *              Est.: [40 mins. with check] Done in[a lot]
+ *      ----> Complete all actions of Admin with CRUD
+ *              Est.: [2h] Done in[]
  *      TODO: Complete all actions of Pharmacist with CRUD
  *              Est.: [1.5 h.] Done in[]
  *      TODO: onDelete any entity: every dependency must also change it's links
@@ -54,6 +54,15 @@ public class HelloWorld {
  *              Est.: [30 min.] Done in[]
  *      TODO: In all pages: add navigation links
  *              Est.: [20 min.] Done in[]
+ *      TODO: Everywhere: instead of id's show names/numbers
+ *              Est.: [] Done in[]
+ *      TODO: Add cancel links to create/edit pages
+ *      TODO: Add UserInfo interceptor. Which checks if someone is logged in
+ *      TODO: Show username in every page +logout link
+ *      TODO: 'Info' -> view each entites data in a separate page
+ *      TODO: SU: when u approve 1 request, decline all with the same netwID
+ *      TODO: same for Admin
+ *      TODO: reg - press submit - form doesn't pass validation - still alerts user.
  *      TODO: Interceptors: check if user still exists
  *              Est.: [10 min.] Done in[]
  *      TODO: Validate all forms +logic validation
