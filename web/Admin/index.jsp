@@ -6,9 +6,10 @@
 </head>
 <body>
     <h1>Welcome <s:property value="username"></s:property></h1>
-    <a href="logout.action">logout</a>
-    <a href="pharmacies.action">View pharmacies in my network</a>
-    <a href="requests.action">View requests</a>
-    <a href="/user/info">My credentials</a>
+    <a href="logout.action">logout</a> <br>
+    <a href="pharmacies.action">View pharmacies in my network</a> <br>
+    <a href="requests.action">View requests</a> <br>
+    <a href="/user/info">My credentials</a> <br>
+    <a href="pharmacists.action">Pharmacists</a>
 </body>
 </html>

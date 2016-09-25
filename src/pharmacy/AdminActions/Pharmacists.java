@@ -4,11 +4,14 @@ import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 import pharmacy.Models.Pharmacy;
 import pharmacy.Models.User;
 import pharmacy.Services.PharmacyService;
 import pharmacy.Services.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +25,7 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
     private String username;
     private int networkId;
 
+    @SkipValidation
     public String execute() {
         pharmacist = new User();
         list = new ArrayList<User>();
@@ -38,6 +42,36 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
         }
 
         return Action.SUCCESS;
+    }
+
+    @SkipValidation
+    public String create() {
+        return Action.SUCCESS;
+    }
+
+    public String doCreate() {
+        return Action.SUCCESS;
+    }
+
+    @SkipValidation
+    public String edit() {
+        return Action.SUCCESS;
+    }
+
+    public String doEdit() {
+        return Action.SUCCESS;
+    }
+
+    @SkipValidation
+    public String delete() {
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        int id = Integer.parseInt(request.getParameter("id"));
+        uService.deleteById(id);
+        return Action.SUCCESS;
+    }
+
+    public void validate() {
+
     }
 
     public List<User> getList() {

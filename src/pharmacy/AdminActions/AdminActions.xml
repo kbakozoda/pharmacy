@@ -90,6 +90,33 @@
             <result name="success" type="redirect">pharmacies.action</result>
             <result name="error" type="redirect">pharmacies.action</result>
         </action>
+
+        <action name="pharmacists" class="pharmacy.AdminActions.Pharmacists">
+            <result name="success">../Admin/pharmacists.jsp</result>
+        </action>
+
+        <action name="phstDel" class="pharmacy.AdminActions.Pharmacists" method="delete">
+            <result name="success" type="redirect">pharmacists.action</result>
+        </action>
+
+        <action name="phstEdit" class="pharmacy.AdminActions.Pharmacists" method="edit">
+            <result name="success">../Admin/phstEdit.jsp</result>
+            <result name="error" type="redirect">pharmacists.action</result>
+        </action>
+
+        <action name="doPhstEdit" class="pharmacy.AdminActions.Pharmacists" method="doEdit">
+            <result name="success" type="redirect">pharmacists.action</result>
+            <result name="input">../Admin/phstEdit.jsp</result>
+        </action>
+
+        <action name="createPhst" class="pharmacy.AdminActions.Pharmacists" method="create">
+            <result name="success">../Admin/phstNew.jsp</result>
+        </action>
+
+        <action name="doCreatePhst" class="pharmacy.AdminActions.Pharmacists" method="doCreate">
+            <result name="success" type="redirect">pharmacists.action</result>
+            <result name="input">../Admin/phstNew.jsp</result>
+        </action>
     </package>
 
 </struts>

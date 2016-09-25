@@ -26,13 +26,16 @@
                     <td><s:property value="username"/></td>
                     <td><s:property value="name"/></td>
                     <td><s:property value="surname"/></td>
-                </s:url>
+
                     <td><s:url id="delURL" action="phstDel">
                         <s:param name="id" value="%{id}"></s:param>
-                        <s:a href="%{delURL}">Delete</s:a></td>
+                        </s:url>
+                        <s:a href="%{delURL}">Delete</s:a>
+                    </td>
 
                     <td><s:url id="editURL" action="phstEdit">
                         <s:param name="id" value="%{id}"></s:param>
+                        </s:url>
                         <s:a href="%{editURL}">Edit</s:a></td>
                 </tr>
             </s:iterator>
