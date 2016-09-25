@@ -39,6 +39,7 @@
             <interceptor-ref name="AdminAuthStack"/>
             <result name="success" type="redirect">pharmacies.action</result>
             <!--<result name="error">/superuser/error.action</result>-->
+            <result name="input">../Admin/pharmnew.jsp</result>
         </action>
         <action name="phdelete" class="pharmacy.AdminActions.Pharmacies" method="delete">
             <interceptor-ref name="AdminAuthStack"/>

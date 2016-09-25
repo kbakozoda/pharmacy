@@ -28,6 +28,8 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
     List<HistoryElement> hslist;
     List<StockElement> stlist;
     private PharmacyService service = new PharmacyService();
+
+    @SkipValidation
     public String execute() {
         username = getUsername();
         networkId = getNetworkId();
