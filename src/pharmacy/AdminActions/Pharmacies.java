@@ -24,7 +24,7 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
     private String username;
     private int networkId;
     private String phUsername;
-
+    private int phId;
     private Pharmacy pharmacy;
     private List<Pharmacy> list;
     List<HistoryElement> hslist;
@@ -56,11 +56,24 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
     @SkipValidation
     public String history() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
-        int phId = Integer.parseInt(request.getParameter("id"));
+        phId = Integer.parseInt(request.getParameter("id"));
+
+        if (phId == 0) {
+            return Action.ERROR;
+        }
 
         HistoryService hservice = new HistoryService();
         hslist = hservice.getAllByPh(phId);
 
+        return Action.SUCCESS;
+    }
+    @SkipValidation
+    public String historyDel() {
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        int phId = Integer.parseInt(request.getParameter("id"));
+        if(phId == 0) return Action.ERROR;
+        HistoryService hserv = new HistoryService();
+        hserv.delAllByPhId(phId);
         return Action.SUCCESS;
     }
 
@@ -194,5 +207,13 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
 
     public void setPhUsername(String phUsername) {
         this.phUsername = phUsername;
+    }
+
+    public int getPhId() {
+        return phId;
+    }
+
+    public void setPhId(int phId) {
+        this.phId = phId;
     }
 }

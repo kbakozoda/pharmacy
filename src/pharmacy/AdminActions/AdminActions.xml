@@ -85,6 +85,11 @@
             <result name="success">../Admin/phinfo.jsp</result>
             <result name="error" type="redirect">pharmacies.action</result>
         </action>
+
+        <action name="histRemove" class="pharmacy.AdminActions.Pharmacies" method="historyDel">
+            <result name="success" type="redirect">pharmacies.action</result>
+            <result name="error" type="redirect">pharmacies.action</result>
+        </action>
     </package>
 
 </struts>

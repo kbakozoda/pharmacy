@@ -15,30 +15,37 @@ public class HistoryDAO extends DAOInterface{
     public HistoryDAO() {
         createConnection();
     }
+    private static final String tableName = "operationhistory";
 
-    public List<HistoryElement> executeSQLQ(String query){
+    HistoryElement fetchHElemFromRs(ResultSet rs) {
+        HistoryElement temp;
+        temp = new HistoryElement();
+        try {
+            temp.setId(rs.getInt("id"));
+            temp.setNetworkId(rs.getInt("networkid"));
+            temp.setDate(rs.getDate("purchasedate"));
+            temp.setDrugId(rs.getInt("drugid"));
+            temp.setPharmacyId(rs.getInt("pharmacyid"));
+            temp.setTotalExpense(rs.getInt("totalexpense"));
+        }catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return temp;
+    }
+
+
+    public List<HistoryElement> getAllFor(int id) {
         List<HistoryElement> list = new ArrayList<HistoryElement>();
         HistoryElement temp;
-        try {
-            ResultSet rs = stmt.executeQuery(query);
+        try{
+            ResultSet rs = getRSForSelAll(tableName);
             while (rs.next()) {
-                int id = rs.getInt("id");
-                int netwid = rs.getInt("networkid");
-                int pharmid = rs.getInt("pharmacyid");
-                int drugid = rs.getInt("drugid");
-                int expense = rs.getInt("totalexpense");
-                Date date = rs.getDate("purchasedate");
-                temp = new HistoryElement();
-                System.out.println("elem: " + pharmid + " " + expense);
-                temp.setId(id);
-                temp.setNetworkId(netwid);
-                temp.setDate(date);
-                temp.setDrugId(drugid);
-                temp.setPharmacyId(pharmid);
-                temp.setTotalExpense(expense);
-                list.add(temp);
+                if (rs.getInt("pharmacyid") == id) {
+                    temp = fetchHElemFromRs(rs);
+                    list.add(temp);
+                }
             }
-        } catch (SQLException se) {
+        }catch (SQLException se) {
             se.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,12 +53,28 @@ public class HistoryDAO extends DAOInterface{
         return list;
     }
 
-    public List<HistoryElement> getAllFor(int id) {
-        String sql = "SELECT * FROM operationhistory WHERE pharmacyid=" + id;
-        return executeSQLQ(sql);
+    public int deleteById(int id) {
+        return removeById(id, tableName);
     }
+    public int delAllByPhId(int phId) {
+        return removeByPhId(phId, tableName);
+    }
+
+
     public List<HistoryElement> getAll() {
-        String sql = "SELECT * FROM operationhistory";
-        return executeSQLQ(sql);
+        List<HistoryElement> list = new ArrayList<HistoryElement>();
+        HistoryElement temp;
+        try{
+            ResultSet rs = getRSForSelAll(tableName);
+            while (rs.next()) {
+                temp = fetchHElemFromRs(rs);
+                list.add(temp);
+            }
+        }catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

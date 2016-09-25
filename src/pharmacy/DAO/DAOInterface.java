@@ -38,7 +38,6 @@ public abstract class DAOInterface {
     public int removeById(int id, String tableName) {
         try {
             String sql = "DELETE FROM " + tableName+ " WHERE id=" + id;
-            System.out.println("executing: " + sql);
             int rs = stmt.executeUpdate(sql);
             return 1;
         } catch (SQLException se) {
@@ -46,6 +45,18 @@ public abstract class DAOInterface {
         }
         return 0;
     }
+
+    public int removeByPhId(int id, String tableName) {
+        try {
+            String sql = "DELETE FROM " + tableName+ " WHERE pharmacyid=" + id;
+            int rs = stmt.executeUpdate(sql);
+            return 1;
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return 0;
+    }
+
     public abstract List getAll();          // nothing to say
     //public abstract Class getById(int id); // performs getAll() inside, then searches for object inside the list
     //public abstract int deleteById(int id); // possible results: -1 -> error 1-> okay

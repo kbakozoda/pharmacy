@@ -22,4 +22,9 @@ public class HistoryService {
         List list = dao.getAllFor(id);
         return list;
     }
+
+    public int delAllByPhId(int id) {
+        return dao.delAllByPhId(id);
+    }
+
 }
