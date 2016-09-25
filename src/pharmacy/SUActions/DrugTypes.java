@@ -2,28 +2,31 @@ package pharmacy.SUActions;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.interceptor.annotations.Before;
+import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
+
 import pharmacy.Models.DrugType;
 import pharmacy.Services.DrugTypeService;
 import pharmacy.Services.PatternService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DrugTypes extends ActionSupport {
+public class DrugTypes extends ActionSupport implements ModelDriven<DrugType> {
     List list;
-    private String name;
-    private int id;
-    private String next;
+    private DrugType drugType;
+    private DrugTypeService service = new DrugTypeService();
+
+    public DrugType getModel() {
+        return drugType;
+    }
     @SkipValidation
     public String execute() {
         System.out.println("Execute drugtypes");
-        DrugTypeService service = new DrugTypeService();
+        drugType = new DrugType();
         list = service.getAll();
 
         if (list == null){
@@ -36,68 +39,52 @@ public class DrugTypes extends ActionSupport {
 
     @SkipValidation
     public String newDrugType() {
-        next = "drugtypecreate.action";
+        drugType = new DrugType();
         return "SUCCESS";
     }
 
     public String drugTypeCreate(){
-        DrugTypeService service = new DrugTypeService();
-        DrugType temp = new DrugType();
-        temp.setName(name);
-        service.insert(temp);
+        service.insert(drugType);
         return "SUCCESS";
     }
     @SkipValidation
     public String deleteDrugType() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
-        id = Integer.parseInt(request.getParameter("id"));
-        DrugTypeService service = new DrugTypeService();
-        int res = service.deleteById(id);
+        int res = service.deleteById(Integer.parseInt(request.getParameter("id")));
         if (res == 1) return "SUCCESS";
         else return "ERROR";
     }
     @SkipValidation
     public String editDrugType() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
-        id = Integer.parseInt(request.getParameter("id"));
-        next = "editdrugtype.action?id="+id;
-        DrugTypeService service = new DrugTypeService();
-        name = service.getById(id).getName();
-        System.out.println("Editing drugtype");
+        drugType = service.getById(Integer.parseInt(request.getParameter("id")));
+        System.out.println("Chosen drugType: "+ drugType.getName() + " " + drugType.getId());
         return "SUCCESS";
     }
 
-    @SkipValidation
     public String updateDrugType() {
-        System.out.println("HERE!");
-        DrugTypeService service = new DrugTypeService();
-        System.out.println("id = " + id);
-        DrugType temp = new DrugType();
-        temp.setId(id);
-        temp.setName(name);
-        service.update(temp);
+        service.update(drugType);
         return "SUCCESS";
     }
 
     public void validate() {
-        System.out.println("Validating " + name);
+        System.out.println("Validating " + drugType.getName() + " " + drugType.getId());
         PatternService ps = new PatternService();
         Pattern namePattern = ps.getNamePattern();
-        Matcher m = namePattern.matcher(name);
-        DrugTypeService serv = new DrugTypeService();
-        List<DrugType> list = serv.getAll();
+        Matcher m = namePattern.matcher(drugType.getName());
+
+        List<DrugType> list = service.getAll();
         for (int i=0; i<list.size(); i++) {
-            if (list.get(i).getName().equals(name) && list.get(i).getId() != id) {
-                addFieldError("name", "This name is already taken");
+            if (list.get(i).getName().equals(drugType.getName()) && list.get(i).getId() != drugType.getId()) {
+                addActionError("This name is already taken");
             }
         }
 
         if (!m.matches())
         {
-            addFieldError("name", "This name is invalid");
+            System.out.println("name invalid");
+            addActionError("This name is invalid");
         }
-
-        System.out.println("reached the end. all ok.");
     }
 
     public List getList() {
@@ -108,27 +95,11 @@ public class DrugTypes extends ActionSupport {
         this.list = list;
     }
 
-    public String getName() {
-        return name;
+    public DrugType getDrugType() {
+        return drugType;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNext() {
-        return next;
-    }
-
-    public void setNext(String next) {
-        this.next = next;
+    public void setDrugType(DrugType drugType) {
+        this.drugType = drugType;
     }
 }

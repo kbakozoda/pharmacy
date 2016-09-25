@@ -36,15 +36,35 @@ public class HelloWorld {
  *      V Complete login action, with role detection
  *      V Logout action.
  *      V Complete registration actions.
- *      TODO: 2. Complete all DAO and Services for Admins
- *      TODO: 3. Complete all DAO and Services for Pharmacists
- *      TODO: 4. Complete Edit actions for Drugs & DrugTypes
- *      --> Complete all actions of Admin with CRUD
- *      TODO: 6. Complete all actions of Pharmacist with CRUD
- *      TODO: 7. In all pages: add links to previous ones.
+ *      V Complete all DAO and Services for Admins
+ *      V Complete all DAO and Services for Pharmacists
+ *      TODO: Change CRUD, Actions into ModelDriven for Drugs & DrugTypes
+ *              Est.: [1h. with check] Done in:[]
+ *              + add action error messages in every view.[15 mins.]
+ *              + when creating new: check if there are no duplicates
+ *      TODO: User info RU
+ *              Est.: [40 mins. with check] Done in[]
+ *      TODO: Complete all actions of Admin with CRUD
+ *              Est.: [] Done in[]
+ *      TODO: Complete all actions of Pharmacist with CRUD
+ *              Est.: [1.5 h.] Done in[]
+ *      TODO: onDelete any entity: every dependency must also change it's links
+ *              Est: [] Done in[]
+ *      TODO: Register new superuser
+ *              Est.: [30 min.] Done in[]
+ *      TODO: In all pages: add navigation links
+ *              Est.: [20 min.] Done in[]
+ *      TODO: Interceptors: check if user still exists
+ *              Est.: [10 min.] Done in[]
+ *      TODO: Validate all forms
+ *              Est.: [1.5 h.] Done in[]
+ *      TODO: Generate special error messages for these situations & alert them or print on page
+ *            Before any action with entity(CRUD or other) check if it still exists.
+ *            Update : update only if element still exists;
+ *              Est.: [] Done in[]
  *         ---------- 3rd lab up until here -------------
- *      TODO: 7. Apply design
- *      TODO: 8. Write junit tests
- *      TODO: 9. Apply file generation classes
- *      TODO: 10. Handle all exceptions when there hasn't been anything fetched from db
+ *      TODO: 1. Apply design
+ *      TODO: 2. Write junit tests
+ *      TODO: 3. Apply file generation classes
+ *      TODO: 4. Handle all exceptions when there hasn't been anything fetched from db
  * */

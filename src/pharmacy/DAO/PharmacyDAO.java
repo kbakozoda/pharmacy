@@ -80,6 +80,23 @@ public class PharmacyDAO extends DAOInterface {
         }
         return null;
     }
+
+    public Pharmacy getByPhId(int id) {
+        ResultSet rs = getRSForSelAll(tableName);
+        Pharmacy temp;
+        try {
+            while (rs.next()) {
+                if (rs.getInt("pharmacyid") == id) {
+                    temp = fetchPhFromRs(rs);
+                    return temp;
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return null;
+    }
+
     public void insert(Pharmacy obj) {
         try {
             ResultSet rs = getRSForSelAll(tableName);

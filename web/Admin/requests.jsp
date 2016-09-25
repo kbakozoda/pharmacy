@@ -41,6 +41,7 @@
         </table>
     </div>
 </s:if>
+<a href="/admin/welcome.action">Menu</a>
 </body>
 </html>
 

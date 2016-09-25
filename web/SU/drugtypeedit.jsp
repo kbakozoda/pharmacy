@@ -5,10 +5,14 @@
 </head>
 <body>
 <h1>Edit</h1>
+<s:actionerror/>
+<s:hidden name="drugType.id" value="%{drugType.id}"/>
 <s:form action="updatedrugtype">
-    <s:textfield label="Edit drug type name" name="name"></s:textfield>
-    <s:hidden name="id" value="id"></s:hidden>
-    <s:submit value="Submit"/>
+    <s:push value="drugType">
+        <s:hidden name="drugType.id"/>
+        <s:textfield label="Edit drug type name" name="drugType.name"></s:textfield>
+        <s:submit value="Submit"/>
+    </s:push>
 </s:form>
 </body>
 </html>

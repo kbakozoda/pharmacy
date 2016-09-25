@@ -5,6 +5,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 import pharmacy.Models.Network;
 import pharmacy.Services.NetworkService;
 
@@ -23,12 +24,12 @@ public class Networks extends ActionSupport implements ModelDriven<Network> {
     public Network getModel() {
         return network;
     }
-
+    @SkipValidation
     public String execute() {
         list = service.getAll();
         return "SUCCESS";
     }
-
+    @SkipValidation
     public String create() {
         return Action.SUCCESS;
     }
@@ -38,14 +39,14 @@ public class Networks extends ActionSupport implements ModelDriven<Network> {
         service.insert(network);
         return Action.SUCCESS;
     }
-
+    @SkipValidation
     public String delete() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         service.deleteById(Integer.parseInt(request.getParameter("id")));
         // TODO: !!! Delete all dependencies (admins, pharmacies, pharmacists, stockcontent)
         return Action.SUCCESS;
     }
-
+    @SkipValidation
     public String edit() {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         network = service.getById(Integer.parseInt(request.getParameter("id")));
@@ -53,10 +54,21 @@ public class Networks extends ActionSupport implements ModelDriven<Network> {
     }
 
     public String update() {
-        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
-        System.out.println("trying to update " + network.getName() + " " + network.getAdminId());
         service.update(network);
         return Action.SUCCESS;
+    }
+
+    public void validate() {
+        List<Network> list = service.getAll();
+        for (int i=0; i<list.size(); i++) {
+            if (list.get(i).getName().equals(network.getName()) && list.get(i).getId()!=network.getId()) {
+                addActionError("Such name is already taken");
+            }
+        }
+
+        if (network.getName().length() == 0 || network.getName().length() > 30) {
+            addActionError("The length of the name is inappropriate!");
+        }
     }
 
     public Network getNetwork() {

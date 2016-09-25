@@ -3,6 +3,7 @@ package pharmacy.SUActions;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import pharmacy.Models.Drug;
@@ -20,19 +21,18 @@ import java.util.regex.Pattern;
 /**
  * Created by User on 12.09.2016.
  */
-public class Drugs extends ActionSupport {
+public class Drugs extends ActionSupport implements ModelDriven<Drug> {
     private DrugsService service;
     List<Drug> list;
-    private int id;
     private int typeid;
-    private String name;
-    private int agerestriction;
-    private String instruction;
     private String selType;
     private List<String> drTypeNameList;
     private String errorText;
-    private String newName;
-    private int lastid;
+    private Drug drug = new Drug();
+    private int id;
+    public Drug getModel() {
+        return drug;
+    }
 
     @SkipValidation
     public String execute() {
@@ -54,6 +54,27 @@ public class Drugs extends ActionSupport {
     @SkipValidation
     public String create() {
         drTypeNameList = new DrugTypeService().getNames();
+        drug = new Drug();
+        return Action.SUCCESS;
+    }
+    @SkipValidation
+    public String addDrug() {
+        if (!myValidate()) return Action.INPUT;
+        DrugTypeService tservice = new DrugTypeService();
+        DrugsService service = new DrugsService();
+        Drug temp = new Drug();
+
+        typeid = tservice.getIdByName(selType);
+
+        if (typeid == -1) {
+            errorText = "Error choosing drug type! " +
+                    "This must never happen, but this drug type no longer exists";
+            addActionError(errorText);
+            return Action.INPUT;
+        }
+
+        drug.setTypeId(typeid);
+        service.insert(drug);
         return Action.SUCCESS;
     }
 
@@ -65,82 +86,67 @@ public class Drugs extends ActionSupport {
         DrugsService service = new DrugsService();
         DrugTypeService tservice = new DrugTypeService();
 
-        name = service.getById(id).getName();
-        instruction = service.getById(id).getInstruction();
-        agerestriction = service.getById(id).getAgeRestrict();
+        drug = service.getById(id);
 
-        DrugType temp = tservice.getById(id);
-        if (temp == null) return Action.ERROR;
-        selType = temp.getName();
+        DrugType temp = tservice.getById(drug.getTypeId());
+
+        if (temp == null) {
+            errorText = "The drug type for this drug could not be detected.";
+            addActionError(errorText);
+        } else {
+            selType = temp.getName();
+        }
 
         return Action.SUCCESS;
     }
-
+    @SkipValidation
     public String update() {
+        if (!myValidate()) return Action.INPUT;
+        System.out.println("Here");
         DrugTypeService tservice = new DrugTypeService();
         DrugsService service = new DrugsService();
-        Drug temp = new Drug();
+
         System.out.println("seltype = "+ selType);
         typeid = tservice.getIdByName(selType);
         if (typeid == -1) {
-            errorText = "Error choosing drug type! This must never happen, but..";
-            return Action.ERROR;
+            errorText = "Error choosing drug type! " +
+                    "This must never happen, but this drug type no longer exists";
+            System.out.println(errorText);
+            addActionError(errorText);
+            return Action.INPUT;
         }
-        System.out.println("last " + id);
-        temp.setId(id);
-        temp.setName(name);
-        temp.setTypeId(typeid);
-        temp.setInstruction(instruction);
-        temp.setAgeRestrict(agerestriction);
 
-        System.out.println("updating to "+ temp.getId() + " " + temp.getName() + " " + temp.getInstruction());
-        service.update(temp);
+        System.out.println("success in updating drug");
+        drug.setTypeId(typeid);
+        service.update(drug);
         return Action.SUCCESS;
     }
 
-    public String addDrug() {
-        DrugTypeService tservice = new DrugTypeService();
-        DrugsService service = new DrugsService();
-        Drug temp = new Drug();
-        typeid = tservice.getIdByName(selType);
-        if (typeid == -1) {
-            errorText = "Error choosing drug type! This must never happen, but..";
-            return Action.ERROR;
-            // TODO: display this text in error.jsp file.
-        }
-
-        temp.setName(name);
-        temp.setTypeId(typeid);
-        temp.setInstruction(instruction);
-        temp.setAgeRestrict(agerestriction);
-
-        service.insert(temp);
-        return Action.SUCCESS;
-    }
-
-    public void validate() {
-
+    public boolean myValidate() {
+        System.out.println("Validating");
+        boolean res = true;
         if (selType.equals("nll"))
         {
             addActionError("Please select a drug type!");
+            res = false;
         }
-
-        if (name.length() == 0)
+        if (drug.getName().length() == 0)
         {
-            addFieldError("name", "This name is too long");
+            addFieldError("drug.name", "This name is too long");
+            res = false;
         }
-
-        if (name.length() > 49)
+        if (drug.getName().length() > 49)
         {
-            addFieldError("name", "This name is too long");
+            addFieldError("drug.name", "This name is too long");
+            res = false;
         }
-
-        if (instruction.length() == 0)
+        if (drug.getInstruction().length() == 0)
         {
-            addFieldError("instruction", "Please write the instruction");
+            addFieldError("drug.instruction", "Please write the instruction");
+            res = false;
         }
-
         drTypeNameList = new DrugTypeService().getNames();
+        return res;
     }
 
     public List<Drug> getList() {
@@ -151,22 +157,6 @@ public class Drugs extends ActionSupport {
         this.list = list;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getLastid() {
-        return lastid;
-    }
-
-    public void setLastid(int lastid) {
-        this.lastid = lastid;
-    }
-
     public int getTypeid() {
         return typeid;
     }
@@ -175,40 +165,8 @@ public class Drugs extends ActionSupport {
         this.typeid = typeid;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAgerestriction() {
-        return agerestriction;
-    }
-
-    public void setAgerestriction(int agerestriction) {
-        this.agerestriction = agerestriction;
-    }
-
     public void setDrTypeNameList(List<String> drTypeNameList) {
         this.drTypeNameList = drTypeNameList;
-    }
-
-    public String getNewName() {
-        return newName;
-    }
-
-    public void setNewName(String newName) {
-        this.newName = newName;
-    }
-
-    public String getInstruction() {
-        return instruction;
-    }
-
-    public void setInstruction(String instruction) {
-        this.instruction = instruction;
     }
 
     public List getDrTypeNameList() {
@@ -229,5 +187,13 @@ public class Drugs extends ActionSupport {
 
     public void setErrorText(String errorText) {
         this.errorText = errorText;
+    }
+
+    public Drug getDrug() {
+        return drug;
+    }
+
+    public void setDrug(Drug drug) {
+        this.drug = drug;
     }
 }

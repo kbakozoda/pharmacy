@@ -5,8 +5,8 @@
 </head>
 <body>
     <h1>Create new drug type</h1>
-    <s:form action="">
-        <s:textfield label="Enter drug type name" name="name"></s:textfield>
+    <s:form action="drugtypecreate">
+        <s:textfield label="Enter drug type name" name="drugType.name"></s:textfield>
         <s:submit value="Submit"/>
     </s:form>
 </body>

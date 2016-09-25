@@ -37,6 +37,8 @@ public class PharmacyService {
         return dao.update(obj);
     }
 
+    public Pharmacy getByPhId(int id) {return dao.getByPhId(id);}
+
     public void insert(Pharmacy obj) {
         dao.insert(obj);
     }

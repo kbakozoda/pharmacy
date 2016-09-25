@@ -20,24 +20,13 @@
             <result name="login" type="redirect">login.action</result>
         </global-results>
 
-        <action name="drugtypes" class="pharmacy.SUActions.DrugTypes">
-            <interceptor-ref name="SUAuthStack"/>
-            <result name="LOGIN" type="redirect">../login.action</result>
-            <result name="SUCCESS">../SU/drugtypes.jsp</result>
-            <result name="input" type="redirect">${next}</result>
-        </action>
-
         <action name="welcome" class="pharmacy.SUActions.Welcome">
             <interceptor-ref name="SUAuthStack"/>
             <result name="LOGIN" type="redirect">../login.action</result>
             <result name="SUCCESS">../SU/index.jsp</result>
         </action>
-        <action name="requests" class="pharmacy.SUActions.Requests">
-            <interceptor-ref name="SUAuthStack"/>
-            <result name="LOGIN" type="redirect">../login.action</result>
-            <result name="SUCCESS">../SU/requests.jsp</result>
-        </action>
 
+        <!--NETWORK ACTIONS-->
         <action name="networks" class="pharmacy.SUActions.Networks">
             <interceptor-ref name="SUAuthStack"/>
             <result name="LOGIN" type="redirect">../login.action</result>
@@ -45,50 +34,39 @@
         </action>
 
         <action name="createnet" class="pharmacy.SUActions.Networks" method="create">
+            <interceptor-ref name="SUAuthStack"/>
             <result name="success">../SU/networknew.jsp</result>
         </action>
 
         <action name="docreatenet" class="pharmacy.SUActions.Networks" method="doCreate">
+            <interceptor-ref name="SUAuthStack"/>
             <result name="success" type="redirect">networks.action</result>
+            <result name="input">../SU/networkedit.jsp</result>
         </action>
         <action name="delnetwork" class="pharmacy.SUActions.Networks" method="delete">
+            <interceptor-ref name="SUAuthStack"/>
             <result name="success" type="redirect">networks.action</result>
         </action>
         <action name="editnetwork" class="pharmacy.SUActions.Networks" method="edit">
+            <interceptor-ref name="SUAuthStack"/>
             <result name="success">../SU/networkedit.jsp</result>
         </action>
         <action name="updateNet" class="pharmacy.SUActions.Networks" method="update">
+            <interceptor-ref name="SUAuthStack"/>
             <result name="success" type="redirect">networks.action</result>
+            <result name="input">../SU/networkedit.jsp</result>
         </action>
 
-        <action name="drugs" class="pharmacy.SUActions.Drugs">
+        <!--DRUGTYPE ACTIONS-->
+        <action name="drugtypes" class="pharmacy.SUActions.DrugTypes">
             <interceptor-ref name="SUAuthStack"/>
             <result name="LOGIN" type="redirect">../login.action</result>
-            <result name="SUCCESS">../SU/drugs.jsp</result>
-        </action>
-
-        <action name="logout" class="pharmacy.Actions.Login" method="logout">
-            <interceptor-ref name="SUAuthStack"/>
-            <result name="SUCCESS" type="redirect">../index.jsp</result>
-        </action>
-
-        <action name="approve" class="pharmacy.SUActions.Requests" method="approve">
-            <interceptor-ref name="SUAuthStack"/>
-            <result name="SUCCESS" type="redirect">requests.action</result>
-        </action>
-
-        <action name="decline" class="pharmacy.SUActions.Requests" method="decline">
-            <interceptor-ref name="SUAuthStack"/>
-            <result name="SUCCESS" type="redirect">requests.action</result>
+            <result name="SUCCESS">../SU/drugtypes.jsp</result>
         </action>
 
         <action name="newdrugtype" class="pharmacy.SUActions.DrugTypes" method="newDrugType">
             <interceptor-ref name="SUAuthStack"/>
             <result name="SUCCESS">../SU/newdrugtype.jsp</result>
-        </action>
-
-        <action name="error" class="pharmacy.SUActions.InternalError">
-            <result name="SUCCESS">../SU/error.jsp</result>
         </action>
 
         <action name="drugtypecreate" class="pharmacy.SUActions.DrugTypes" method="drugTypeCreate">
@@ -108,9 +86,16 @@
         </action>
 
         <action name="updatedrugtype" class="pharmacy.SUActions.DrugTypes" method="updateDrugType">
-            <interceptor-ref name="SUAuthStack"/>
+
             <result name="SUCCESS" type="redirect">drugtypes.action</result>
-            <result name="input">../SU/error.jsp</result>
+            <result name="input">../SU/drugtypeedit.jsp</result>
+        </action>
+
+        <!--DRUG ACTIONS-->
+        <action name="drugs" class="pharmacy.SUActions.Drugs">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="LOGIN" type="redirect">../login.action</result>
+            <result name="SUCCESS">../SU/drugs.jsp</result>
         </action>
 
         <action name="deletedrug" class="pharmacy.SUActions.Drugs" method="deleteDrug">
@@ -133,12 +118,40 @@
         </action>
 
         <action name="drugedit" class="pharmacy.SUActions.Drugs" method="edit">
+            <interceptor-ref name="SUAuthStack"/>
             <result name="success">../SU/drugedit.jsp</result>
         </action>
 
         <action name="drugupdate" class="pharmacy.SUActions.Drugs" method="update">
+            <interceptor-ref name="SUAuthStack"/>
             <result name="success" type="redirect">drugs.action</result>
             <result name="input">../SU/drugedit.jsp</result>
+        </action>
+
+        <!--REQUESTS & OTHER ACTIONS-->
+        <action name="logout" class="pharmacy.Actions.Login" method="logout">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="SUCCESS" type="redirect">../index.jsp</result>
+        </action>
+
+        <action name="requests" class="pharmacy.SUActions.Requests">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="LOGIN" type="redirect">../login.action</result>
+            <result name="SUCCESS">../SU/requests.jsp</result>
+        </action>
+
+        <action name="approve" class="pharmacy.SUActions.Requests" method="approve">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="SUCCESS" type="redirect">requests.action</result>
+        </action>
+
+        <action name="decline" class="pharmacy.SUActions.Requests" method="decline">
+            <interceptor-ref name="SUAuthStack"/>
+            <result name="SUCCESS" type="redirect">requests.action</result>
+        </action>
+
+        <action name="error" class="pharmacy.SUActions.InternalError">
+            <result name="SUCCESS">../SU/error.jsp</result>
         </action>
 
     </package>

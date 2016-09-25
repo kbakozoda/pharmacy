@@ -4,6 +4,7 @@
     <title>Edit network</title>
 </head>
 <body>
+<s:actionerror/>
 <s:hidden name="network.id" value="network.id"></s:hidden>
 <s:hidden name="network.adminId" value="network.adminId"></s:hidden>
 <h1>Edit net info</h1>

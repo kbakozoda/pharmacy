@@ -7,6 +7,7 @@
 <struts>
     <include file="pharmacy/SUActions/SUActions.xml"></include>
     <include file="pharmacy/AdminActions/AdminActions.xml"></include>
+    <include file="pharmacy/PhActions/PhActions.xml"></include>
     <package name="pharmacy" extends="struts-default">
         <action name="devs" class="pharmacy.Actions.Developers">
             <result name="SUCCESS">lab2/developers.jsp</result>

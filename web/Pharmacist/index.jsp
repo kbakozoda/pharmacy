@@ -1,16 +1,34 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 07.09.2016
-  Time: 15:25
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Test</title>
+    <title>Stock Content</title>
+
 </head>
 <body>
-just a test
+<h1>You are logged in as, Mr. <s:property value="username"/>.
+    Your pharmacy's id = <s:property value="phId"/> <a href="logout.action">Logout</a>
+    <br>Stock content:
+</h1>
+<s:if test="list.size() > 0">
+    <div>
+        <table cellpadding="5px" border="1">
+            <tr>
+                <th>Drug ID</th>
+                <th>Cost</th>
+                <th>Amount</th>
+            </tr>
+
+            <s:iterator value="list">
+                <tr>
+                    <td><s:number name="drugId"/></td>
+                    <td><s:number name="priceOfSingle"/></td>
+                    <td><s:number name="amount"/></td>
+                </tr>
+            </s:iterator>
+        </table>
+    </div>
+</s:if>
 </body>
 </html>
+
