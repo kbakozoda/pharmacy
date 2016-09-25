@@ -5,6 +5,10 @@
     <title>User info</title>
 </head>
 <body>
+<s:property value="user.name"/>
+<s:property value="user.surname"/> <br>
+Username:
+<s:property value="user.username"/><br>
 <h1>Choose your next action:</h1>
 <a href="/user/credentials.action">Edit Credentials</a>
 <a href="/user/pass.action">Edit Password</a>

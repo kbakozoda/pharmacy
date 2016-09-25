@@ -28,6 +28,8 @@ public class UserInfo extends ActionSupport implements ModelDriven<User> {
 
     @SkipValidation
     public String execute() {
+        session = ActionContext.getContext().getSession();
+        user = (User) session.get("user");
         return Action.SUCCESS;
     }
 
