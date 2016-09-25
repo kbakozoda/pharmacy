@@ -41,6 +41,11 @@ Your network id = <s:property value="networkId"/>
                         <s:param name="id" value="%{id}"></s:param>
                     </s:url>
                         <s:a href="%{editURL}">Edit</s:a></td>
+
+                    <td><s:url id="infoURL" action="info">
+                        <s:param name="id" value="%{id}"></s:param>
+                    </s:url>
+                        <s:a href="%{infoURL}">Info</s:a></td>
                 </tr>
             </s:iterator>
         </table>
@@ -48,7 +53,7 @@ Your network id = <s:property value="networkId"/>
         <a href="/admin/welcome">Menu</a>
     </div>
 </s:if>
-<s:if test="list.size() = 0">
+<s:if test="hslist.size() = 0">
     <h1>The list is empty yet.</h1>
 </s:if>
 <s:actionerror/>

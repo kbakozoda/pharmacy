@@ -13,6 +13,7 @@ import pharmacy.Models.User;
 import pharmacy.Services.HistoryService;
 import pharmacy.Services.PharmacyService;
 import pharmacy.Services.StockService;
+import pharmacy.Services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -22,6 +23,7 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
 
     private String username;
     private int networkId;
+    private String phUsername;
 
     private Pharmacy pharmacy;
     private List<Pharmacy> list;
@@ -94,6 +96,18 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
         if (id == 0) return Action.ERROR;
 
         pharmacy = service.getById(id);
+        return Action.SUCCESS;
+    }
+
+    @SkipValidation
+    public String info() {
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        int id = Integer.parseInt(request.getParameter("id"));
+        if (id == 0) return Action.ERROR;
+        pharmacy = service.getById(id);
+        if (pharmacy.getPharmacistId() == -1) phUsername = "No Pharmacist";
+        else
+            phUsername = new UserService().getById(pharmacy.getPharmacistId()).getUsername();
         return Action.SUCCESS;
     }
 
@@ -172,5 +186,13 @@ public class Pharmacies extends ActionSupport implements ModelDriven<Pharmacy> {
 
     public void setStlist(List<StockElement> stlist) {
         this.stlist = stlist;
+    }
+
+    public String getPhUsername() {
+        return phUsername;
+    }
+
+    public void setPhUsername(String phUsername) {
+        this.phUsername = phUsername;
     }
 }

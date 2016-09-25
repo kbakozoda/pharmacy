@@ -79,6 +79,12 @@
             <interceptor-ref name="AdminAuthStack"/>
             <result name="success" type="redirect">requests.action</result>
         </action>
+
+        <action name="info" class="pharmacy.AdminActions.Pharmacies" method="info">
+            <interceptor-ref name="AdminAuthStack"/>
+            <result name="success">../Admin/phinfo.jsp</result>
+            <result name="error" type="redirect">pharmacies.action</result>
+        </action>
     </package>
 
 </struts>
