@@ -9,5 +9,6 @@
     <a href="logout.action">logout</a>
     <a href="pharmacies.action">View pharmacies in my network</a>
     <a href="requests.action">View requests</a>
+    <a href="/user/info">My credentials</a>
 </body>
 </html>

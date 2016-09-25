@@ -8,6 +8,7 @@
 <body>
 <h1>You are logged in as, Mr. <s:property value="username"/>.
     Your pharmacy's id = <s:property value="phId"/> <a href="logout.action">Logout</a>
+    <a href="/user/info">My credentials</a>
     <br>Stock content:
 </h1>
 <s:if test="list.size() > 0">
