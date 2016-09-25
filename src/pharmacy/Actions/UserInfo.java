@@ -113,7 +113,7 @@ public class UserInfo extends ActionSupport implements ModelDriven<User> {
         Matcher m = namePattern.matcher(user.getName());
         if (!m.matches())
         {
-            addActionError("The firstname is invalid");
+            addActionError("The name is invalid");
         }
 
         m = namePattern.matcher(user.getSurname());

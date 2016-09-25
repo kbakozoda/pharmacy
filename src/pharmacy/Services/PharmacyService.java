@@ -22,6 +22,7 @@ public class PharmacyService {
 
     public List getAllForNetwork(int id) {
         List list = dao.getAllForNetwork(id);
+        System.out.println("list size: " + list.size());
         return list;
     }
 
