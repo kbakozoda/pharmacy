@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <include file="pharmacy/SUActions/SUActions.xml"></include>
+    <include file="pharmacy/AdminActions/AdminActions.xml"></include>
+    <include file="pharmacy/PhActions/PhActions.xml"></include>
+    <package name="pharmacy" extends="struts-default">
+        <action name="devs" class="pharmacy.Actions.Developers">
+            <result name="SUCCESS">lab2/developers.jsp</result>
+        </action>
+        <action name="login" class="pharmacy.Actions.Login">
+            <result name="SUCCESS">authentication/login.jsp</result>
+        </action>
+        <action name="askMyName">
+            <result>/lab2/index.jsp</result>
+        </action>
+        <action name="HelloWorld" class="pharmacy.HelloWorld">
+            <result name="SUCCESS">success.jsp</result>
+        </action>
+        <action name="tryAuthorise" class="pharmacy.Actions.TryAuthorise">
+            <result name="SUCCESS-SU" type="redirect">/superuser/welcome.action</result>
+            <result name="SUCCESS-ADMIN" type="redirect">/admin/welcome.action</result>
+            <result name="SUCCESS" type="redirect">/pharm/index.action</result>
+            <result name="ERROR">authentication/login.jsp</result>
+        </action>
+
+        <action name="regadmin" class="pharmacy.Actions.AdminReg">
+            <result name="SUCCESS">authentication/admin.jsp</result>
+            <result name="NOFREE">authentication/nofree.jsp</result>
+        </action>
+
+        <action name="adminsignup" class="pharmacy.Actions.AdminSignUp">
+            <result name="SUCCESS" type="redirect">/</result>
+            <result name="ERROR">error.jsp</result>
+            <result name="input">authentication/admin.jsp</result>
+        </action>
+
+        <action name="regpharm" class="pharmacy.Actions.PhReg">
+            <result name="SUCCESS">authentication/pharm.jsp</result>
+            <result name="NOFREE">authentication/nofreeph.jsp</result>
+        </action>
+
+        <action name="pharmsignup" class="pharmacy.Actions.PhSignUp">
+            <result name="SUCCESS" type="redirect">/</result>
+            <result name="ERROR">error.jsp</result>
+            <result name="input">authentication/pharm.jsp</result>
+        </action>
+
+    </package>
+
+    <package name="user" namespace="/user" extends="struts-default">
+        <action name="info" class="pharmacy.Actions.UserInfo">
+            <result name="success">../userinfo/index.jsp</result>
+        </action>
+
+        <action name="credentials" class="pharmacy.Actions.UserInfo" method="credentials">
+            <result name="success">../userinfo/cred.jsp</result>
+        </action>
+
+        <action name="updateCredentials" class="pharmacy.Actions.UserInfo" method="crUpdate">
+            <result name="success" type="redirect">info.action</result>
+            <result name="input">../userinfo/cred.jsp</result>
+        </action>
+
+        <action name="pass" class="pharmacy.Actions.UserInfo" method="pass">
+            <result name="success">../userinfo/pass.jsp</result>
+        </action>
+
+        <action name="updatePass" class="pharmacy.Actions.UserInfo" method="updPass">
+            <result name="success" type="redirect">info.action</result>
+            <result name="input">../userinfo/pass.jsp</result>
+        </action>
+
+        <action name="redirect" class="pharmacy.Actions.UserInfo" method="redirect">
+            <result name="SU" type="redirect">/superuser/welcome.action</result>
+            <result name="PH" type="redirect">/pharm/index.action</result>
+            <result name="ADMIN" type="redirect">/admin/welcome.action</result>
+            <result name="error" type="redirect">/</result>
+        </action>
+    </package>
+
+</struts>

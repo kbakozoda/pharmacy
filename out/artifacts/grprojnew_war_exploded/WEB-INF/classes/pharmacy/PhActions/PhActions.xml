@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="Pharmacist" namespace="/pharm" extends="struts-default">
+        <interceptors>
+            <interceptor name="authorisation" class="pharmacy.Interceptors.PhAuthInterceptor"/>
+            <interceptor-stack name="PhAuthStack">
+                <interceptor-ref name="authorisation"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="PhAuthStack"></default-interceptor-ref>
+
+        <action name="index" class="pharmacy.PhActions.Welcome">
+            <result name="success">Pharmacist/index.jsp</result>
+            <result name="LOGIN" type="redirect">../login.action</result>
+        </action>
+    </package>
+
+
+</struts>
