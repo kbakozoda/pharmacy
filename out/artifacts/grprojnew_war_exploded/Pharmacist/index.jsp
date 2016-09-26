@@ -15,26 +15,27 @@
     <div>
         <table cellpadding="5px" border="1">
             <tr>
-                <th>Drug ID</th>
+                <th>Drug</th>
                 <th>Cost</th>
                 <th>Amount</th>
+                <th>INDeX</th>
             </tr>
 
-            <s:iterator value="list" status="stat">
+            <s:iterator value="listwithnames" status="stat">
                 <tr>
-                    <td><s:property value="drugnames[%{#stat.index}]"/></td>
-                    <td><s:number name="priceOfSingle"/></td>
-                    <td><s:number name="amount"/></td>
-
+                    <td><s:property value="key"/></td>
+                    <td><s:property value="value.amount"/></td>
+                    <td><s:number name="value.priceOfSingle"/></td>
+                    
                     <td>
                         <s:url id="deleteURL" action="">
-                        <s:param name="id" value="%{id}"></s:param>
+                        <s:param name="id" value="%{value.id}"></s:param>
                         </s:url>
                         <s:a href="%{deleteURL}" onclick="return confirm('Are you sure?')">Delete</s:a>
                     </td>
                     <td>
                         <s:url id="editURL" action="">
-                        <s:param name="id" value="%{id}"></s:param>
+                        <s:param name="id" value="%{value.id}"></s:param>
                         </s:url>
                         <s:a href="%{editURL}">Edit</s:a>
                     </td>
