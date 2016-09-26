@@ -44,7 +44,7 @@ public class HelloWorld {
  *              v when creating new: check if there are no duplicates
  *      V User info RU
  *              Est.: [40 mins. with check] Done in[a lot]
- *      ----> Complete all actions of Admin with CRUD
+ *      V Complete all actions of Admin with CRUD
  *              Est.: [2h] Done in[]
  *      TODO: Complete all actions of Pharmacist with CRUD
  *              Est.: [1.5 h.] Done in[]

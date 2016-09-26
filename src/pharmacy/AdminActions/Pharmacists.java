@@ -31,6 +31,7 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
     private String passwordconf;
     private List<Pharmacy> phList;
     private List phNmbList;
+    private int freePhCount;
 
     @SkipValidation
     public String execute() {
@@ -49,9 +50,8 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
         return Action.SUCCESS;
     }
 
-    @SkipValidation
-    public String create() {
-        int freePhCount = 0;
+    private void collectData() {
+        freePhCount = 0;
         phList = phService.getAllForNetwork(networkId);
         phNmbList = new ArrayList<>();
         for (int i=0; i<phList.size(); i++) {
@@ -61,7 +61,11 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
                 phNmbList.add(temp);
             }
         }
+    }
 
+    @SkipValidation
+    public String create() {
+        collectData();
         if (freePhCount == 0) {
             addActionError("No free pharmacies. Please create new if you want to add new pharmacist");
             return "NOFREE";
@@ -72,17 +76,9 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
 
     @SkipValidation
     public String doCreate() {
-        int freePhCount = 0;
+        freePhCount = 0;
         if (!regValidate()) {
-            phList = phService.getAllForNetwork(networkId);
-            phNmbList = new ArrayList<>();
-            for (int i=0; i<phList.size(); i++) {
-                if (phList.get(i).getPharmacistId() == -1) {
-                    int temp = phList.get(i).getNumber();
-                    freePhCount++;
-                    phNmbList.add(temp);
-                }
-            }
+            collectData();
             if (freePhCount == 0) {
                 addActionError("No free pharmacies. Please create new if you want to add new pharmacist");
                 return "NOFREE";
@@ -176,8 +172,6 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
         m = loginPattern.matcher(pharmacist.getUsername());
 
         for (int i=0; i<ulist.size(); i++) {
-            System.out.println(ulist.get(i).getUsername() + " vs " + pharmacist.getUsername());
-            System.out.println(ulist.get(i).getRole() + " " + pharmacist.getRole());
             if(ulist.get(i).getUsername().equals(pharmacist.getUsername()) &&
                     ulist.get(i).getRole() == 3 &&
                     ulist.get(i).getId() != pharmacist.getId() ) {
