@@ -25,7 +25,7 @@ public class PhAuthInterceptor extends AbstractInterceptor {
 
     public String intercept(ActionInvocation actionInvocation)
             throws Exception {
-        System.out.println("inside SUauth interceptor");
+        System.out.println("inside ph interceptor");
         Map<String, Object> session = actionInvocation.getInvocationContext().getSession();
 
         User user = (User) session.get("user");

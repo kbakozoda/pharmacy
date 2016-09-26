@@ -4,8 +4,10 @@ import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import javafx.util.Pair;
 import pharmacy.Models.StockElement;
 import pharmacy.Models.User;
+import pharmacy.Services.DrugsService;
 import pharmacy.Services.PharmacyService;
 import pharmacy.Services.StockService;
 
@@ -23,9 +25,17 @@ public class Welcome extends ActionSupport implements ModelDriven<StockElement>{
     private User user;
     private String username;
     private int phId;
+    private List<Pair<String, StockElement>> listwithnames;
     public String execute() {
         setUsernameAndPhId();
         list = service.getByPhId(phId);
+        DrugsService drService = new DrugsService();
+        String temp;
+        listwithnames = new ArrayList<Pair<String, StockElement>>();
+        for (int i=0; i<list.size(); i++) {
+            temp = drService.getById(list.get(i).getDrugId()).getName();
+            listwithnames.add(new Pair<String, StockElement>(temp, list.get(i)));
+        }
         return Action.SUCCESS;
     }
 
@@ -33,8 +43,8 @@ public class Welcome extends ActionSupport implements ModelDriven<StockElement>{
         Map session = ActionContext.getContext().getSession();
         user = (User) session.get("user");
         username = user.getUsername();
-
         PharmacyService phservice = new PharmacyService();
+        System.out.println("uid = " + user.getId() + " gebpi = "+ phservice.getByPhId(user.getId()));
         user.setPharmacyId(phservice.getByPhId(user.getId()).getId());
         phId = user.getPharmacyId();
 
@@ -53,5 +63,21 @@ public class Welcome extends ActionSupport implements ModelDriven<StockElement>{
 
     public StockElement getModel() {
         return stockElement;
+    }
+
+    public List<Pair<String, StockElement>> getListwithnames() {
+        return listwithnames;
+    }
+
+    public void setListwithnames(List<Pair<String, StockElement>> listwithnames) {
+        this.listwithnames = listwithnames;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public int getPhId() {
+        return phId;
     }
 }

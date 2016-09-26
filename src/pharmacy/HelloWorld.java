@@ -39,14 +39,11 @@ public class HelloWorld {
  *      V Complete all DAO and Services for Admins
  *      V Complete all DAO and Services for Pharmacists
  *      V Change CRUD, Actions into ModelDriven for Drugs & DrugTypes
- *              Est.: [1h. with check] Done in:[a lot..]
- *              v add action error messages in every view.[15 mins.]
+ *              v add action error messages in every view
  *              v when creating new: check if there are no duplicates
  *      V User info RU
- *              Est.: [40 mins. with check] Done in[a lot]
  *      V Complete all actions of Admin with CRUD
- *              Est.: [2h] Done in[]
- *      TODO: Complete all actions of Pharmacist with CRUD
+ *      *--->> Complete all actions of Pharmacist with CRUD
  *              Est.: [1.5 h.] Done in[]
  *      TODO: onDelete any entity: every dependency must also change it's links
  *              Est: [] Done in[]
@@ -56,10 +53,11 @@ public class HelloWorld {
  *              Est.: [20 min.] Done in[]
  *      TODO: Everywhere: instead of id's show names/numbers
  *              Est.: [] Done in[]
+ *      TODO: On each url with id check if this user has a permission to modify this elem!!!
  *      TODO: Add cancel links to create/edit pages
  *      TODO: Add UserInfo interceptor. Which checks if someone is logged in
  *      TODO: Show username in every page +logout link
- *      TODO: 'Info' -> view each entites data in a separate page
+ *      TODO: 'Info' -> view each entities data in a separate page
  *      TODO: SU: when u approve 1 request, decline all with the same netwID
  *      TODO: same for Admin
  *      TODO: reg - press submit - form doesn't pass validation - still alerts user.

@@ -86,7 +86,7 @@ public class PharmacyDAO extends DAOInterface {
         Pharmacy temp;
         try {
             while (rs.next()) {
-                if (rs.getInt("pharmacyid") == id) {
+                if (rs.getInt("pharmacistid") == id) {
                     temp = fetchPhFromRs(rs);
                     return temp;
                 }
