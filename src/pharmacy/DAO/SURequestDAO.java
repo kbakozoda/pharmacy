@@ -67,6 +67,9 @@ public class SURequestDAO extends DAOInterface{
     public int deleteById(int id) {
         return removeById(id, tableName);
     }
+    public int deleteByNetworkId(int id) {
+        return removeByNetworkId(id, tableName);
+    }
 
     public void insert(RequestToGod obj) {
         try {

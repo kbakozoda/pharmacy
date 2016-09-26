@@ -24,7 +24,7 @@
         <action name="tryAuthorise" class="pharmacy.Actions.TryAuthorise">
             <result name="SUCCESS-SU" type="redirect">/superuser/welcome.action</result>
             <result name="SUCCESS-ADMIN" type="redirect">/admin/welcome.action</result>
-            <result name="SUCCESS" type="redirect">/pharm/index.action</result>
+            <result name="SUCCESS" type="redirect">HelloWorld.action</result>
             <result name="ERROR">authentication/login.jsp</result>
         </action>
 
