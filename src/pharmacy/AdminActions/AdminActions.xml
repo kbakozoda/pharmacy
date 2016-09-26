@@ -111,6 +111,7 @@
 
         <action name="createPhst" class="pharmacy.AdminActions.Pharmacists" method="create">
             <result name="success">../Admin/phstNew.jsp</result>
+            <result name="NOFREE">../Admin/pharmacists.jsp</result>
         </action>
 
         <action name="doCreatePhst" class="pharmacy.AdminActions.Pharmacists" method="doCreate">

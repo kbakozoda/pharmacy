@@ -28,6 +28,7 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
     private String username = getUsername();
     private int networkId = getNetworkId();
     private int selPh;
+    private String passwordconf;
     private List<Pharmacy> phList;
     private List phNmbList;
 
@@ -36,7 +37,7 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
         pharmacist = new User();
         list = new ArrayList<User>();
         int phId;
-       phList = phService.getAllForNetwork(networkId);
+        phList = phService.getAllForNetwork(networkId);
 
         for (int i=0; i<phList.size(); i++) {
             phId = phList.get(i).getPharmacistId();
@@ -50,48 +51,93 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
 
     @SkipValidation
     public String create() {
+        int freePhCount = 0;
         phList = phService.getAllForNetwork(networkId);
         phNmbList = new ArrayList<>();
         for (int i=0; i<phList.size(); i++) {
             if (phList.get(i).getPharmacistId() == -1) {
                 int temp = phList.get(i).getNumber();
+                freePhCount++;
                 phNmbList.add(temp);
             }
         }
+
+        if (freePhCount == 0) {
+            addActionError("No free pharmacies. Please create new if you want to add new pharmacist");
+            return "NOFREE";
+        }
+
         return Action.SUCCESS;
     }
 
+    @SkipValidation
     public String doCreate() {
+        int freePhCount = 0;
+        if (!regValidate()) {
+            phList = phService.getAllForNetwork(networkId);
+            phNmbList = new ArrayList<>();
+            for (int i=0; i<phList.size(); i++) {
+                if (phList.get(i).getPharmacistId() == -1) {
+                    int temp = phList.get(i).getNumber();
+                    freePhCount++;
+                    phNmbList.add(temp);
+                }
+            }
+            if (freePhCount == 0) {
+                addActionError("No free pharmacies. Please create new if you want to add new pharmacist");
+                return "NOFREE";
+            }
+            return Action.INPUT;
+        } else if (selPh != -1) {
+            boolean inlist = false;
+            phList = phService.getAllForNetwork(networkId);
+            phNmbList = new ArrayList<>();
+            for (int i=0; i<phList.size(); i++) {
+                if (phList.get(i).getPharmacistId() == -1 && phList.get(i).getNumber() == selPh) {
+                    inlist = true;
+                    break;
+                }
+            }
+
+            if (inlist == false) {
+                addActionError("The selected pharmacy number does not exist!");
+                return Action.INPUT;
+            }
+        }
+
+        pharmacist.setRole(3);
+        uService.insert(pharmacist);
+        int uid = uService.getIdByUsername(pharmacist.getUsername());
+        System.out.println("uid = " + uid);
+        System.out.println("selPH = " + selPh);
+        phList = phService.getAllForNetwork(getNetworkId());
+        boolean set = false;
+        for (int i=0; i<phList.size(); i++) {
+            if(phList.get(i).getNumber() == selPh) {
+                phList.get(i).setPharmacistId(uid);
+                phService.update(phList.get(i));
+                set = true;
+                break;
+            }
+        }
+        if (!set){
+            addActionError("Pharmacy with this number no longer exists");
+        }
         return Action.SUCCESS;
     }
 
     @SkipValidation
     public String edit() {
-        System.out.println("EDIT PHARMACIST");
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         int id = Integer.parseInt(request.getParameter("id"));
-        System.out.println("HERE");
         pharmacist = uService.getById(id);
         if (pharmacist == null) {
             return Action.ERROR;
-        }
-        System.out.println("over here + newid " + networkId );
-        phList = phService.getAllForNetwork(networkId);
-        phNmbList = new ArrayList<>();
-        System.out.println("now here");
-        for (int i=0; i<phList.size(); i++) {
-            System.out.println("NW:" + phList.get(i).getNumber());
-            if (phList.get(i).getPharmacistId() == -1) {
-                int temp = phList.get(i).getNumber();
-                phNmbList.add(temp);
-            } else if (phList.get(i).getPharmacistId() == id) selPh = phList.get(i).getNumber();
         }
         return Action.SUCCESS;
     }
 
     public String doEdit() {
-        if (selPh != -1) {
-        }
         uService.update(pharmacist);
         return Action.SUCCESS;
     }
@@ -104,11 +150,75 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
         return Action.SUCCESS;
     }
 
-    public void validate() {
+    public boolean regValidate() {
         PatternService ps = new PatternService();
         Pattern namePattern = ps.getNamePattern();
         Pattern loginPattern = ps.getLoginPattern();
         Pattern passwordPattern = ps.getPasswordPattern();
+
+        UserService us = new UserService();
+        List<User> ulist = us.getAll();
+
+        Matcher m = namePattern.matcher(pharmacist.getName());
+        if (!m.matches())
+        {
+            addActionError("The name is invalid");
+            return false;
+        }
+
+        m = namePattern.matcher(pharmacist.getSurname());
+        if(!m.matches())
+        {
+            addActionError("The surname is invalid");
+            return false;
+        }
+
+        m = loginPattern.matcher(pharmacist.getUsername());
+
+        for (int i=0; i<ulist.size(); i++) {
+            System.out.println(ulist.get(i).getUsername() + " vs " + pharmacist.getUsername());
+            System.out.println(ulist.get(i).getRole() + " " + pharmacist.getRole());
+            if(ulist.get(i).getUsername().equals(pharmacist.getUsername()) &&
+                    ulist.get(i).getRole() == 3 &&
+                    ulist.get(i).getId() != pharmacist.getId() ) {
+                addActionError("The username is already taken");
+                return false;
+            }
+        }
+
+        if(!m.matches())
+        {
+            addActionError("The username is invalid");
+            return false;
+        }
+
+        m = passwordPattern.matcher(pharmacist.getPassword());
+
+        if(!pharmacist.getPassword().equals(passwordconf))
+        {
+            addFieldError("passwordconf", "Password and its confirmation do not match");
+            return false;
+        }
+
+        if(!m.matches())
+        {
+            addFieldError("pharmacist.password", "Such password is invalid");
+            return false;
+        }
+
+        if(selPh == -1)
+        {
+            addFieldError("selPh","Please select the pharmacy");
+            return false;
+        }
+
+        return true;
+    }
+
+    public void validate() {
+        PatternService ps = new PatternService();
+        Pattern namePattern = ps.getNamePattern();
+        Pattern loginPattern = ps.getLoginPattern();
 
         UserService us = new UserService();
         List<User> ulist = us.getAll();
@@ -128,8 +238,11 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
         m = loginPattern.matcher(pharmacist.getUsername());
 
         for (int i=0; i<ulist.size(); i++) {
+            System.out.println(ulist.get(i).getUsername() + " vs " + pharmacist.getUsername());
+            System.out.println(ulist.get(i).getRole() + " " + pharmacist.getRole());
             if(ulist.get(i).getUsername().equals(pharmacist.getUsername()) &&
-                    ulist.get(i).getId() != pharmacist.getId()) {
+                    ulist.get(i).getRole() == 3 &&
+                    ulist.get(i).getId() != pharmacist.getId() ) {
                 addActionError("The username is already taken");
             }
         }
@@ -138,16 +251,6 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
         {
             addActionError("The username is invalid");
         }
-
-        phList = new PharmacyService().getAllForNetwork(networkId);
-        phNmbList = new ArrayList<>();
-        for (int i=0; i<phList.size(); i++) {
-            if (phList.get(i).getPharmacistId() == -1) {
-                int temp = phList.get(i).getNumber();
-                phNmbList.add(temp);
-            }
-        }
-        selPh = phService.getById(pharmacist.getPharmacyId()).getNumber();
     }
 
     public List<User> getList() {
@@ -184,15 +287,7 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
         this.pharmacist = pharmacist;
     }
 
-    public int getSelPh() {
-        return selPh;
-    }
-
-    public void setSelPh(int selPh) {
-        this.selPh = selPh;
-    }
-
-    public List<Pharmacy> getPhList() {
+   public List<Pharmacy> getPhList() {
         return phList;
     }
 
@@ -206,5 +301,21 @@ public class Pharmacists extends ActionSupport implements ModelDriven<User> {
 
     public void setPhNmbList(List phNmbList) {
         this.phNmbList = phNmbList;
+    }
+
+    public int getSelPh() {
+        return selPh;
+    }
+
+    public void setSelPh(int selPh) {
+        this.selPh = selPh;
+    }
+
+    public String getPasswordconf() {
+        return passwordconf;
+    }
+
+    public void setPasswordconf(String passwordconf) {
+        this.passwordconf = passwordconf;
     }
 }

@@ -40,7 +40,8 @@
                 </tr>
             </s:iterator>
         </table>
-        <a href="/admin/welcome.action">Back</a>
+        <a href="/admin/createPhst.action">Create new</a>
+        <a href="/admin/welcome.action">Back</a><br>
     </div>
 </s:if>
 <s:if test="list.size() = 0">
