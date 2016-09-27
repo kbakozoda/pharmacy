@@ -46,7 +46,7 @@ public class SURequestService {
 
         netw.setAdminId(userId);
         networkService.update(netw);
-
+        declineByNetID(netw.getId());
         declineById(id);
         // check for correctness
     }
@@ -54,5 +54,7 @@ public class SURequestService {
     public void declineById(int id) {
         dao.deleteById(id);
     }
-
+    public void declineByNetID(int id) {
+        dao.deleteByNetworkId(id);
+    }
 }
