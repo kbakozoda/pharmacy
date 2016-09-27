@@ -39,6 +39,7 @@
 
         <action name="create" class="pharmacy.PhActions.Welcome" method="create">
             <result name="success">../Pharmacist/new.jsp</result>
+            <result name="input">../Pharmacist/new.jsp</result>
         </action>
 
         <action name="doCreate" class="pharmacy.PhActions.Welcome" method="doCreate">

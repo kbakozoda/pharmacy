@@ -31,6 +31,9 @@ public class StockService {
         return list;
     }
 
+    public void insert(StockElement obj) {
+        dao.insert(obj);
+    }
     public void deleteById(int id) {
         dao.deleteById(id);
     }

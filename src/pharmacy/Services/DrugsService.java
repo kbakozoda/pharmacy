@@ -12,6 +12,10 @@ public class DrugsService {
         dao = new DrugsDAO();
     }
 
+    public int getIdByName(String name) {
+        return dao.getIdByName(name);
+    }
+
     public List<Drug> getAll() {
         List<Drug> list;
         list = dao.getAll();

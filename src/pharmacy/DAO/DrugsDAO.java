@@ -57,6 +57,22 @@ public class DrugsDAO extends DAOInterface {
         return null;
     }
 
+    public int getIdByName(String name) {
+        ResultSet rs = getRSForSelAll(tableName);
+        Drug temp;
+        try {
+            while (rs.next()) {
+                if (rs.getString("name").equals(name)) {
+                    temp = fetchDrugFromRs(rs);
+                    return temp.getId();
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return -1;
+    }
+
     public int deleteById(int id) {
         return removeById(id, tableName);
     }

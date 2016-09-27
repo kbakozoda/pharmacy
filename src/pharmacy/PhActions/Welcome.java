@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import javafx.util.Pair;
 import org.apache.struts2.ServletActionContext;
 import pharmacy.Models.Drug;
+import pharmacy.Models.Pharmacy;
 import pharmacy.Models.StockElement;
 import pharmacy.Models.User;
 import pharmacy.Services.DrugsService;
@@ -74,27 +75,51 @@ public class Welcome extends ActionSupport implements ModelDriven<StockElement>{
     }
 
     public String create() {
-        /*stockElement = new StockElement();
+        setUsernameAndPhId();
+        stockElement = new StockElement();
         selectDrug = new ArrayList<String>();
         DrugsService ds = new DrugsService();
         List<Drug> drugList = ds.getAll();
+        list = service.getByPhId(phId);
         boolean found;
         // getting list of drugs that are not in stock content and in parallel collecting their names
         for (int i=0; i<drugList.size(); i++) {
             found = false;
-            for (int j=0; j<list.size(); i++) {
+            for (int j=0; j<list.size(); j++) {
                 if (list.get(j).getDrugId() == drugList.get(i).getId()) {
                     found = true;
                     break;
                 }
             }
-            if (found) drugList.remove(i);
-            else selectDrug.add(drugList.get(i).getName());
-        }*/
+            if (!found) {
+                selectDrug.add(drugList.get(i).getName());
+            }
+        }
+
+        if (selectDrug.size() == 0) {
+            addActionError("All existing drugs are in stock, nothing to add.");
+            return Action.INPUT;
+        }
+
+        selected = "nll";
         return Action.SUCCESS;
     }
 
     public String doCreate() {
+        setUsernameAndPhId();
+        DrugsService ds = new DrugsService();
+        int drId = ds.getIdByName(selected);
+        if (drId == -1) {
+            addActionError("Drug with such name not found!");
+            return Action.INPUT;
+        }
+        PharmacyService phs = new PharmacyService();
+        Pharmacy ph = phs.getByPhId(phId);
+
+        stockElement.setDrugId(drId);
+        stockElement.setPharmacyId(phId);
+        stockElement.setNetworkId(ph.getNetworkId());
+        service.insert(stockElement);
         return Action.SUCCESS;
     }
 

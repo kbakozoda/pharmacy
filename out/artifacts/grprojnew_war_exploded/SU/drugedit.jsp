@@ -7,14 +7,14 @@
 <h1>Edit</h1>
 <s:actionerror/>
 
-<s:hidden value="drug.id" name="drug.id"></s:hidden>
-<s:hidden value="drug.typeid" name="drug.typeId"></s:hidden>
+<s:hidden value="drug.id" name="drug.id"/>
+<s:hidden value="drug.typeid" name="drug.typeId"/>
 
 <s:form action="drugupdate">
     <s:push value="drug">
         <s:hidden name="drug.id"/>
         <s:hidden name="drug.typeId"/>
-        <s:textfield label="Enter drug name" name="drug.name"></s:textfield>
+        <s:textfield label="Enter drug name" name="drug.name"/>
         <s:select list="drTypeNameList" name="selType" headerValue="Select its type" headerKey="nll"/>
         <s:textfield label="Age restriction" type="number" min="0" max="18" name="drug.ageRestrict" />
         <s:textarea label="Instruction" name="drug.instruction"/>

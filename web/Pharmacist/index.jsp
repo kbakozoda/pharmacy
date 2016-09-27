@@ -48,7 +48,7 @@
     <h1>The list is empty yet.</h1>
 </s:if>
 
-<a href="/new.action">Create new</a>
+<a href="/pharm/create.action">Create new</a>
 
 <s:actionerror/>
 </body>
