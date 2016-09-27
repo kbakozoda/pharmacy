@@ -5,6 +5,9 @@
     <title>Edit pharmacist</title>
 </head>
 <body>
+<header>
+    Edit Pharmacist info
+</header>
 <s:actionerror/>
 
 <s:hidden name="pharmacist.password" value="pharmacist.password"/>

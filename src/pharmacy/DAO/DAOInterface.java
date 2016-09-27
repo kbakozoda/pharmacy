@@ -9,7 +9,7 @@ import java.util.Properties;
 public abstract class DAOInterface {
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String USER = "root";
-    private static final String PASS = "root";
+    private static final String PASS = "";
     private static final String DB_URL = "jdbc:mysql://localhost:3306/pharmacy";
     public Connection conn;
     public Statement stmt;
@@ -18,7 +18,7 @@ public abstract class DAOInterface {
             Class.forName(JDBC_DRIVER);
             Properties properties = new Properties();
             properties.setProperty("user", "root");
-            properties.setProperty("password", "root");
+            properties.setProperty("password", "");
             properties.setProperty("useSSL", "false");
             properties.setProperty("autoReconnect", "true");
           //  conn = DriverManager.getConnection(DB_URL, USER, PASS);

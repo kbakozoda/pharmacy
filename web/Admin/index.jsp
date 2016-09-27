@@ -1,6 +1,6 @@
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="../style.css">
 <html>
 
     <head>
@@ -40,6 +40,6 @@
     <footer>
         <p id="copyright">Copyright 2016, Loosers inc.</p>
     </footer>
-
+ </div>
 </html>
 

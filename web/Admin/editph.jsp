@@ -28,7 +28,9 @@
         </s:push>
     </s:form>
     </article>
-
+    <footer>
+        <p id="copyright">Copyright 2016, Loosers inc.</p>
+    </footer>
 </div>
 </body>
 </html>

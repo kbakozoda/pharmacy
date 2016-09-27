@@ -1,13 +1,27 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<link rel="stylesheet" type="text/css" href="../style.css">
 <html>
 <head>
     <title>Drugs</title>
 </head>
 <body>
-<h1>All Pharmacies in your network, Mr. <s:property value="username"/>.
-Your network id = <s:property value="networkId"/>
-</h1>
+<div class="flex-container">
+<header>
+    <h1>All Pharmacies in your network, Mr. <s:property value="username"/>.
+        Your network id = <s:property value="networkId"/>
+    </h1>
+</header>
+    <nav class="nav">
+        <ul>
+            <li><a href="requests.action">View requests</a> </li>
+            <li><a href="/user/info">My credentials</a></li></li>
+            <li> <a href="pharmacists.action">Pharmacists</a></li>
+            <li> <a href="welcome.action">Dashboard</a></li>
+            <li> <a href="logout.action">logout</a></li>
+        </ul>
+    </nav>
+    <article class="article">
 <s:if test="list.size() > 0">
     <div>
         <table cellpadding="5px" border="1">
@@ -56,6 +70,12 @@ Your network id = <s:property value="networkId"/>
 <s:if test="hslist.size() = 0">
     <h1>The list is empty yet.</h1>
 </s:if>
+    </article>
 <s:actionerror/>
+
+<footer>
+    <p id="copyright">Copyright 2016, Loosers inc.</p>
+</footer>
+</div>
 </body>
 </html>
