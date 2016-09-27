@@ -43,8 +43,7 @@ public class HelloWorld {
  *              v when creating new: check if there are no duplicates
  *      V User info RU
  *      V Complete all actions of Admin with CRUD
- *      *--->> Complete all actions of Pharmacist with CRUD
- *              Est.: [1.5 h.] Done in[]
+ *      V Complete all actions of Pharmacist with CRUD
  *      TODO: onDelete any entity: every dependency must also change it's links
  *              Est: [] Done in[]
  *      TODO: Register new superuser
@@ -54,7 +53,6 @@ public class HelloWorld {
  *      TODO: Everywhere: instead of id's show names/numbers
  *              Est.: [] Done in[]
  *      TODO: On each url with id check if this user has a permission to modify this elem!!!
- *      TODO: Add cancel links to create/edit pages
  *      TODO: Add UserInfo interceptor. Which checks if someone is logged in
  *      TODO: Show username in every page +logout link
  *      TODO: 'Info' -> view each entities data in a separate page

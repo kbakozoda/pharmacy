@@ -3,28 +3,21 @@
   <component name="ChangeListManager">
     <list id="22fbe2f0-2c82-4da7-a236-306e68bf477d" name="Default" comment="" />
     <list default="true" id="9e6fef55-6e1b-4b44-8f3e-87213327b4d3" name="pharmacistCRUD" comment="pharmacist: welcome page view drug names instead of ids&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pharmacy/Tests/DeveloperServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/DAO/StockDAO.class" afterPath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/DAO/StockDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/PhActions/Welcome.class" afterPath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/PhActions/Welcome.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/Services/StockService.class" afterPath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/Services/StockService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/DAO/StockDAO.class" afterPath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/DAO/StockDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/PhActions/Welcome.class" afterPath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/PhActions/Welcome.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/Services/StockService.class" afterPath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/Services/StockService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Arquillian_JUnit_Release.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Arquillian_JUnit_Release.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/base.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/tags/genericscape.tag" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/tags/wrapper.tag" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/DAO/DAOInterface.class" afterPath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/DAO/DAOInterface.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/DAO/SURequestDAO.class" afterPath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/DAO/SURequestDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/Services/SURequestService.class" afterPath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/Services/SURequestService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/DAO/DAOInterface.class" afterPath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/DAO/DAOInterface.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/DAO/SURequestDAO.class" afterPath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/DAO/SURequestDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/Services/SURequestService.class" afterPath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/Services/SURequestService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grprojnew.iml" afterPath="$PROJECT_DIR$/grprojnew.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/Pharmacist/index.jsp" afterPath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/Pharmacist/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/SU/drugedit.jsp" afterPath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/SU/drugedit.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/PhActions/PhActions.xml" afterPath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/WEB-INF/classes/pharmacy/PhActions/PhActions.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/PhActions/PhActions.xml" afterPath="$PROJECT_DIR$/out/production/grprojnew/pharmacy/PhActions/PhActions.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pharmacy/DAO/DrugsDAO.java" afterPath="$PROJECT_DIR$/src/pharmacy/DAO/DrugsDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pharmacy/PhActions/PhActions.xml" afterPath="$PROJECT_DIR$/src/pharmacy/PhActions/PhActions.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pharmacy/PhActions/Welcome.java" afterPath="$PROJECT_DIR$/src/pharmacy/PhActions/Welcome.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pharmacy/Services/DrugsService.java" afterPath="$PROJECT_DIR$/src/pharmacy/Services/DrugsService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pharmacy/Services/StockService.java" afterPath="$PROJECT_DIR$/src/pharmacy/Services/StockService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Pharmacist/index.jsp" afterPath="$PROJECT_DIR$/web/Pharmacist/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Pharmacist/new.jsp" afterPath="$PROJECT_DIR$/web/Pharmacist/new.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/index.jsp" afterPath="$PROJECT_DIR$/out/artifacts/grprojnew_war_exploded/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pharmacy/HelloWorld.java" afterPath="$PROJECT_DIR$/src/pharmacy/HelloWorld.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Admin/editph.jsp" afterPath="$PROJECT_DIR$/web/Admin/editph.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.jsp" afterPath="$PROJECT_DIR$/web/index.jsp" />
     </list>
     <ignored path="grprojnew.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,16 +40,6 @@
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
     <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - pharmacy@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -64,102 +47,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HelloWorld.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pharmacy/HelloWorld.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="60" column="8" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="76" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="struts.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/struts.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="70" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/Pharmacist/index.jsp">
+        <entry file="file://$PROJECT_DIR$/web/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editph.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/Admin/editph.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
-              <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+              <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeveloperService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pharmacy/Services/DeveloperService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Welcome.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pharmacy/PhActions/Welcome.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="100" column="32" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StockService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pharmacy/Services/StockService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
-              <folding>
-                <element signature="e#739#740#0" expanded="true" />
-                <element signature="e#770#771#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DrugsDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pharmacy/DAO/DrugsDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/Pharmacist/new.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PhActions.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pharmacy/PhActions/PhActions.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="41" column="63" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
-            <state />
           </provider>
         </entry>
       </file>
@@ -169,9 +73,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="struts_2_3" />
-        <option value="Jsp File" />
         <option value="Class" />
         <option value="Arquillian JUnit Test Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -196,13 +100,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/pharmacy/SUActions/SUActions.xml" />
-        <option value="$PROJECT_DIR$/src/pharmacy/SUActions/DrugTypes.java" />
-        <option value="$PROJECT_DIR$/web/SU/drugtypeedit.jsp" />
-        <option value="$PROJECT_DIR$/web/Admin/editph.jsp" />
-        <option value="$PROJECT_DIR$/web/Admin/requests.jsp" />
-        <option value="$PROJECT_DIR$/web/Admin/stock.jsp" />
-        <option value="$PROJECT_DIR$/web/authentication/nofreeph.jsp" />
         <option value="$PROJECT_DIR$/web/authentication/nofree.jsp" />
         <option value="$PROJECT_DIR$/web/authentication/login.jsp" />
         <option value="$PROJECT_DIR$/web/lab2/developers.jsp" />
@@ -233,7 +130,6 @@
         <option value="$PROJECT_DIR$/web/Admin/phstNew.jsp" />
         <option value="$PROJECT_DIR$/src/pharmacy/AdminActions/AdminActions.xml" />
         <option value="$PROJECT_DIR$/src/pharmacy/AdminActions/Pharmacists.java" />
-        <option value="$PROJECT_DIR$/src/pharmacy/HelloWorld.java" />
         <option value="$PROJECT_DIR$/src/pharmacy/PhActions/Stock.java" />
         <option value="$PROJECT_DIR$/src/struts.xml" />
         <option value="$PROJECT_DIR$/src/pharmacy/Interceptors/PhAuthInterceptor.java" />
@@ -243,10 +139,18 @@
         <option value="$PROJECT_DIR$/src/pharmacy/Tests/DeveloperServiceTest.java" />
         <option value="$PROJECT_DIR$/src/pharmacy/DAO/DrugsDAO.java" />
         <option value="$PROJECT_DIR$/src/pharmacy/Services/DrugsService.java" />
-        <option value="$PROJECT_DIR$/src/pharmacy/PhActions/PhActions.xml" />
         <option value="$PROJECT_DIR$/web/Pharmacist/new.jsp" />
         <option value="$PROJECT_DIR$/src/pharmacy/Services/StockService.java" />
         <option value="$PROJECT_DIR$/src/pharmacy/PhActions/Welcome.java" />
+        <option value="$PROJECT_DIR$/src/pharmacy/PhActions/PhActions.xml" />
+        <option value="$PROJECT_DIR$/src/pharmacy/HelloWorld.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/tags/wrapper.tag" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/tags/genericscape.tag.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/tags/genericscape.tag" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/base.jsp" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/web/style.css" />
+        <option value="$PROJECT_DIR$/web/Admin/editph.jsp" />
       </list>
     </option>
   </component>
@@ -357,7 +261,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Pharmacist" />
+              <option name="myItemId" value="Admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -390,28 +294,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="pharmacy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="grprojnew" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="grprojnew" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pharmacy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PhActions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1083,7 +965,7 @@
       <updated>1474853343786</updated>
       <workItem from="1474853344695" duration="9662000" />
       <workItem from="1474937520449" duration="256000" />
-      <workItem from="1474938099344" duration="2562000" />
+      <workItem from="1474938099344" duration="5455000" />
     </task>
     <task id="LOCAL-00014" summary="pharmacist: welcome page view drug names instead of ids&#10;">
       <created>1474926713000</created>
@@ -1096,7 +978,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263676000" />
+    <option name="totallyTimeSpent" value="266569000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -1120,7 +1002,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.50317967" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42089093" sideWeight="0.49682036" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42089093" sideWeight="0.49682036" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22273426" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1129,7 +1011,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19285715" sideWeight="0.48456058" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962668" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22478157" sideWeight="0.51706034" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1920635" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1920635" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19698173" sideWeight="0.50782996" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1224,51 +1106,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/Admin/pharmacies.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="47" column="57" selection-start-line="44" selection-start-column="24" selection-end-line="47" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/Admin/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="46" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/Admin/requests.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pharmacy/AdminActions/Pharmacies.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="117" column="62" selection-start-line="116" selection-start-column="8" selection-end-line="117" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/userinfo/cred.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pharmacy/Actions/UserInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="115" column="9" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/Admin/phstEdit.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1377,14 +1214,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pharmacy/PhActions/Stock.java" />
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="39" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/3c9e0f68/df8f07d3-de45-4bf9-b5ce-8e4394057a55/pharmacy.users">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1461,14 +1290,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pharmacy/HelloWorld.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="60" column="8" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pharmacy/Services/DeveloperServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -1516,8 +1337,8 @@
         <state relative-caret-position="170">
           <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
           <folding>
-            <element signature="e#271#272#0" expanded="true" />
-            <element signature="e#315#316#0" expanded="true" />
+            <element signature="e#271#272#0" expanded="false" />
+            <element signature="e#315#316#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1658,8 +1479,8 @@
         <state relative-caret-position="201">
           <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
           <folding>
-            <element signature="e#739#740#0" expanded="true" />
-            <element signature="e#770#771#0" expanded="true" />
+            <element signature="e#739#740#0" expanded="false" />
+            <element signature="e#770#771#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1682,13 +1503,77 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pharmacy/PhActions/PhActions.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="697">
           <caret line="41" column="63" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
           <folding />
         </state>
       </provider>
       <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pharmacy/HelloWorld.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/wrapper.tag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/genericscape.tag.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/genericscape.tag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/base.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="61" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/Admin/editph.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
