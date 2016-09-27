@@ -1,17 +1,25 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 25.09.2016
-  Time: 21:45
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" type="text/css" href="../style.css">
 <html>
 <head>
     <title>Pharmacists</title>
 </head>
 <body>
+
+<header>Pharmacists</header>
+<nav class="nav">
+    <ul>
+        <li>
+            <a href="/admin/createPhst.action">Create new</a>
+        </li>
+        <li>
+            <a href="/admin/welcome.action">Back</a><br>
+        </li>
+    </ul>
+</nav>
+
+<article class="article">
 <s:if test="list.size() > 0">
     <div>
         <table cellpadding="5px" border="1">
@@ -40,13 +48,13 @@
                 </tr>
             </s:iterator>
         </table>
-        <a href="/admin/createPhst.action">Create new</a>
-        <a href="/admin/welcome.action">Back</a><br>
     </div>
 </s:if>
 <s:if test="list.size() = 0">
     <h1>No pharmacists.</h1>
 </s:if>
 <s:actionerror/>
+</article>
+<footer id="copyright">Copyright 2016, Loosers inc.</footer>
 </body>
 </html>

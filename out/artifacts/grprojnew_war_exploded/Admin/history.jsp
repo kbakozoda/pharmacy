@@ -1,29 +1,27 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" type="text/css" href="../style.css">
-<%@ taglib prefix="t" uri="../WEB-INF/tags/" %>
 
 <html>
 <head>
     <title>Operation history</title>
 </head>
-
-<t:genericscape>
-    <jsp:attribute name="header">
+<body>
+    <header>
         <h1>You are logged in as, Mr. <s:property value="username"/>.
             Your network id = <s:property value="networkId"/><br>Operation History:
         </h1>
-    </jsp:attribute>
+    <header/>
 
-    <jsp:attribute name="nav">
+    <nav class="nav">
             <li><a href="requests.action">View requests</a> </li>
             <li><a href="/user/info">My credentials</a></li></li>
             <li> <a href="pharmacists.action">Pharmacists</a></li>
             <li> <a href="welcome.action">Dashboard</a></li>
             <li> <a href="logout.action">logout</a></li>
-    </jsp:attribute>
+    </nav>
 
-    <jsp:body>
+    <article class="article">
         <s:if test="hslist.size() > 0">
             <div>
                 <table cellpadding="5px" border="1">
@@ -53,18 +51,10 @@
         </s:if>
 
         <s:actionerror/>
-    </jsp:body>
-
-    <jsp:attribute name="footer">
+    </article>
+    <footer>
          <p id="copyright">Copyright 2016, Loosers inc.</p>
-    </jsp:attribute>
-
-</t:genericscape>
-
-<body>
-
-
-
+    </footer>
 
 
 </body>

@@ -1,17 +1,27 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 25.09.2016
-  Time: 17:48
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" type="text/css" href="../style.css">
 <html>
 <head>
     <title>Pharmacy</title>
 </head>
+
+<header>
+    Pharmacy info
+</header>
+
+<nav class="nav">
+    <ul>
+        <li>
+            <a href="/admin/pharmacies.action">Back</a>
+            <a href="/admin/logout.action">Logout</a>
+        </li>
+    </ul>
+</nav>
+
+
 <body>
+<article class="article">
 Name
 <s:property value="pharmacy.name"/> <br>
 Number
@@ -20,7 +30,9 @@ Pharmacist username
 <s:property value="phUsername"/> <br>
 Address
 <s:property value="pharmacy.address"/> <br>
-
-<a href="/admin/pharmacies.action">Pharmacy list</a>
+</article>
 </body>
+<footer id="copyright">
+    Copyright 2016, Loosers inc.
+</footer>
 </html>

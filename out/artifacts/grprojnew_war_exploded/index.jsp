@@ -19,6 +19,7 @@
       <li> <a href="pharm/index">I am a Pharmacist</a></li>
       <li> <a href="regadmin">Register new admin</a></li>
       <li> <a href="regpharm">Register new pharmacist</a></li>
+      <li> <a href="regsu">Register new superuser</a></li>
     </ul>
   </nav>
 

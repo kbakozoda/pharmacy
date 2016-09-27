@@ -1,10 +1,15 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" type="text/css" href="../style.css">
+
 <html>
 <head>
     <title>Edit pharmacist</title>
 </head>
 <body>
+<header>
+    Edit Pharmacist info
+</header>
 <s:actionerror/>
 
 <s:hidden name="pharmacist.password" value="pharmacist.password"/>

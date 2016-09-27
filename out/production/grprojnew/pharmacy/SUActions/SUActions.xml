@@ -26,6 +26,13 @@
             <result name="SUCCESS">../SU/index.jsp</result>
         </action>
 
+        <action name="users" class="pharmacy.SUActions.Users">
+            <result name="success">../SU/users.jsp</result>
+        </action>
+
+        <action name="usdelete" class="pharmacy.SUActions.Users" method="delete">
+            <result name="success" type="redirect">users.action</result>
+        </action>
         <!--NETWORK ACTIONS-->
         <action name="networks" class="pharmacy.SUActions.Networks">
             <interceptor-ref name="SUAuthStack"/>

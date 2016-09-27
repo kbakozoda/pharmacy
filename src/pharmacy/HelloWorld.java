@@ -46,9 +46,9 @@ public class HelloWorld {
  *      V Complete all actions of Pharmacist with CRUD
  *      TODO: onDelete any entity: every dependency must also change it's links
  *              Est: [] Done in[]
- *      TODO: Register new superuser
+ *      V Register new superuser
  *              Est.: [30 min.] Done in[]
- *      TODO: In all pages: add navigation links
+ *      V In all pages: add navigation links
  *              Est.: [20 min.] Done in[]
  *      TODO: Everywhere: instead of id's show names/numbers
  *              Est.: [] Done in[]
@@ -59,7 +59,7 @@ public class HelloWorld {
  *      TODO: SU: when u approve 1 request, decline all with the same netwID
  *      TODO: same for Admin
  *      TODO: reg - press submit - form doesn't pass validation - still alerts user.
- *      TODO: Interceptors: check if user still exists
+ *      V Interceptors: check if user still exists
  *              Est.: [10 min.] Done in[]
  *      TODO: Validate all forms +logic validation
  *              Est.: [1.5 h.] Done in[]
@@ -69,7 +69,7 @@ public class HelloWorld {
  *              Est.: [] Done in[]
  *      TODO: Do a security check for every role, every entity
  *         ---------- 3rd lab up until here -------------
- *      TODO: 1. Apply design
+ *      V Apply design
  *      TODO: 2. Write junit tests
  *      TODO: 3. Apply file generation classes
  *      TODO: 4. Handle all exceptions when there hasn't been anything fetched from db

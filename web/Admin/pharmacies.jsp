@@ -14,11 +14,13 @@
 </header>
     <nav class="nav">
         <ul>
+            <li><a href="/admin/createph.action">Create New</a></li>
             <li><a href="requests.action">View requests</a> </li>
             <li><a href="/user/info">My credentials</a></li></li>
             <li> <a href="pharmacists.action">Pharmacists</a></li>
             <li> <a href="welcome.action">Dashboard</a></li>
             <li> <a href="logout.action">logout</a></li>
+
         </ul>
     </nav>
     <article class="article">
@@ -63,8 +65,6 @@
                 </tr>
             </s:iterator>
         </table>
-        <a href="/admin/createph.action">Create New</a><br>
-        <a href="/admin/welcome">Menu</a>
     </div>
 </s:if>
 <s:if test="hslist.size() = 0">

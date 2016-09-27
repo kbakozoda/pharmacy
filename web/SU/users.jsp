@@ -1,23 +1,19 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib uri="/struts-tags" prefix="s" %>
 <link rel="stylesheet" type="text/css" href="../style.css">
-
 <html>
 <head>
-    <title>Requests</title>
+    <title>Users</title>
 </head>
 <body>
-
-<header>
-    <h1>Requests for registration</h1>
-</header>
+<header><h1>All users</h1></header>
 <nav class="nav">
     <ul>
         <li>
-            <a href="/admin/welcome.action">Menu</a>
+            <a href="welcome.action">Dashboard</a>
         </li>
         <li>
-            <a href="/admin/logout.action">Logout</a>
+            <a href="/superuser/logout.action">Logout</a>
         </li>
     </ul>
 </nav>
@@ -26,32 +22,23 @@
         <div>
             <table cellpadding="5px" border="1">
                 <tr>
-                    <th>Id</th>
                     <th>Name</th>
                     <th>Surname</th>
-                    <th>Pharmacy id</th>
                     <th>Username</th>
+                    <th>Role</th>
                 </tr>
 
                 <s:iterator value="list">
                     <tr>
-                        <td><s:property value="id"/></td>
                         <td><s:property value="name"/></td>
                         <td><s:property value="surname"/></td>
-                        <td><s:property value="pharmacyId"/></td>
                         <td><s:property value="username"/></td>
-                        <td> <s:url id="approveURL" action="approve">
+                        <td><s:property value="role"/></td>
+                        <td><s:url id="deleteURL" action="usdelete">
                             <s:param name="id" value="%{id}"></s:param>
                         </s:url>
-                            <s:a href="%{approveURL}">Approve</s:a>
-                        </td>
-                        <td>
-                            <s:url id="declineURL" action="decline">
-                                <s:param name="id" value="%{id}"></s:param>
-                            </s:url>
-                            <s:a href="%{declineURL}">Decline</s:a>
-                        </td>
-                    </tr>
+                            <s:a href="%{deleteURL}" onclick="return confirm('Are you sure?')">Delete</s:a></td>
+                        </tr>
                 </s:iterator>
             </table>
         </div>
@@ -61,9 +48,6 @@
     </s:if>
     <s:actionerror/>
 </article>
-<footer id="copyright">
-    Copyright 2016, Loosers inc.
-</footer>
-
+    <footer id="copyright">Copyright 2016, Loosers inc.</footer>
 </body>
 </html>

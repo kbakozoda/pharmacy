@@ -11,7 +11,10 @@
 <nav class="nav">
     <ul>
         <li>
-
+            <a href="/admin/createPhst.action">Create new</a>
+        </li>
+        <li>
+            <a href="/admin/welcome.action">Back</a><br>
         </li>
     </ul>
 </nav>
@@ -45,8 +48,6 @@
                 </tr>
             </s:iterator>
         </table>
-        <a href="/admin/createPhst.action">Create new</a>
-        <a href="/admin/welcome.action">Back</a><br>
     </div>
 </s:if>
 <s:if test="list.size() = 0">

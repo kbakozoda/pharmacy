@@ -46,6 +46,11 @@
             <result name="success" type="redirect">index.action</result>
             <result name="input">../Pharmacist/new.jsp</result>
         </action>
+
+        <action name="logout" class="pharmacy.Actions.Login" method="logout">
+            <interceptor-ref name="PhAuthStack"/>
+            <result name="SUCCESS" type="redirect">/</result>
+        </action>
     </package>
 
 

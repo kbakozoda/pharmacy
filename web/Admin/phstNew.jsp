@@ -1,5 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" type="text/css" href="../style.css">
+
 <html>
 <head>
     <title>New pharmacist</title>

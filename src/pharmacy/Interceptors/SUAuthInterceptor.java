@@ -5,7 +5,9 @@ import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import org.omg.PortableInterceptor.Interceptor;
 import pharmacy.Models.User;
+import pharmacy.Services.UserService;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,8 +31,20 @@ public class SUAuthInterceptor extends AbstractInterceptor {
         Map<String, Object> session = actionInvocation.getInvocationContext().getSession();
 
         User user = (User) session.get("user");
+        UserService us = new UserService();
+        List<User> users = us.getAll();
+        boolean found = false;
+        if (user != null) {
+            for (int i=0; i<users.size(); i++) {
+                if (users.get(i).getUsername().equals(user.getUsername())) {
+                    found = true;
+                    break;
+                }
+            }
+        }
 
-        if(user == null || user.getRole() != 1){
+        if(found == false || user.getRole() != 1){
+            session.remove("user");
             return "LOGIN";
         }else{
             Action action = (Action) actionInvocation.getAction();

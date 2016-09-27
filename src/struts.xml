@@ -50,6 +50,15 @@
             <result name="input">authentication/pharm.jsp</result>
         </action>
 
+        <action name="regsu" class="pharmacy.Actions.SUReg">
+            <result name="success">authentication/registration.jsp</result>
+        </action>
+
+        <action name="susignup" class="pharmacy.Actions.SUReg" method="signUp">
+            <result name="success" type="redirect">/</result>
+            <result name="input">authentication/registration.jsp</result>
+        </action>
+
     </package>
 
     <package name="user" namespace="/user" extends="struts-default">
