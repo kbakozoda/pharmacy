@@ -22,8 +22,6 @@ public class Requests extends ActionSupport{
         int id;
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         id = Integer.parseInt(request.getParameter("id"));
-        int netID;
-       // netID = Integer.parseInt(request.getParameter("networkid"));
         SURequestService service = new SURequestService();
         service.approveById(id);
         System.out.println("SU: approving request " + id);

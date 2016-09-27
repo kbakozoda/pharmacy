@@ -18,6 +18,7 @@
 
         <action name="index" class="pharmacy.PhActions.Welcome">
             <result name="success">Pharmacist/index.jsp</result>
+            <result name="LOGIN" type="redirect">../login.action</result>
         </action>
     </package>
 

@@ -20,11 +20,24 @@
                 <th>Amount</th>
             </tr>
 
-            <s:iterator value="list">
+            <s:iterator value="list" status="stat">
                 <tr>
-                    <td><s:number name="drugId"/></td>
+                    <td><s:property value="drugnames[%{#stat.index}]"/></td>
                     <td><s:number name="priceOfSingle"/></td>
                     <td><s:number name="amount"/></td>
+
+                    <td>
+                        <s:url id="deleteURL" action="">
+                        <s:param name="id" value="%{id}"></s:param>
+                        </s:url>
+                        <s:a href="%{deleteURL}" onclick="return confirm('Are you sure?')">Delete</s:a>
+                    </td>
+                    <td>
+                        <s:url id="editURL" action="">
+                        <s:param name="id" value="%{id}"></s:param>
+                        </s:url>
+                        <s:a href="%{editURL}">Edit</s:a>
+                    </td>
                 </tr>
             </s:iterator>
         </table>

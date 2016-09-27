@@ -48,15 +48,11 @@ public class SURequestService {
         networkService.update(netw);
 
         declineById(id);
-        declineByNetID(netw.getId());
         // check for correctness
     }
 
     public void declineById(int id) {
         dao.deleteById(id);
-    }
-    public void declineByNetID(int id) {
-        dao.deleteByNetworkId(id);
     }
 
 }
