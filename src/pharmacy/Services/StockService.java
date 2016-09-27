@@ -20,10 +20,22 @@ public class StockService {
         return list;
     }
 
+    public StockElement getById(int id) {
+        return dao.getById(id);
+    }
+
     public List<StockElement> getByPhId(int id) {
         List<StockElement> list;
         list = dao.getByPhId(id);
         System.out.println("elements got: " + list.size());
         return list;
+    }
+
+    public void deleteById(int id) {
+        dao.deleteById(id);
+    }
+
+    public int update(StockElement obj) {
+        return dao.update(obj);
     }
 }

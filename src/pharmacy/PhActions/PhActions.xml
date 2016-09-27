@@ -20,6 +20,31 @@
             <result name="success">../Pharmacist/index.jsp</result>
             <result name="LOGIN" type="redirect">../login.action</result>
         </action>
+
+        <action name="edit" class="pharmacy.PhActions.Welcome" method="edit">
+            <result name="success">../Pharmacist/edit.jsp</result>
+            <result name="error" type="redirect">index.action</result>
+        </action>
+
+        <action name="doEdit" class="pharmacy.PhActions.Welcome" method="doEdit">
+            <result name="success" type="redirect">index.action</result>
+            <result name="input">../Pharmacist/edit.jsp</result>
+            <result name="error" type="redirect">index.action</result>
+        </action>
+
+        <action name="delete" class="pharmacy.PhActions.Welcome" method="delete">
+            <result name="success" type="redirect">index.action</result>
+            <result name="error">error.jsp</result>
+        </action>
+
+        <action name="create" class="pharmacy.PhActions.Welcome" method="create">
+            <result name="success">../Pharmacist/new.jsp</result>
+        </action>
+
+        <action name="doCreate" class="pharmacy.PhActions.Welcome" method="doCreate">
+            <result name="success" type="redirect">index.action</result>
+            <result name="input">../Pharmacist/new.jsp</result>
+        </action>
     </package>
 
 

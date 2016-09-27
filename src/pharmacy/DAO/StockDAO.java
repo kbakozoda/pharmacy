@@ -87,6 +87,24 @@ public class StockDAO extends DAOInterface{
         return removeById(id, tableName);
     }
 
+    public int update(StockElement obj) {
+        try {
+            ResultSet rs = getRSForSelAll(tableName);
+            StockElement temp;
+            while (rs.next()) {
+                if (rs.getInt("id") == obj.getId()) {
+                    rs.updateInt("priceofsingle", obj.getPriceOfSingle());
+                    rs.updateInt("amount", obj.getAmount());
+                    rs.updateRow();
+                    return 1;
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return 0;
+    }
+
     public void insert(StockElement obj) {
         try {
             ResultSet rs = getRSForSelAll(tableName);
