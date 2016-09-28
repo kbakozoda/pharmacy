@@ -27,10 +27,12 @@
         </action>
 
         <action name="users" class="pharmacy.SUActions.Users">
+            <interceptor-ref name="SUAuthStack"/>
             <result name="success">../SU/users.jsp</result>
         </action>
 
         <action name="usdelete" class="pharmacy.SUActions.Users" method="delete">
+            <interceptor-ref name="SUAuthStack"/>
             <result name="success" type="redirect">users.action</result>
         </action>
         <!--NETWORK ACTIONS-->
@@ -93,7 +95,7 @@
         </action>
 
         <action name="updatedrugtype" class="pharmacy.SUActions.DrugTypes" method="updateDrugType">
-
+            <interceptor-ref name="SUAuthStack"/>
             <result name="SUCCESS" type="redirect">drugtypes.action</result>
             <result name="input">../SU/drugtypeedit.jsp</result>
         </action>

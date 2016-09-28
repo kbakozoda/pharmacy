@@ -10,13 +10,13 @@
     <h1>Welcome mister super user! Please choose your next actions</h1>
     </header>
     <nav class="nav">
-        <a href="/superuser/requests.action">View requests</a>
-        <a href="/superuser/users.action">View all users</a>
-        <a href="/superuser/networks.action">View networks</a>
-        <a href="/superuser/drugtypes.action">View drug types</a>
-        <a href="/superuser/drugs.action">View drugs</a>
-        <a href="/user/info">My credentials</a>
-        <a href="logout.action">Logout</a>
+        <li><a href="/superuser/requests.action">View requests</a></li>
+        <li><a href="/superuser/users.action">View all users</a></li>
+        <li><a href="/superuser/networks.action">View networks</a></li>
+        <li><a href="/superuser/drugtypes.action">View drug types</a></li>
+        <li><a href="/superuser/drugs.action">View drugs</a></li>
+        <li><a href="/user/info">My credentials</a></li>
+        <li><a href="logout.action">Logout</a></li>
     </nav>
 <article class="article">
     This is a dashboard of a superuser.

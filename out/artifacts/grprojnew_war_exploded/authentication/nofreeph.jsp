@@ -6,7 +6,7 @@
     <title>No free pharmacies</title>
 </head>
 <body>
-
+<div class="flex-container">
 <header>
     No free pharmacies!
 </header>
@@ -21,6 +21,6 @@
 <footer id="copyright">
     Copyright 2016, Loosers inc.
 </footer>
-
+</div>
 </body>
 </html>

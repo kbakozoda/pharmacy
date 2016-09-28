@@ -5,7 +5,8 @@
 <head>
     <title>Pharmacy</title>
 </head>
-
+<body>
+<div class="flex-container">
 <header>
     Pharmacy info
 </header>
@@ -20,7 +21,6 @@
 </nav>
 
 
-<body>
 <article class="article">
 Name
 <s:property value="pharmacy.name"/> <br>
@@ -31,6 +31,7 @@ Pharmacist username
 Address
 <s:property value="pharmacy.address"/> <br>
 </article>
+</div>
 </body>
 <footer id="copyright">
     Copyright 2016, Loosers inc.

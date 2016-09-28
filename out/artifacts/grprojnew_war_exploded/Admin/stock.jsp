@@ -7,7 +7,7 @@
     <title>Stock Content</title>
 </head>
 <body>
-
+<div class="flex-container">
 <header>
     <h1>You are logged in as, Mr. <s:property value="username"/>.
         Your network id = <s:property value="networkId"/><br>Stock content:
@@ -50,7 +50,7 @@
 <footer id="copyright">
     Copyright 2016, Loosers inc.
 </footer>
-
+</div>
 
 
 </body>

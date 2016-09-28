@@ -4,6 +4,17 @@
 <head>
     <title>Password change</title>
 </head>
+<div class="flex-container">
+    <header><h1>Password change</h1></header>
+    <nav class="nav">
+        <ul>
+            <li>
+                <a href="/">Homepage</a>
+                <a href="/user/info.action">Cancel</a>
+            </li>
+        </ul>
+    </nav>
+</div>
 <s:actionerror/>
 <body>
 <s:form action="updatePass">

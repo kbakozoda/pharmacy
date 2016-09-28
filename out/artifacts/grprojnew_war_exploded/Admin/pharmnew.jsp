@@ -6,6 +6,7 @@
     <title>Create new pharmacy</title>
 </head>
 <body>
+<div class="flex-container">
 <header>
     <h1>Create new pharmacy</h1>
 </header>
@@ -27,5 +28,6 @@
 <footer id="copyright">
     Copyright 2016, Loosers inc.
 </footer>
+</div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="22fbe2f0-2c82-4da7-a236-306e68bf477d" name="Default" comment="" />
-    <list default="true" id="9e6fef55-6e1b-4b44-8f3e-87213327b4d3" name="pharmacistCRUD" comment="pharmacist: some desing changes&#10;">
+    <list default="true" id="9e6fef55-6e1b-4b44-8f3e-87213327b4d3" name="pharmacistCRUD" comment="pharmacist: welcome page view drug names instead of ids&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -1083,7 +1083,7 @@
       <updated>1474853343786</updated>
       <workItem from="1474853344695" duration="9662000" />
       <workItem from="1474937520449" duration="256000" />
-      <workItem from="1474938099344" duration="23934000" />
+      <workItem from="1474938099344" duration="23885000" />
     </task>
     <task id="LOCAL-00014" summary="pharmacist: welcome page view drug names instead of ids&#10;">
       <created>1474926713000</created>
@@ -1096,7 +1096,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="285048000" />
+    <option name="totallyTimeSpent" value="284999000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -1211,8 +1211,7 @@
     <MESSAGE value="Admin: register new pharmacist. Edit done. Pharmacist CRUD done." />
     <MESSAGE value="Admin: some code review" />
     <MESSAGE value="pharmacist: welcome page view drug names instead of ids&#10;" />
-    <MESSAGE value="pharmacist: some desing changes&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="pharmacist: some desing changes&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="pharmacist: welcome page view drug names instead of ids&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

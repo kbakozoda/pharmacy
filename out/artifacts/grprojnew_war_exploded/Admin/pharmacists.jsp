@@ -6,7 +6,7 @@
     <title>Pharmacists</title>
 </head>
 <body>
-
+<div class="flex-container">
 <header>Pharmacists</header>
 <nav class="nav">
     <ul>
@@ -56,5 +56,6 @@
 <s:actionerror/>
 </article>
 <footer id="copyright">Copyright 2016, Loosers inc.</footer>
+</div>
 </body>
 </html>
