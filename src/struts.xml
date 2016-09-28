@@ -59,6 +59,10 @@
             <result name="input">authentication/registration.jsp</result>
         </action>
 
+        <action name="helloPDF" class="pharmacy.Actions.PDFHello" method="sayHelloPDF">
+
+        </action>
+
     </package>
 
     <package name="user" namespace="/user" extends="struts-default">

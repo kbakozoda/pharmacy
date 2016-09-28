@@ -20,6 +20,7 @@
       <li> <a href="regadmin">Register new admin</a></li>
       <li> <a href="regpharm">Register new pharmacist</a></li>
       <li> <a href="regsu">Register new superuser</a></li>
+        <li> <a href="helloPDF">Generate hello pdf</a></li>
     </ul>
   </nav>
 
