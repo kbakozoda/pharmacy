@@ -7,7 +7,7 @@
     <title>New pharmacist</title>
 </head>
 <body>
-
+<div class="flex-container">
 <header>
         Create New Pharmacist
 </header>
@@ -37,6 +37,6 @@
         Copyright 2016, Loosers inc.
 </footer>
 
-
+</div>
 </body>
 </html>

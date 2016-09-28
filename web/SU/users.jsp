@@ -6,6 +6,7 @@
     <title>Users</title>
 </head>
 <body>
+<div class="flex-container">
 <header><h1>All users</h1></header>
 <nav class="nav">
     <ul>
@@ -49,5 +50,6 @@
     <s:actionerror/>
 </article>
     <footer id="copyright">Copyright 2016, Loosers inc.</footer>
+</div>
 </body>
 </html>

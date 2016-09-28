@@ -5,6 +5,7 @@
     <title>Edit existing content</title>
 </head>
 <body>
+<div class="flex-container">
 <header>
     <h1>Edit stock content</h1>
 </header>
@@ -36,7 +37,7 @@
     Copyright 2016, Loosers inc.
 </footer>
 
-
+</div>
 
 </body>
 </html>

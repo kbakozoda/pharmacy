@@ -59,254 +59,250 @@
         <data-type>int(11)|0</data-type>
         <default-expression>&apos;-1&apos;</default-expression>
       </column>
-      <column id="28" parent="11" name="active">
-        <mandatory>1</mandatory>
-        <data-type>tinyint(1)|0</data-type>
-      </column>
-      <index id="29" parent="11" name="id">
+      <index id="28" parent="11" name="id">
         <columns>id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="30" parent="11" name="PRIMARY">
+      <key id="29" parent="11" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="31" parent="12" name="id">
+      <column id="30" parent="12" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="32" parent="12" name="name">
+      <column id="31" parent="12" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(15)|0</data-type>
       </column>
-      <index id="33" parent="12" name="id">
+      <index id="32" parent="12" name="id">
         <columns>id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="34" parent="12" name="PRIMARY">
+      <key id="33" parent="12" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="35" parent="13" name="id">
+      <column id="34" parent="13" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="36" parent="13" name="username">
+      <column id="35" parent="13" name="username">
         <mandatory>1</mandatory>
         <data-type>varchar(30)|0</data-type>
       </column>
-      <column id="37" parent="13" name="name">
+      <column id="36" parent="13" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="38" parent="13" name="surname">
+      <column id="37" parent="13" name="surname">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="39" parent="13" name="password">
+      <column id="38" parent="13" name="password">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="40" parent="13" name="role">
+      <column id="39" parent="13" name="role">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <index id="41" parent="13" name="role">
+      <index id="40" parent="13" name="role">
         <columns>role</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="42" parent="13" name="role_2">
+      <index id="41" parent="13" name="role_2">
         <columns>role</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="43" parent="13" name="PRIMARY">
+      <key id="42" parent="13" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="44" parent="14" name="id">
+      <column id="43" parent="14" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="45" parent="14" name="typeid">
+      <column id="44" parent="14" name="typeid">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="46" parent="14" name="name">
+      <column id="45" parent="14" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="47" parent="14" name="instruction">
+      <column id="46" parent="14" name="instruction">
         <mandatory>1</mandatory>
         <data-type>text|0</data-type>
       </column>
-      <column id="48" parent="14" name="agerestriction">
+      <column id="47" parent="14" name="agerestriction">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <key id="49" parent="14" name="PRIMARY">
+      <key id="48" parent="14" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="50" parent="15" name="id">
+      <column id="49" parent="15" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="51" parent="15" name="name">
+      <column id="50" parent="15" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <key id="52" parent="15" name="PRIMARY">
+      <key id="51" parent="15" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="53" parent="16" name="id">
+      <column id="52" parent="16" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="54" parent="16" name="networkid">
+      <column id="53" parent="16" name="networkid">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="55" parent="16" name="pharmacyid">
+      <column id="54" parent="16" name="pharmacyid">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="56" parent="16" name="purchasedate">
+      <column id="55" parent="16" name="purchasedate">
         <mandatory>1</mandatory>
         <data-type>date|0</data-type>
       </column>
-      <column id="57" parent="16" name="drugid">
+      <column id="56" parent="16" name="drugid">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="58" parent="16" name="totalexpense">
+      <column id="57" parent="16" name="totalexpense">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <key id="59" parent="16" name="PRIMARY">
+      <key id="58" parent="16" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="60" parent="17" name="id">
+      <column id="59" parent="17" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="61" parent="17" name="networkid">
+      <column id="60" parent="17" name="networkid">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="62" parent="17" name="number">
+      <column id="61" parent="17" name="number">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="63" parent="17" name="pharmacistid">
+      <column id="62" parent="17" name="pharmacistid">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
         <default-expression>&apos;-1&apos;</default-expression>
       </column>
-      <column id="64" parent="17" name="address">
+      <column id="63" parent="17" name="address">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
         <default-expression>&apos;undef.&apos;</default-expression>
       </column>
-      <key id="65" parent="17" name="PRIMARY">
+      <key id="64" parent="17" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="66" parent="18" name="id">
+      <column id="65" parent="18" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="67" parent="18" name="username">
+      <column id="66" parent="18" name="username">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="68" parent="18" name="password">
+      <column id="67" parent="18" name="password">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="69" parent="18" name="name">
+      <column id="68" parent="18" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="70" parent="18" name="surname">
+      <column id="69" parent="18" name="surname">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="71" parent="18" name="pharmacyid">
+      <column id="70" parent="18" name="pharmacyid">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="72" parent="18" name="networkid">
+      <column id="71" parent="18" name="networkid">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <key id="73" parent="18" name="PRIMARY">
+      <key id="72" parent="18" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="74" parent="19" name="id">
+      <column id="73" parent="19" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="75" parent="19" name="username">
+      <column id="74" parent="19" name="username">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="76" parent="19" name="password">
+      <column id="75" parent="19" name="password">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="77" parent="19" name="networkid">
+      <column id="76" parent="19" name="networkid">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="78" parent="19" name="name">
+      <column id="77" parent="19" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="79" parent="19" name="surname">
+      <column id="78" parent="19" name="surname">
         <mandatory>1</mandatory>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <key id="80" parent="19" name="PRIMARY">
+      <key id="79" parent="19" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="81" parent="20" name="id">
+      <column id="80" parent="20" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="82" parent="20" name="drugid">
+      <column id="81" parent="20" name="drugid">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="83" parent="20" name="priceofsingle">
+      <column id="82" parent="20" name="priceofsingle">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="84" parent="20" name="pharmacyid">
+      <column id="83" parent="20" name="pharmacyid">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="85" parent="20" name="networkid">
+      <column id="84" parent="20" name="networkid">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="86" parent="20" name="amount">
+      <column id="85" parent="20" name="amount">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <key id="87" parent="20" name="PRIMARY">
+      <key id="86" parent="20" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>

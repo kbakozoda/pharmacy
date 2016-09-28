@@ -7,7 +7,7 @@
     <title>Requests</title>
 </head>
 <body>
-
+<div class="flex-container">
 <header>
     <h1>Requests for registration</h1>
 </header>
@@ -61,9 +61,10 @@
     </s:if>
     <s:actionerror/>
 </article>
+
 <footer id="copyright">
     Copyright 2016, Loosers inc.
 </footer>
-
+</div>
 </body>
 </html>

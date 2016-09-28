@@ -6,7 +6,7 @@
     <title>Sign Up</title>
 </head>
 <body>
-
+<div class="flex-container">
 <header>
     <h1>Sign Up</h1>
 </header>
@@ -30,6 +30,6 @@
 <footer id="copyright">
     Copyright 2016, Loosers inc.
 </footer>
-
+</div>
 </body>
 </html>

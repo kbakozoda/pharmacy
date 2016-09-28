@@ -7,6 +7,7 @@
     <title>Edit pharmacist</title>
 </head>
 <body>
+<div class="flex-container">
 <header>
     Edit Pharmacist info
 </header>
@@ -30,5 +31,6 @@
         <s:submit value="Save"/>
     </s:push>
 </s:form>
+</div>
 </body>
 </html>

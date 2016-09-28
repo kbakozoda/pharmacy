@@ -6,6 +6,7 @@
     <title>Login</title>
 </head>
 <body>
+<div class="flex-container">
 <header>
     <h3>Welcome User, please login below</h3>
 </header>
@@ -24,5 +25,6 @@
 <footer id="copyright">
     Copyright 2016, Loosers inc.
 </footer>
+    </div>
 </body>
 </html>

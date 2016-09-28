@@ -5,7 +5,15 @@
     <title>Create new content</title>
 </head>
 <body>
-<s:actionerror/>
+<div class="flex-container">
+    <header><h1>Create new content</h1></header>
+    <nav class="nav">
+        <ui>
+            <li><a href="welcome.action">Dashboard</a> </li>
+        </ui>
+    </nav>
+    <article class="article">
+    <s:actionerror/>
 
 <s:form action="doCreate">
    <s:textfield type="number" label="Price for single" name="stockElement.priceOfSingle" value="stockElement.priceOfSingle"/>
@@ -13,5 +21,8 @@
    <s:select list="selectDrug" name="selected" headerValue="Select drug" headerKey="nll"/>
     <s:submit value="Add"/>
 </s:form>
+    </article>
+<footer id="copyright">Copyright 2016, Soldiers inc.</footer>
+</div>
 </body>
 </html>

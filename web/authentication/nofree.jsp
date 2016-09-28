@@ -6,7 +6,7 @@
     <title>No free networks</title>
 </head>
 <body>
-
+<div class="flex-container">
 <header>
     No free networks!
 </header>
@@ -21,7 +21,7 @@
 <footer id="copyright">
     Copyright 2016, Loosers inc.
 </footer>
-
+</div>
 </body>
 </html>
 <%--

@@ -6,6 +6,7 @@
 
 </head>
 <body>
+<div class="flex-container">
 <h1>You are logged in as, Mr. <s:property value="username"/>.
     Your pharmacy's id = <s:property value="phId"/> <a href="logout.action">Logout</a>
     <a href="/user/info">My credentials</a>
@@ -51,6 +52,7 @@
 <a href="/pharm/create.action">Create new</a>
 
 <s:actionerror/>
+    </div>
 </body>
 </html>
 

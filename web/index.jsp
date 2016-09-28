@@ -41,5 +41,5 @@
   <footer>
     <p id="copyright">Copyright 2016, Loosers inc.</p>
   </footer>
-
+</div>
 </html>

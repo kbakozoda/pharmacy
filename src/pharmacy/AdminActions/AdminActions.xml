@@ -87,34 +87,41 @@
         </action>
 
         <action name="histRemove" class="pharmacy.AdminActions.Pharmacies" method="historyDel">
+            <interceptor-ref name="AdminAuthStack"/>
             <result name="success" type="redirect">pharmacies.action</result>
             <result name="error" type="redirect">pharmacies.action</result>
         </action>
 
         <action name="pharmacists" class="pharmacy.AdminActions.Pharmacists">
+            <interceptor-ref name="AdminAuthStack"/>
             <result name="success">../Admin/pharmacists.jsp</result>
         </action>
 
         <action name="phstDel" class="pharmacy.AdminActions.Pharmacists" method="delete">
+            <interceptor-ref name="AdminAuthStack"/>
             <result name="success" type="redirect">pharmacists.action</result>
         </action>
 
         <action name="phstEdit" class="pharmacy.AdminActions.Pharmacists" method="edit">
+            <interceptor-ref name="AdminAuthStack"/>
             <result name="success">../Admin/phstEdit.jsp</result>
             <result name="error" type="redirect">pharmacists.action</result>
         </action>
 
         <action name="doPhstEdit" class="pharmacy.AdminActions.Pharmacists" method="doEdit">
+            <interceptor-ref name="AdminAuthStack"/>
             <result name="success" type="redirect">pharmacists.action</result>
             <result name="input">../Admin/phstEdit.jsp</result>
         </action>
 
         <action name="createPhst" class="pharmacy.AdminActions.Pharmacists" method="create">
+            <interceptor-ref name="AdminAuthStack"/>
             <result name="success">../Admin/phstNew.jsp</result>
             <result name="NOFREE">../Admin/pharmacists.jsp</result>
         </action>
 
         <action name="doCreatePhst" class="pharmacy.AdminActions.Pharmacists" method="doCreate">
+            <interceptor-ref name="AdminAuthStack"/>
             <result name="success" type="redirect">pharmacists.action</result>
             <result name="input">../Admin/phstNew.jsp</result>
         </action>

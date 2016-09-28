@@ -17,32 +17,38 @@
         <default-interceptor-ref name="PhAuthStack"></default-interceptor-ref>
 
         <action name="index" class="pharmacy.PhActions.Welcome">
+            <interceptor-ref name="PhAuthStack"/>
             <result name="success">../Pharmacist/index.jsp</result>
             <result name="LOGIN" type="redirect">../login.action</result>
         </action>
 
         <action name="edit" class="pharmacy.PhActions.Welcome" method="edit">
+            <interceptor-ref name="PhAuthStack"/>
             <result name="success">../Pharmacist/edit.jsp</result>
             <result name="error" type="redirect">index.action</result>
         </action>
 
         <action name="doEdit" class="pharmacy.PhActions.Welcome" method="doEdit">
+            <interceptor-ref name="PhAuthStack"/>
             <result name="success" type="redirect">index.action</result>
             <result name="input">../Pharmacist/edit.jsp</result>
             <result name="error" type="redirect">index.action</result>
         </action>
 
         <action name="delete" class="pharmacy.PhActions.Welcome" method="delete">
+            <interceptor-ref name="PhAuthStack"/>
             <result name="success" type="redirect">index.action</result>
             <result name="error">error.jsp</result>
         </action>
 
         <action name="create" class="pharmacy.PhActions.Welcome" method="create">
+            <interceptor-ref name="PhAuthStack"/>
             <result name="success">../Pharmacist/new.jsp</result>
             <result name="input">../Pharmacist/new.jsp</result>
         </action>
 
         <action name="doCreate" class="pharmacy.PhActions.Welcome" method="doCreate">
+            <interceptor-ref name="PhAuthStack"/>
             <result name="success" type="redirect">index.action</result>
             <result name="input">../Pharmacist/new.jsp</result>
         </action>

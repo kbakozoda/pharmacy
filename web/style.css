@@ -1,9 +1,15 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
 .flex-container {
     display: -webkit-flex;
     display: flex;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
     text-align: center;
+    min-height: 100%;
+    margin-bottom: -50px;
 }
 
 .flex-container > * {
@@ -17,7 +23,7 @@
 }
 
 header {background: black;color:white;}
-footer {background: #aaa;color:white;}
+footer, .push {background: #aaa;color:white; height: 50px;}
 .nav {background:#eee;}
 
 .nav ul {
