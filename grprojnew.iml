@@ -46,5 +46,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.0.M3" level="application_server_libraries" />
     <orderEntry type="library" name="Struts 2-2.3.20.1" level="project" />
     <orderEntry type="library" name="Arquillian JUnit:Release" level="project" />
+    <orderEntry type="library" name="iText7-7.0" level="project" />
+    <orderEntry type="library" name="itext5" level="project" />
   </component>
 </module>
