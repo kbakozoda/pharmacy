@@ -38,7 +38,7 @@ public class PDFHello extends ActionSupport {
 
 
     public String drugsPDF() throws IOException {
-        makeResponse(DocGen.getInstance().printDrugsInPDF(), "application/pdf", "hello.pdf");
+        makeResponse(DocGen.getInstance().printDrugsInPDF(), "application/pdf", "drugs.pdf");
         return NONE;
     }
 
@@ -49,6 +49,21 @@ public class PDFHello extends ActionSupport {
 
     public String drugsCSV() throws IOException {
         makeResponse(DocGen.getInstance().printDrugsInCSV(), "text/csv" , "drugs.csv");
+        return NONE;
+    }
+
+    public String networksPDF() throws IOException {
+        makeResponse(DocGen.getInstance().printNetworksInPDF(), "application/pdf", "networks.pdf");
+        return NONE;
+    }
+
+    public String networksXLS() throws IOException {
+        makeResponse(DocGen.getInstance().printNetworksXLS(), "application/vnd.ms-excel", "networks.xls");
+        return NONE;
+    }
+
+    public String networksCSV() throws IOException {
+        makeResponse(DocGen.getInstance().printNetworksInCSV(), "text/csv" , "networks.csv");
         return NONE;
     }
 }

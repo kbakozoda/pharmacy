@@ -62,6 +62,9 @@
         <action name="drugsPDF" class="pharmacy.Actions.PDFHello" method="drugsPDF"/>
         <action name="drugsXLS" class="pharmacy.Actions.PDFHello" method="drugsXLS"/>
         <action name="drugsCSV" class="pharmacy.Actions.PDFHello" method="drugsCSV"/>
+        <action name="netPDF" class="pharmacy.Actions.PDFHello" method="networksPDF"/>
+        <action name="netXLS" class="pharmacy.Actions.PDFHello" method="networksXLS"/>
+        <action name="netCSV" class="pharmacy.Actions.PDFHello" method="networksCSV"/>
 
     </package>
 
