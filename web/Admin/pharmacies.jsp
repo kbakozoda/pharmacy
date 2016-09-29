@@ -48,10 +48,29 @@
                     </s:url>
                         <s:a href="%{histURL}">Operation history</s:a></td>
 
-                    <td><s:url id="contentURL" action="stock">
+                    <td>
+                        <s:url id="contentURL" action="stock">
                         <s:param name="id" value="%{id}"></s:param>
                     </s:url>
-                        <s:a href="%{contentURL}">View Stock Content</s:a></td>
+                        <s:a href="%{contentURL}">View Stock Content</s:a>
+
+                        <s:url id="pdfURL" action="stockPDF">
+                            <s:param name="id" value="%{id}"></s:param>
+                        </s:url><br>
+                        <s:a href="%{pdfURL}">PDF</s:a>|
+
+
+                        <s:url id="xlsURL" action="stockXLS">
+                            <s:param name="id" value="%{id}"></s:param>
+                        </s:url>
+                        <s:a href="%{xlsURL}">XLS</s:a>|
+
+                        <s:url id="csvURL" action="stockCSV">
+                            <s:param name="id" value="%{id}"></s:param>
+                        </s:url>
+                        <s:a href="%{csvURL}">CSV</s:a>
+
+                    </td>
 
                     <td><s:url id="editURL" action="edit">
                         <s:param name="id" value="%{id}"></s:param>

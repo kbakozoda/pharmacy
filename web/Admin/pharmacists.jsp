@@ -48,6 +48,21 @@
                 </tr>
             </s:iterator>
         </table>
+        <s:url id="pdfURL" action="phstPDF">
+            <s:param name="id" value="%{networkId}"></s:param>
+        </s:url>
+        <s:a href="%{pdfURL}">PDF</s:a> |
+
+        <s:url id="xlsURL" action="phstXLS">
+            <s:param name="id" value="%{networkId}"></s:param>
+        </s:url>
+        <s:a href="%{xlsURL}">XLS</s:a> |
+
+        <s:url id="csvURL" action="phstCSV">
+            <s:param name="id" value="%{networkId}"></s:param>
+        </s:url>
+        <s:a href="%{csvURL}">CSV</s:a>
+
     </div>
 </s:if>
 <s:if test="list.size() = 0">

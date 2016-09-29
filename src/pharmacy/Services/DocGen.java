@@ -129,6 +129,8 @@ public class DocGen {
         prepareDrugs();
         try {
             pdfWriter = PdfWriter.getInstance(doc, stream);
+            /*pdfWriter.setEncryption(null, null, PdfWriter.ALLOW_PRINTING, PdfWriter.STANDARD_ENCRYPTION_128);
+            pdfWriter.createXmpMetadata();*/
             doc.open();
             addWaterMark(pdfWriter);
             PdfPTable table = new PdfPTable(4);

@@ -27,6 +27,25 @@
             <result name="SUCCESS" type="redirect">/</result>
         </action>
 
+        <action name="stockPDF" class="pharmacy.Actions.PDFHello" method="stockPDF">
+            <interceptor-ref name="AdminAuthStack"/>
+        </action>
+        <action name="stockXLS" class="pharmacy.Actions.PDFHello" method="stockXLS">
+            <interceptor-ref name="AdminAuthStack"/>
+        </action>
+        <action name="stockCSV" class="pharmacy.Actions.PDFHello" method="stockCSV">
+            <interceptor-ref name="AdminAuthStack"/>
+        </action>
+        <action name="phstPDF" class="pharmacy.Actions.PDFHello" method="phstPDF">
+            <interceptor-ref name="AdminAuthStack"/>
+        </action>
+        <action name="phstXLS" class="pharmacy.Actions.PDFHello" method="phstXLS">
+            <interceptor-ref name="AdminAuthStack"/>
+        </action>
+        <action name="phstCSV" class="pharmacy.Actions.PDFHello" method="phstCSV">
+            <interceptor-ref name="AdminAuthStack"/>
+        </action>
+
         <action name="pharmacies" class="pharmacy.AdminActions.Pharmacies">
             <interceptor-ref name="AdminAuthStack"/>
             <result name="success">../Admin/pharmacies.jsp</result>

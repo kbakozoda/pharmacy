@@ -58,23 +58,6 @@
             <result name="success" type="redirect">/</result>
             <result name="input">authentication/registration.jsp</result>
         </action>
-    <!--DOC GENERATION
-        <action name="drugsPDF" class="pharmacy.Actions.PDFHello" method="drugsPDF"/>
-        <action name="drugsXLS" class="pharmacy.Actions.PDFHello" method="drugsXLS"/>
-        <action name="drugsCSV" class="pharmacy.Actions.PDFHello" method="drugsCSV"/>
-        <action name="netPDF" class="pharmacy.Actions.PDFHello" method="networksPDF"/>
-        <action name="netXLS" class="pharmacy.Actions.PDFHello" method="networksXLS"/>
-        <action name="netCSV" class="pharmacy.Actions.PDFHello" method="networksCSV"/>
-        <action name="typesPDF" class="pharmacy.Actions.PDFHello" method="typesPDF"/>
-        <action name="typesXLS" class="pharmacy.Actions.PDFHello" method="typesXLS"/>
-        <action name="typesCSV" class="pharmacy.Actions.PDFHello" method="typesCSV"/>
-        <action name="stockPDF" class="pharmacy.Actions.PDFHello" method="stockPDF"/>
-        <action name="stockXLS" class="pharmacy.Actions.PDFHello" method="stockXLS"/>
-        <action name="stockCSV" class="pharmacy.Actions.PDFHello" method="stockCSV"/>
-        <action name="phstPDF" class="pharmacy.Actions.PDFHello" method="phstPDF"/>
-        <action name="phstXLS" class="pharmacy.Actions.PDFHello" method="phstXLS"/>
-        <action name="phstCSV" class="pharmacy.Actions.PDFHello" method="phstCSV"/>
-        -->
     </package>
 
     <package name="user" namespace="/user" extends="struts-default">

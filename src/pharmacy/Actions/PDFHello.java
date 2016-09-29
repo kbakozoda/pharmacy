@@ -1,7 +1,9 @@
 package pharmacy.Actions;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -83,32 +85,44 @@ public class PDFHello extends ActionSupport {
     }
 
     public String stockPDF() throws IOException {
-        makeResponse(DocGen.getInstance().printStockInPDF(9), "application/pdf", "stock.pdf");
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        int id = Integer.parseInt(request.getParameter("id"));
+        makeResponse(DocGen.getInstance().printStockInPDF(id), "application/pdf", "stock.pdf");
         return NONE;
     }
 
     public String stockXLS() throws IOException {
-        makeResponse(DocGen.getInstance().printStockXLS(9), "application/vnd.ms-excel", "stock.xls");
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        int id = Integer.parseInt(request.getParameter("id"));
+        makeResponse(DocGen.getInstance().printStockXLS(id), "application/vnd.ms-excel", "stock.xls");
         return NONE;
     }
 
     public String stockCSV() throws IOException {
-        makeResponse(DocGen.getInstance().printStockInCSV(9), "text/csv" , "stock.csv");
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        int id = Integer.parseInt(request.getParameter("id"));
+        makeResponse(DocGen.getInstance().printStockInCSV(id), "text/csv" , "stock.csv");
         return NONE;
     }
 
     public String phstPDF() throws IOException {
-        makeResponse(DocGen.getInstance().printPhInPDF(3), "application/pdf", "pharmacists.pdf");
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        int id = Integer.parseInt(request.getParameter("id"));
+        makeResponse(DocGen.getInstance().printPhInPDF(id), "application/pdf", "pharmacists.pdf");
         return NONE;
     }
 
     public String phstXLS() throws IOException {
-        makeResponse(DocGen.getInstance().printPhXLS(3), "application/vnd.ms-excel", "pharmacists.xls");
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        int id = Integer.parseInt(request.getParameter("id"));
+        makeResponse(DocGen.getInstance().printPhXLS(id), "application/vnd.ms-excel", "pharmacists.xls");
         return NONE;
     }
 
     public String phstCSV() throws IOException {
-        makeResponse(DocGen.getInstance().printPhInCSV(3), "text/csv" , "pharmacists.csv");
+        HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+        int id = Integer.parseInt(request.getParameter("id"));
+        makeResponse(DocGen.getInstance().printPhInCSV(id), "text/csv" , "pharmacists.csv");
         return NONE;
     }
 }
