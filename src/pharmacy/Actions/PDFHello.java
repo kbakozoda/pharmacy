@@ -37,8 +37,13 @@ public class PDFHello extends ActionSupport {
     }
 
 
-    public String sayHelloPDF() throws IOException {
+    public String drugsPDF() throws IOException {
         makeResponse(DocGen.getInstance().printDrugsInPDF(), "application/pdf", "hello.pdf");
+        return NONE;
+    }
+
+    public String drugsXLS() throws IOException {
+        makeResponse(DocGen.getInstance().printDrugsXLS(), "application/vnd.ms-excel", "drugs.xls");
         return NONE;
     }
 }
