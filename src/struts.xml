@@ -61,6 +61,7 @@
     <!--DOC GENERATION-->
         <action name="drugsPDF" class="pharmacy.Actions.PDFHello" method="drugsPDF"/>
         <action name="drugsXLS" class="pharmacy.Actions.PDFHello" method="drugsXLS"/>
+        <action name="drugsCSV" class="pharmacy.Actions.PDFHello" method="drugsCSV"/>
 
     </package>
 

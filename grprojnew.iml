@@ -49,5 +49,6 @@
     <orderEntry type="library" name="iText7-7.0" level="project" />
     <orderEntry type="library" name="itext5" level="project" />
     <orderEntry type="library" name="poi-3.15" level="project" />
+    <orderEntry type="library" name="opencsv-3.8" level="project" />
   </component>
 </module>

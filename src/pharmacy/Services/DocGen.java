@@ -6,10 +6,12 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.*;
 import org.apache.poi.hssf.usermodel.*;
 import pharmacy.Models.Drug;
-
+import com.opencsv.CSVWriter;
 import java.awt.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,7 +133,7 @@ public class DocGen {
         sheet.autoSizeColumn(0);
         style.setWrapText(true);
         headerCellStyle.setWrapText(true);
-        int[] columnWidths = {15, 15, 10, 10, 15};
+        int[] columnWidths = {10, 15, 15, 15, 15};
         for (int i = 0; i < columnWidths.length; i++) {
             columnWidths[i] = columnWidths[i] * 256;
         }
@@ -179,5 +181,21 @@ public class DocGen {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         workbook.write(stream);
         return  stream;
+    }
+
+    public ByteArrayOutputStream printDrugsInCSV() throws IOException {
+        prepareDrugs();
+        String[] fileHeader = {"Drug id", "Drug name", "Drug Type", "Instruction", "Age restriction"};
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
+        CSVWriter writer = new CSVWriter(new OutputStreamWriter(stream, Charset.forName("UTF-8")), ',');
+        writer.writeNext(fileHeader);
+        for (int i = 0; i < drugs.size(); i++) {
+            String[] tempArray = {String.valueOf(drugs.get(i).getId()) ,drugs.get(i).getName(), typeNames.get(i),
+                    drugs.get(i).getInstruction(), String.valueOf(drugs.get(i).getAgeRestrict())};
+            writer.writeNext(tempArray);
+        }
+        writer.close();
+        return stream;
     }
 }

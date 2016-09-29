@@ -46,4 +46,9 @@ public class PDFHello extends ActionSupport {
         makeResponse(DocGen.getInstance().printDrugsXLS(), "application/vnd.ms-excel", "drugs.xls");
         return NONE;
     }
+
+    public String drugsCSV() throws IOException {
+        makeResponse(DocGen.getInstance().printDrugsInCSV(), "text/csv" , "drugs.csv");
+        return NONE;
+    }
 }
