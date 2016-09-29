@@ -31,7 +31,8 @@ public class AdminSignUp extends ActionSupport {
     public String execute() {
         SURequestService suservice = new SURequestService();
         NetworkService ns = new NetworkService();
-        List<Network> ntwList = ns.getAll();
+        //List<Network> ntwList = ns.getAll();
+        netwList = ns.getAll();
         int id = -1;
         for (int i=0; i<netwList.size(); i++){
             if (netwList.get(i).getName().equals(selNetw)) {

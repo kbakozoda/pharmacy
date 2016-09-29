@@ -15,8 +15,8 @@ public class Login extends ActionSupport {
     }
 
     public String logout() {
-        Map session = ActionContext.getContext().getSession();
-        session.remove("user");
+        //Map session = ActionContext.getContext().getSession();
+        //session.remove("user");
         return "SUCCESS";
     }
 }

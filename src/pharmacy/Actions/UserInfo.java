@@ -172,4 +172,5 @@ public class UserInfo extends ActionSupport implements ModelDriven<User> {
     public void setNewPassConf(String newPassConf) {
         this.newPassConf = newPassConf;
     }
+    public void setSession(Map session) { this.session = session; }
 }
