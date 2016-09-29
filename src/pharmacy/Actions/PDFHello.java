@@ -83,17 +83,32 @@ public class PDFHello extends ActionSupport {
     }
 
     public String stockPDF() throws IOException {
-        makeResponse(DocGen.getInstance().printStockInPDF(9), "application/pdf", "types.pdf");
+        makeResponse(DocGen.getInstance().printStockInPDF(9), "application/pdf", "stock.pdf");
         return NONE;
     }
 
     public String stockXLS() throws IOException {
-        makeResponse(DocGen.getInstance().printStockXLS(9), "application/vnd.ms-excel", "types.xls");
+        makeResponse(DocGen.getInstance().printStockXLS(9), "application/vnd.ms-excel", "stock.xls");
         return NONE;
     }
 
     public String stockCSV() throws IOException {
-        makeResponse(DocGen.getInstance().printStockInCSV(9), "text/csv" , "types.csv");
+        makeResponse(DocGen.getInstance().printStockInCSV(9), "text/csv" , "stock.csv");
+        return NONE;
+    }
+
+    public String phstPDF() throws IOException {
+        makeResponse(DocGen.getInstance().printPhInPDF(3), "application/pdf", "pharmacists.pdf");
+        return NONE;
+    }
+
+    public String phstXLS() throws IOException {
+        makeResponse(DocGen.getInstance().printPhXLS(3), "application/vnd.ms-excel", "pharmacists.xls");
+        return NONE;
+    }
+
+    public String phstCSV() throws IOException {
+        makeResponse(DocGen.getInstance().printPhInCSV(3), "text/csv" , "pharmacists.csv");
         return NONE;
     }
 }
