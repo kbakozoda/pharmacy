@@ -66,4 +66,19 @@ public class PDFHello extends ActionSupport {
         makeResponse(DocGen.getInstance().printNetworksInCSV(), "text/csv" , "networks.csv");
         return NONE;
     }
+
+    public String typesPDF() throws IOException {
+        makeResponse(DocGen.getInstance().printDrTypesInPDF(), "application/pdf", "types.pdf");
+        return NONE;
+    }
+
+    public String typesXLS() throws IOException {
+        makeResponse(DocGen.getInstance().printDrTypesXLS(), "application/vnd.ms-excel", "types.xls");
+        return NONE;
+    }
+
+    public String typesCSV() throws IOException {
+        makeResponse(DocGen.getInstance().printDrTypesInCSV(), "text/csv" , "types.csv");
+        return NONE;
+    }
 }

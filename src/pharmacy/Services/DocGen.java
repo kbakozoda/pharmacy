@@ -392,4 +392,113 @@ public class DocGen {
         writer.close();
         return stream;
     }
+
+
+    public ByteArrayOutputStream printDrTypesInPDF() {
+        Document doc = new Document();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        PdfWriter pdfWriter = null;
+        prepareDrugTypes();
+        try {
+            pdfWriter = PdfWriter.getInstance(doc, stream);
+            doc.open();
+            addWaterMark(pdfWriter);
+            PdfPTable table = new PdfPTable(2);
+            Paragraph title = new Paragraph();
+
+            Font timesRomanfont = new Font(Font.FontFamily.TIMES_ROMAN,24,Font.BOLDITALIC);
+            Chunk timesRomanChunk = new Chunk("List of all drug types",timesRomanfont);
+            title.add(timesRomanChunk);
+
+            title.setAlignment(Element.ALIGN_CENTER);
+            title.setSpacingAfter(20);
+            doc.add(title);
+
+            PdfPCell c1 = new PdfPCell(new Phrase("Type Nubmer"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(c1);
+
+            PdfPCell c2 = new PdfPCell(new Phrase("Type Name"));
+            c2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(c2);
+
+            for (int i=0; i<drugTypes.size(); i++) {
+                table.addCell(String.valueOf(drugTypes.get(i).getId()));
+                table.addCell(drugTypes.get(i).getName());
+            }
+            doc.add(table);
+            doc.addAuthor("Loosers inc.");
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } finally {
+            if (doc != null) doc.close();
+            if (pdfWriter != null) doc.close();
+        }
+        return stream;
+    }
+
+    public ByteArrayOutputStream printDrTypesXLS() throws IOException{
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet("Drug Types");
+        HSSFCellStyle headerCellStyle = workbook.createCellStyle();
+        HSSFCellStyle style = workbook.createCellStyle();
+        HSSFFont boldFont = workbook.createFont();
+        boldFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+        headerCellStyle.setFont(boldFont);
+
+        HSSFRow row = sheet.createRow(0);
+        HSSFCell cell = row.createCell(0);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("Type number"));
+        cell = row.createCell(1);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("Type name"));
+
+        sheet.autoSizeColumn(0);
+        style.setWrapText(true);
+        headerCellStyle.setWrapText(true);
+        int[] columnWidths = {15, 15};
+        for (int i = 0; i < columnWidths.length; i++) {
+            columnWidths[i] = columnWidths[i] * 256;
+        }
+
+        prepareDrugTypes();
+
+        for (int i = 0; i < drugTypes.size(); i++ ) {
+            row = sheet.createRow(i+1);
+            row.setRowStyle(style);
+
+            cell = row.createCell(0);
+            cell.setCellStyle(style);
+            cell.setCellValue(drugTypes.get(i).getId());
+            sheet.autoSizeColumn(0);
+            sheet.setColumnWidth(0, columnWidths[0]);
+
+            cell = row.createCell(1);
+            cell.setCellStyle(style);
+            HSSFRichTextString drugName = new HSSFRichTextString(drugTypes.get(i).getName());
+            cell.setCellValue(drugName);
+            sheet.autoSizeColumn(1);
+            sheet.setColumnWidth(1, columnWidths[1]);
+        }
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        workbook.write(stream);
+        return  stream;
+    }
+
+    public ByteArrayOutputStream printDrTypesInCSV() throws IOException {
+        prepareDrugTypes();
+        String[] fileHeader = {"Type #", "Type name"};
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
+        CSVWriter writer = new CSVWriter(new OutputStreamWriter(stream, Charset.forName("UTF-8")), ',');
+        writer.writeNext(fileHeader);
+        for (int i = 0; i < drugTypes.size(); i++) {
+            String[] tempArray = {String.valueOf(drugTypes.get(i).getId()) ,drugTypes.get(i).getName()};
+            writer.writeNext(tempArray);
+        }
+        writer.close();
+        return stream;
+    }
 }
