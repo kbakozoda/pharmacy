@@ -5,8 +5,9 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.*;
 import org.apache.poi.hssf.usermodel.*;
-import pharmacy.Models.Drug;
+import pharmacy.Models.*;
 import com.opencsv.CSVWriter;
+
 import java.awt.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -25,6 +26,21 @@ public class DocGen {
     private List<Drug> drugs;
     private List<String> typeNames;
 
+    private List<Network> networks;
+    private List<String> adminNames;
+
+    private List<DrugType> drugTypes;
+
+    private List<String> drugNames;
+    private List<StockElement> stock;
+
+    private List pharmNumbs;
+    private List<String> pharmacistNames;
+    private List<String> pharmacistSurnames;
+
+    private int netwid;
+    private int id;
+
     private DocGen() {
 
     }
@@ -39,6 +55,44 @@ public class DocGen {
 
     }
 
+    public void prepareStockForPharmacy (int id) {
+        StockService sts = new StockService();
+        DrugsService ds = new DrugsService();
+        drugNames = new ArrayList<>();
+        stock = sts.getByPhId(id);
+        String temp;
+        for (int i=0; i<stock.size(); i++) {
+            temp = ds.getById(stock.get(i).getDrugId()).getName();
+            drugNames.add(temp);
+        }
+        this.id = id;
+    }
+
+    public void preparePharmacistsOfNetwork(int netwid) {
+        PharmacyService phs = new PharmacyService();
+        UserService us = new UserService();
+        List<Pharmacy> pharms = phs.getAllForNetwork(netwid);
+        pharmNumbs = new ArrayList<>();
+        pharmacistNames = new ArrayList<>();
+        pharmacistSurnames = new ArrayList<>();
+        String temp;
+        for (int i=0; i<pharms.size(); i++) {
+            if (pharms.get(i).getPharmacistId() != -1) {
+                pharmNumbs.add(pharms.get(i).getNumber());
+                temp = us.getById(pharms.get(i).getPharmacistId()).getName();
+                pharmacistNames.add(temp);
+                temp = us.getById(pharms.get(i).getPharmacistId()).getSurname();
+                pharmacistSurnames.add(temp);
+            }
+        }
+        this.netwid = netwid;
+    }
+
+    public void prepareDrugTypes() {
+        DrugTypeService dts = new DrugTypeService();
+        drugTypes = dts.getAll();
+    }
+
     public void prepareDrugs() {
         DrugsService ds = new DrugsService();
         drugs = ds.getAll();
@@ -48,6 +102,19 @@ public class DocGen {
         for (int i=0; i<drugs.size(); i++) {
             temp = drTypeService.getById(drugs.get(i).getTypeId()).getName();
             typeNames.add(temp);
+        }
+    }
+
+    public void prepareNetworks() {
+        NetworkService ns = new NetworkService();
+        UserService us = new UserService();
+        adminNames = new ArrayList<>();
+
+        networks = ns.getAll();
+        String temp;
+        for (int i=0; i<networks.size(); i++) {
+            temp = us.getById(networks.get(i).getAdminId()).getName();
+            adminNames.add(temp);
         }
     }
 
