@@ -26,6 +26,36 @@
             <result name="SUCCESS">../SU/index.jsp</result>
         </action>
 
+        <action name="drugsPDF" class="pharmacy.Actions.PDFHello" method="drugsPDF">
+            <interceptor-ref name="SUAuthStack"/>
+        </action>
+        <action name="drugsXLS" class="pharmacy.Actions.PDFHello" method="drugsXLS">
+            <interceptor-ref name="SUAuthStack"/>
+        </action>
+        <action name="drugsCSV" class="pharmacy.Actions.PDFHello" method="drugsCSV">
+            <interceptor-ref name="SUAuthStack"/>
+        </action>
+
+        <action name="netPDF" class="pharmacy.Actions.PDFHello" method="networksPDF">
+                <interceptor-ref name="SUAuthStack"/>
+        </action>
+        <action name="netXLS" class="pharmacy.Actions.PDFHello" method="networksXLS">
+            <interceptor-ref name="SUAuthStack"/>
+        </action>
+        <action name="netCSV" class="pharmacy.Actions.PDFHello" method="networksCSV">
+            <interceptor-ref name="SUAuthStack"/>
+        </action>
+        <action name="typesPDF" class="pharmacy.Actions.PDFHello" method="typesPDF">
+            <interceptor-ref name="SUAuthStack"/>
+        </action>
+        <action name="typesXLS" class="pharmacy.Actions.PDFHello" method="typesXLS">
+            <interceptor-ref name="SUAuthStack"/>
+        </action>
+        <action name="typesCSV" class="pharmacy.Actions.PDFHello" method="typesCSV">
+            <interceptor-ref name="SUAuthStack"/>
+        </action>
+
+
         <action name="users" class="pharmacy.SUActions.Users">
             <interceptor-ref name="SUAuthStack"/>
             <result name="success">../SU/users.jsp</result>

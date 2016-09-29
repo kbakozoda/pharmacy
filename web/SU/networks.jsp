@@ -31,6 +31,9 @@
             </s:iterator>
         </table>
         <a href="/superuser/createnet.action">Create New</a>
+        <a target="_blank" href="netPDF.action">Generate PDF</a>
+        <a target="_blank" href="netXLS.action">Generate XLS</a>
+        <a target="_blank" href="netCSV.action">Generate CSV</a>
     </div>
 </s:if>
 <s:if test="list.size() = 0">

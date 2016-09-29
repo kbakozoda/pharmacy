@@ -29,6 +29,9 @@
             </s:iterator>
         </table>
         <a href="/superuser/newdrugtype.action">Create New</a>
+        <a target="_blank" href="typesPDF.action">Generate PDF</a>
+        <a target="_blank" href="typesXLS.action">Generate XLS</a>
+        <a target="_blank" href="typesCSV.action">Generate CSV</a>
     </div>
 </s:if>
 <s:if test="list.size() = 0">

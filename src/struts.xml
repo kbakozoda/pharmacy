@@ -58,7 +58,7 @@
             <result name="success" type="redirect">/</result>
             <result name="input">authentication/registration.jsp</result>
         </action>
-    <!--DOC GENERATION-->
+    <!--DOC GENERATION
         <action name="drugsPDF" class="pharmacy.Actions.PDFHello" method="drugsPDF"/>
         <action name="drugsXLS" class="pharmacy.Actions.PDFHello" method="drugsXLS"/>
         <action name="drugsCSV" class="pharmacy.Actions.PDFHello" method="drugsCSV"/>
@@ -74,7 +74,7 @@
         <action name="phstPDF" class="pharmacy.Actions.PDFHello" method="phstPDF"/>
         <action name="phstXLS" class="pharmacy.Actions.PDFHello" method="phstXLS"/>
         <action name="phstCSV" class="pharmacy.Actions.PDFHello" method="phstCSV"/>
-
+        -->
     </package>
 
     <package name="user" namespace="/user" extends="struts-default">

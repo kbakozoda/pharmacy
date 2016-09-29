@@ -20,9 +20,6 @@
       <li> <a href="regadmin">Register new admin</a></li>
       <li> <a href="regpharm">Register new pharmacist</a></li>
       <li> <a href="regsu">Register new superuser</a></li>
-        <li> <a href="drugsPDF">Generate drugs pdf</a></li>
-        <li> <a href="drugsXLS">Generate drugs xls</a></li>
-        <li> <a href="drugsCSV">Generate drugs csv</a></li>
     </ul>
   </nav>
 

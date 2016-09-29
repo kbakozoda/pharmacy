@@ -43,7 +43,9 @@
                         </tr>
                     </s:iterator>
                 </table>
-
+                <a target="_blank" href="drugsPDF.action">Generate PDF</a>
+                <a target="_blank" href="drugsXLS.action">Generate XLS</a>
+                <a target="_blank" href="drugsCSV.action">Generate CSV</a>
             </div>
         </s:if>
         <s:if test="list.size() = 0">
