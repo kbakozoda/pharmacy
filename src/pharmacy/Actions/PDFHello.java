@@ -81,4 +81,19 @@ public class PDFHello extends ActionSupport {
         makeResponse(DocGen.getInstance().printDrTypesInCSV(), "text/csv" , "types.csv");
         return NONE;
     }
+
+    public String stockPDF() throws IOException {
+        makeResponse(DocGen.getInstance().printStockInPDF(9), "application/pdf", "types.pdf");
+        return NONE;
+    }
+
+    public String stockXLS() throws IOException {
+        makeResponse(DocGen.getInstance().printStockXLS(9), "application/vnd.ms-excel", "types.xls");
+        return NONE;
+    }
+
+    public String stockCSV() throws IOException {
+        makeResponse(DocGen.getInstance().printStockInCSV(9), "text/csv" , "types.csv");
+        return NONE;
+    }
 }

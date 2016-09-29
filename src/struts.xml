@@ -68,7 +68,9 @@
         <action name="typesPDF" class="pharmacy.Actions.PDFHello" method="typesPDF"/>
         <action name="typesXLS" class="pharmacy.Actions.PDFHello" method="typesXLS"/>
         <action name="typesCSV" class="pharmacy.Actions.PDFHello" method="typesCSV"/>
-
+        <action name="stockPDF" class="pharmacy.Actions.PDFHello" method="stockPDF"/>
+        <action name="stockXLS" class="pharmacy.Actions.PDFHello" method="stockXLS"/>
+        <action name="stockCSV" class="pharmacy.Actions.PDFHello" method="stockCSV"/>
     </package>
 
     <package name="user" namespace="/user" extends="struts-default">

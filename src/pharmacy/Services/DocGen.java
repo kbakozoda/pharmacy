@@ -501,4 +501,126 @@ public class DocGen {
         writer.close();
         return stream;
     }
+
+    public ByteArrayOutputStream printStockInPDF(int phid) {
+        Document doc = new Document();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        PdfWriter pdfWriter = null;
+        prepareStockForPharmacy(phid);
+        try {
+            pdfWriter = PdfWriter.getInstance(doc, stream);
+            doc.open();
+            addWaterMark(pdfWriter);
+            PdfPTable table = new PdfPTable(3);
+            Paragraph title = new Paragraph();
+
+            Font timesRomanfont = new Font(Font.FontFamily.TIMES_ROMAN,24,Font.BOLDITALIC);
+            Chunk timesRomanChunk = new Chunk("Stock content for pharmacy",timesRomanfont);
+            title.add(timesRomanChunk);
+
+            title.setAlignment(Element.ALIGN_CENTER);
+            title.setSpacingAfter(20);
+            doc.add(title);
+
+            PdfPCell c1 = new PdfPCell(new Phrase("Drug name"));
+            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(c1);
+
+            PdfPCell c2 = new PdfPCell(new Phrase("Amount"));
+            c2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(c2);
+
+            PdfPCell c3 = new PdfPCell(new Phrase("Price per single"));
+            c3.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(c3);
+
+            for (int i=0; i<stock.size(); i++) {
+                table.addCell(drugNames.get(i));
+                table.addCell(String.valueOf(stock.get(i).getAmount()));
+                table.addCell(String.valueOf(stock.get(i).getPriceOfSingle()));
+            }
+            doc.add(table);
+            doc.addAuthor("Loosers inc.");
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } finally {
+            if (doc != null) doc.close();
+            if (pdfWriter != null) doc.close();
+        }
+        return stream;
+    }
+
+    public ByteArrayOutputStream printStockXLS(int phid) throws IOException{
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet("Stock content of a pharmacy");
+        HSSFCellStyle headerCellStyle = workbook.createCellStyle();
+        HSSFCellStyle style = workbook.createCellStyle();
+        HSSFFont boldFont = workbook.createFont();
+        boldFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+        headerCellStyle.setFont(boldFont);
+
+        HSSFRow row = sheet.createRow(0);
+        HSSFCell cell = row.createCell(0);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("Drug name"));
+        cell = row.createCell(1);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("Amount"));
+        cell = row.createCell(2);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("Price per single"));
+
+        sheet.autoSizeColumn(0);
+        style.setWrapText(true);
+        headerCellStyle.setWrapText(true);
+        int[] columnWidths = {15, 15, 15};
+        for (int i = 0; i < columnWidths.length; i++) {
+            columnWidths[i] = columnWidths[i] * 256;
+        }
+
+        prepareStockForPharmacy(phid);
+
+        for (int i = 0; i < stock.size(); i++ ) {
+            row = sheet.createRow(i+1);
+            row.setRowStyle(style);
+
+            cell = row.createCell(0);
+            cell.setCellStyle(style);
+            HSSFRichTextString drugName = new HSSFRichTextString(drugNames.get(i));
+            cell.setCellValue(drugName);
+            sheet.autoSizeColumn(0);
+            sheet.setColumnWidth(0, columnWidths[0]);
+
+            cell = row.createCell(1);
+            cell.setCellStyle(style);
+            cell.setCellValue(stock.get(i).getAmount());
+            sheet.autoSizeColumn(1);
+            sheet.setColumnWidth(0, columnWidths[1]);
+
+            cell = row.createCell(2);
+            cell.setCellStyle(style);
+            cell.setCellValue(stock.get(i).getPriceOfSingle());
+            sheet.autoSizeColumn(2);
+            sheet.setColumnWidth(2, columnWidths[2]);
+        }
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        workbook.write(stream);
+        return  stream;
+    }
+
+    public ByteArrayOutputStream printStockInCSV(int phid) throws IOException {
+        prepareStockForPharmacy(phid);
+        String[] fileHeader = {"Drug name", "Amount", "Price per single"};
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
+        CSVWriter writer = new CSVWriter(new OutputStreamWriter(stream, Charset.forName("UTF-8")), ',');
+        writer.writeNext(fileHeader);
+        for (int i = 0; i < stock.size(); i++) {
+            String[] tempArray = {drugNames.get(i) ,String.valueOf(stock.get(i).getAmount()), String.valueOf(stock.get(i).getPriceOfSingle())};
+            writer.writeNext(tempArray);
+        }
+        writer.close();
+        return stream;
+    }
 }
