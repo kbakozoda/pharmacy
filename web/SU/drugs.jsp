@@ -1,4 +1,6 @@
 <%@taglib uri="/struts-tags" prefix="s" %>
+<link rel="stylesheet" type="text/css" href="../style.css">
+
 <html>
 <head>
     <title>Drugs</title>
@@ -53,9 +55,9 @@
         </s:if>
         <s:actionerror/>
     </article>
-    <footer id="copyright"> Copyright 2016, Loosers inc. </footer>
+
 </div>
 
-
+<footer id="copyright"> Copyright 2016, Loosers inc. </footer>
 </body>
 </html>

@@ -1,4 +1,6 @@
 <%@taglib uri="/struts-tags" prefix="s" %>
+<link rel="stylesheet" type="text/css" href="../style.css">
+
 <html>
 <head>
     <title>Edit</title>
@@ -35,8 +37,8 @@
         </s:form>
     </article>
 
-    <footer id="copyright">Copyright 2016, Loosers inc.</footer>
-</div>
 
+</div>
+<footer id="copyright">Copyright 2016, Loosers inc.</footer>
 </body>
 </html>

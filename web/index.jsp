@@ -37,9 +37,9 @@
     Lorem impsum dolor, etc. To be filled-in<br>
     Lorem impsum dolor, etc. To be filled-in<br>
   </article>
-
-  <footer>
-    <p id="copyright">Copyright 2016, Loosers inc.</p>
-  </footer>
+    <footer class="footer">
+        Copyright 2016, Loosers inc.
+    </footer>
 </div>
+
 </html>

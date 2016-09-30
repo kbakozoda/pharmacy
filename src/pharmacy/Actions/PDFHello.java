@@ -1,5 +1,6 @@
 package pharmacy.Actions;
 
+import com.itextpdf.text.DocumentException;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -18,6 +19,7 @@ import pharmacy.Services.DocGen;
 public class PDFHello extends ActionSupport {
     private HttpServletResponse response;
     private int id;
+    DocGen generator = new DocGen();
 
     @Override
     public String execute() throws Exception {
@@ -40,89 +42,89 @@ public class PDFHello extends ActionSupport {
 
 
     public String drugsPDF() throws IOException {
-        makeResponse(DocGen.getInstance().printDrugsInPDF(), "application/pdf", "drugs.pdf");
+        makeResponse(generator.printDrugsInPDF(), "application/pdf", "drugs.pdf");
         return NONE;
     }
 
     public String drugsXLS() throws IOException {
-        makeResponse(DocGen.getInstance().printDrugsXLS(), "application/vnd.ms-excel", "drugs.xls");
+        makeResponse(new DocGen().printDrugsXLS(), "application/vnd.ms-excel", "drugs.xls");
         return NONE;
     }
 
     public String drugsCSV() throws IOException {
-        makeResponse(DocGen.getInstance().printDrugsInCSV(), "text/csv" , "drugs.csv");
+        makeResponse(new DocGen().printDrugsInCSV(), "text/csv" , "drugs.csv");
         return NONE;
     }
 
     public String networksPDF() throws IOException {
-        makeResponse(DocGen.getInstance().printNetworksInPDF(), "application/pdf", "networks.pdf");
+        makeResponse(new DocGen().printNetworksInPDF(), "application/pdf", "networks.pdf");
         return NONE;
     }
 
     public String networksXLS() throws IOException {
-        makeResponse(DocGen.getInstance().printNetworksXLS(), "application/vnd.ms-excel", "networks.xls");
+        makeResponse(new DocGen().printNetworksXLS(), "application/vnd.ms-excel", "networks.xls");
         return NONE;
     }
 
     public String networksCSV() throws IOException {
-        makeResponse(DocGen.getInstance().printNetworksInCSV(), "text/csv" , "networks.csv");
+        makeResponse(new DocGen().printNetworksInCSV(), "text/csv" , "networks.csv");
         return NONE;
     }
 
     public String typesPDF() throws IOException {
-        makeResponse(DocGen.getInstance().printDrTypesInPDF(), "application/pdf", "types.pdf");
+        makeResponse(new DocGen().printDrTypesInPDF(), "application/pdf", "types.pdf");
         return NONE;
     }
 
     public String typesXLS() throws IOException {
-        makeResponse(DocGen.getInstance().printDrTypesXLS(), "application/vnd.ms-excel", "types.xls");
+        makeResponse(new DocGen().printDrTypesXLS(), "application/vnd.ms-excel", "types.xls");
         return NONE;
     }
 
     public String typesCSV() throws IOException {
-        makeResponse(DocGen.getInstance().printDrTypesInCSV(), "text/csv" , "types.csv");
+        makeResponse(new DocGen().printDrTypesInCSV(), "text/csv" , "types.csv");
         return NONE;
     }
 
     public String stockPDF() throws IOException {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         int id = Integer.parseInt(request.getParameter("id"));
-        makeResponse(DocGen.getInstance().printStockInPDF(id), "application/pdf", "stock.pdf");
+        makeResponse(new DocGen().printStockInPDF(id), "application/pdf", "stock.pdf");
         return NONE;
     }
 
     public String stockXLS() throws IOException {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         int id = Integer.parseInt(request.getParameter("id"));
-        makeResponse(DocGen.getInstance().printStockXLS(id), "application/vnd.ms-excel", "stock.xls");
+        makeResponse(new DocGen().printStockXLS(id), "application/vnd.ms-excel", "stock.xls");
         return NONE;
     }
 
     public String stockCSV() throws IOException {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         int id = Integer.parseInt(request.getParameter("id"));
-        makeResponse(DocGen.getInstance().printStockInCSV(id), "text/csv" , "stock.csv");
+        makeResponse(new DocGen().printStockInCSV(id), "text/csv" , "stock.csv");
         return NONE;
     }
 
     public String phstPDF() throws IOException {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         int id = Integer.parseInt(request.getParameter("id"));
-        makeResponse(DocGen.getInstance().printPhInPDF(id), "application/pdf", "pharmacists.pdf");
+        makeResponse(new DocGen().printPhInPDF(id), "application/pdf", "pharmacists.pdf");
         return NONE;
     }
 
     public String phstXLS() throws IOException {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         int id = Integer.parseInt(request.getParameter("id"));
-        makeResponse(DocGen.getInstance().printPhXLS(id), "application/vnd.ms-excel", "pharmacists.xls");
+        makeResponse(new DocGen().printPhXLS(id), "application/vnd.ms-excel", "pharmacists.xls");
         return NONE;
     }
 
     public String phstCSV() throws IOException {
         HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
         int id = Integer.parseInt(request.getParameter("id"));
-        makeResponse(DocGen.getInstance().printPhInCSV(id), "text/csv" , "pharmacists.csv");
+        makeResponse(new DocGen().printPhInCSV(id), "text/csv" , "pharmacists.csv");
         return NONE;
     }
 }

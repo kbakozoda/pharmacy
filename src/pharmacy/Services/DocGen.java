@@ -8,20 +8,13 @@ import org.apache.poi.hssf.usermodel.*;
 import pharmacy.Models.*;
 import com.opencsv.CSVWriter;
 
-import java.awt.*;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DocGen {
-    private static DocGen ourInstance = new DocGen();
-
-    public static DocGen getInstance() {
-        return ourInstance;
-    }
+    public Document doc;
 
     private List<Drug> drugs;
     private List<String> typeNames;
@@ -41,8 +34,21 @@ public class DocGen {
     private int netwid;
     private int id;
 
-    private DocGen() {
+    private InputStream inputStream;
 
+    private static final String USER_PASSWORD = "123";
+    private static final String OWNER_PASSWORD = "1";
+
+    public DocGen() {
+        doc = new Document();
+    }
+
+    public Document getDoc() {
+        return doc;
+    }
+
+    public void setDoc(Document doc) {
+        this.doc = doc;
     }
 
     private static void addWaterMark(PdfWriter writer) {
@@ -123,21 +129,21 @@ public class DocGen {
     }
 
     public ByteArrayOutputStream printDrugsInPDF() {
-        Document doc = new Document();
+        doc = new Document();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        PdfWriter pdfWriter = null;
         prepareDrugs();
         try {
-            pdfWriter = PdfWriter.getInstance(doc, stream);
-            /*pdfWriter.setEncryption(null, null, PdfWriter.ALLOW_PRINTING, PdfWriter.STANDARD_ENCRYPTION_128);
-            pdfWriter.createXmpMetadata();*/
+            PdfWriter pdfWriter = PdfWriter.getInstance(doc, stream);
             doc.open();
+            doc.newPage();
+            doc.add(new Chunk(""));
+            pdfWriter.setEncryption(USER_PASSWORD.getBytes(), OWNER_PASSWORD.getBytes(), PdfWriter.ALLOW_ASSEMBLY | PdfWriter.ALLOW_COPY, PdfWriter.STANDARD_ENCRYPTION_128);
+            pdfWriter.createXmpMetadata();
             addWaterMark(pdfWriter);
             PdfPTable table = new PdfPTable(4);
             Paragraph title = new Paragraph();
-
-            Font timesRomanfont = new Font(Font.FontFamily.TIMES_ROMAN,24,Font.BOLDITALIC);
-            Chunk timesRomanChunk = new Chunk("List of all drugs",timesRomanfont);
+            Font timesRomanfont = new Font(Font.FontFamily.TIMES_ROMAN, 24, Font.BOLDITALIC);
+            Chunk timesRomanChunk = new Chunk("List of all drugs", timesRomanfont);
             title.add(timesRomanChunk);
 
             title.setAlignment(Element.ALIGN_CENTER);
@@ -160,7 +166,7 @@ public class DocGen {
             c4.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(c4);
 
-            for (int i=0; i<drugs.size(); i++) {
+            for (int i = 0; i < drugs.size(); i++) {
                 table.addCell(drugs.get(i).getName());
                 table.addCell(typeNames.get(i));
                 table.addCell(drugs.get(i).getInstruction());
@@ -168,11 +174,10 @@ public class DocGen {
             }
             doc.add(table);
             doc.addAuthor("Loosers inc.");
-        } catch (DocumentException e) {
-            e.printStackTrace();
+        } catch (DocumentException de) {
+            de.printStackTrace();
         } finally {
             if (doc != null) doc.close();
-            if (pdfWriter != null) doc.close();
         }
     return stream;
     }
@@ -273,13 +278,14 @@ public class DocGen {
     }
 
     public ByteArrayOutputStream printNetworksInPDF() {
-        Document doc = new Document();
+        doc = new Document();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         PdfWriter pdfWriter = null;
         prepareNetworks();
         try {
-            pdfWriter = PdfWriter.getInstance(doc, stream);
             doc.open();
+            pdfWriter = PdfWriter.getInstance(doc, stream);
+            pdfWriter.setEncryption(null, null, PdfWriter.ALLOW_PRINTING, PdfWriter.STANDARD_ENCRYPTION_128);
             addWaterMark(pdfWriter);
             PdfPTable table = new PdfPTable(3);
             Paragraph title = new Paragraph();
@@ -397,7 +403,7 @@ public class DocGen {
 
 
     public ByteArrayOutputStream printDrTypesInPDF() {
-        Document doc = new Document();
+        doc = new Document();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         PdfWriter pdfWriter = null;
         prepareDrugTypes();
@@ -505,7 +511,7 @@ public class DocGen {
     }
 
     public ByteArrayOutputStream printStockInPDF(int phid) {
-        Document doc = new Document();
+        doc = new Document();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         PdfWriter pdfWriter = null;
         prepareStockForPharmacy(phid);

@@ -6,6 +6,7 @@
     <title>Welcome!</title>
 </head>
 <body>
+ <div class="flex-container">
     <header>
     <h1>Welcome mister super user! Please choose your next actions</h1>
     </header>
@@ -21,7 +22,7 @@
 <article class="article">
     This is a dashboard of a superuser.
 </article>
-
+ </div>
     <footer id="copyright">Copyright 2016, Loosers inc.</footer>
 </body>
 </html>
